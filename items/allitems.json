@@ -1,0 +1,102 @@
+[
+    {
+        "name": "Trollspegel", 
+        "description": "En liten, handhållen spegel som hjälper bäraren att se igenom magiska synförvändningar, illusioner och andra synvillor.",
+        "classification": "Magic Artefact"
+    },
+    {
+        "name": "Månsten",
+        "description": "En sten som skimrar i silver och ger bäraren förmågan att se i mörker.",
+        "classification": "Magic Artefact"
+    },
+    {
+        "name": "Magisk tejp",
+        "description": "Silveraktig vävtejp med självhäftande sida, som har förmågan att laga och täta även de trasigaste föremål. Enligt talesättet är ett objekt inte trasigt förrän det inte går att laga med denna magiska tejp.",
+        "classification": "Magic Artefact"
+    },
+    {
+        "name": "Stormrubin",
+        "description": "En glimrande rubin som kan anändas för att kontrollera väder, vind och framkalla stormar. Den saknar av-knapp.",
+        "classification": "Magic Artefact"
+    },
+    {
+        "name": "Klykring",
+        "description": "En kluven ring som hålls ihop av magi, som låter bäraren dela sitt psyke och koncentrera sig på två saker samtidigt.",
+        "classification": "Magic Artefact"
+    },
+    {
+        "name": "Skuggkappa",
+        "description": "Lång, mörk kappa med huva som på ett mystiskt vis lägger ansiktet i skugga. Typ som Vidstige har på Prancing Pony, ni vet den scenen där han röker pipa och glöden reflekteras i hans ögon.",
+        "classification": "Wearables"
+    },
+    {
+        "name": "Fjäderboa",
+        "description": "Rosa, fluffig, otroligt stylish.",
+        "classification": "Wearables"
+    },
+    {
+        "name": "Månställ",
+        "description": "Matchande tunika och byxor i fint material med silverbroderi inspirerat av månsken.",
+        "classification": "Wearables"
+    },
+    {
+        "name": "Äventyrarstövlar",
+        "description": "Dyra men tidlösa läderstövlar som slits med hälsan och har den märkvärdiga egenskapen att den låter bäraren röra sig nästan ljudlöst.",
+        "classification": "Wearables"
+    },
+    {
+        "name": "Röda pumps",
+        "description": "16cm stilettklackar. Ingen platå.",
+        "classification": "Wearables"
+    },
+    {
+        "name": "Mungiga",
+        "description": "Obeskrivlig form. Inte en levande själ vet egentligen hur man spelar på den.",
+        "classification": "Instrument"
+    },
+    {
+        "name": "Draktrumma",
+        "description": "Rund trumma gjord på drakskinn, vilket ger den ett kraftfullt ljud som kan eka över vilket landskap som helst. Sägs locka till sig drakar.",
+        "classification": "Instrument"
+    },
+    {
+        "name": "Silverlyra",
+        "description": "En elegant lyra prydd med snirkliga mönster, som ger ifrån sig oemotståndligt melodiska toner vilka kan stilla vilken vrede som helst. Den sägs ha avstyrt tre krig.",
+        "classification": "Instrument"
+    },
+    {
+        "name": "Luta",
+        "description": "Klassisk luta, enkel i utförande, som hör hemma i alla fantasymiljöer som har dragit minsta lilla inspiration av medeltiden.",
+        "classification": "Instrument"
+    },
+    {
+        "name": "Vindflöjt",
+        "description": "En orimligt lång och otymplig flöjt som, när man spelar på den, återskapar ljudet av vindens viskningar. Vid oförsiktig användning kan den tillkalla en patriotisk och någorlunda stridslysten sångare",
+        "classification": "Instrument"
+    },
+    {
+        "name": "Grimoire",
+        "description": "Tung bok inbunden i mörkt läder, fylld med uråldriga formler och ritualer. Sidorna verkar ibland skriva om sig själva.",
+        "classification": "Academia"
+    },
+    {
+        "name": "Nyckeln Till Evigt Liv",
+        "description": "En sliten pergamentsrulle med obegripliga tecken och symboler, troligen en kvarleva från en sedan länge (ironiskt nog) utdöd civilisation.",
+        "classification": "Academia"
+    },
+    {
+        "name": "Blad för Blad: botaniska boken om blommor och deras biokemi",
+        "description": "En nyttig bok som detaljerat beskriver olika plantor och deras användningsområden.",
+        "classification": "Academia"
+    },
+    {
+        "name": "Bestiarium",
+        "description": "Ett flitigt använt och omfattande uppslagsverk med detaljerade beskrivningar av djur, såväl mytologiska som vanliga.",
+        "classification": "Academia"
+    },
+    {
+        "name": "Drakfjäll",
+        "description": "Fjäll som fällts av en drake. Används i trolldryck för exceptionell styrka och kan ge visioner om framtiden.",
+        "classification": "Academia"
+    }
+]
