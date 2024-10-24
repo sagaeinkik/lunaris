@@ -16,7 +16,7 @@ public class Inventory
     private List<Item> allItems = new List<Item>();
 
     //Skapa en array enligt item-klass, detta är användarens inventory
-    Item[] userInventory = new Item[5];
+    public Item[] userInventory = new Item[5];
     int currentIndex = 0; //Indexräknare för att hålla koll på maxgräns
     public Inventory()
     {
@@ -31,13 +31,13 @@ public class Inventory
             }
             else
             {
-                tools.printMessage(true, ConsoleColor.Red, "Filen 'allitems.json' hittades inte.");
+                tools.printMessage(true, false, ConsoleColor.Red, "Filen 'allitems.json' hittades inte.");
             }
         }
         catch (Exception ex)
         {
             // Fånga och skriv ut eventuella fel
-            tools.printMessage(true, ConsoleColor.Red, $"Ett fel inträffade vid deserialisering: {ex.Message}");
+            tools.printMessage(true, false, ConsoleColor.Red, $"Ett fel inträffade vid deserialisering: {ex.Message}");
         }
     }
 
@@ -49,13 +49,14 @@ public class Inventory
         //Kolla om det finns något i inventoryn
         if (userInventory.Length > 0)
         {
+            WriteLine();
             //Loopa igenom
             foreach (Item item in userInventory)
             {
                 //Kontrollera så det inte är ett nullvärde (i och med array)
                 if (item != null)
                 {
-                    tools.printMessage(true, ConsoleColor.Blue, $"*-* {item.name} *-*");
+                    tools.printMessage(true, false, ConsoleColor.Blue, $"*-* {item.name} *-*");
                     WriteLine($"{item.description}");
                     WriteLine($"Classification: {item.classification}");
                     WriteLine("-----------------------------------");
@@ -78,18 +79,25 @@ public class Inventory
         return allItems;
     }
 
+    //Fixa fram specifikt item
+    public Item getItem(Index i)
+    {
+        return allItems[i];
+    }
+
     //Lägg till i inventory
-    public void addToInventory(Item item)
+    public string addToInventory(Item item)
     {
         //Kolla om index är mindre än 5
         if (currentIndex < userInventory.Length)
         {
             userInventory[currentIndex] = item; //Tilldela item på det indexet
             currentIndex++; //Öka indexräknarn
+            return $"Du är nu stolt ägare till {item.name}!";
         }
         else
         {
-            tools.printMessage(true, ConsoleColor.Red, "Din inventory är proppfull! Du kan inte bära nå mer. Du skulle ha plockat upp saker med lite större eftertänksamhet.");
+            return "Din inventarie är proppfull! Du kan inte bära fler saker. Du kanske skulle ha plockat upp föremål med mer eftertänksamhet?";
         }
     }
 
