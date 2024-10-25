@@ -9,6 +9,14 @@ Projektuppgift av Saga Einarsdotter Kikajon.
 Detta är min projektuppgift för kursen DT071G på Mittuniversitet, hösten -24. Uppgiften går ut på att visa vad man har lärt sig under kursens gång. Hela projektet är skrivet i Visual Studio Code för Mac.  
 Jag har valt att göra en konsollapplikation i form av ett spel där användarens val påverkar slutet. Det finns stor möjlighet för vidareutveckling men jag har valt att lägga det på en lite enklare nivå för att hinna klart innan kursavslut.
 
+### Struktur
+
+Det finns en undermapp för föremål. Alla föremål ligger i en json-fil, det finns en klass för Items, och en klass för hantering av inventory.
+
+Det finns en separat fil för funktioner som inte nödvändigtvis har med spelet att göra men som jag använder flitigt genom projektet, tools.cs.
+
+gameFlow.cs innehåller kontrollfrågor, ofta använda funktioner som relaterar till spelet, samt beskrivningar av scenerna. Detta är för att inte program.cs ska bli lika texttungt. I program.cs ligger de funktioner som påverkar spelet, det vill säga själva beslutsfattandet.
+
 ## Lunaris
 
 Lunaris har dragit inspiration av klassiska textbaserade äventyrsspel/fantasyspel. Det finns i dagsläget inga vapen, ingen combat, inga poäng, och ingen möjlighet att använda items – detta är något som absolut kan vidareutvecklas.
