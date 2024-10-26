@@ -303,7 +303,42 @@ public class GameFlow
     }
 
     //Grottmynning
+    public void caveEntranceDesc(int part)
+    {
+        if (part == 1)
+        {
+            tools.TypeLine("Efter att ha gått och gått i vad som känns som evigheter finner du dig själv ståendes vid solid bergvägg av svart sten.", true);
+            tools.TypeLine("'Vilken platt och hög vägg', tänker du.", true);
+            tools.TypeLine("Stigen fortsätter stadigt hela vägen fram till väggen, och när du kommer närmre svingar en stenport upp helt på eget bevåg.", true);
+            tools.TypeLine("Den måste vara magisk! \n", true);
+
+        }
+        else if (part == 2)
+        {
+            WriteLine();
+            tools.TypeLine("Vad vill du göra?", true);
+            WriteLine("1. Följ stigen norr, in i berget");
+            WriteLine("2. Gå österut, ut i solen.");
+        }
+    }
 
     //Trollgrotta
-
+    public void trollCaveDesc(int part)
+    {
+        if (part == 1)
+        {
+            tools.TypeLine("Du går varsamt längre in i grottan och hör hur den väldiga stenporten skrapar bakom dig. Du vänder dig om precis lagom till att se den slå igen bakom dig, vilket försänker hela din omgivning i totalt mörker. \n", true);
+            tools.TypeLine("Innan du hinner drabbas av total panik börjar art deco-inspirerade mönster framträda i självlysande färg på väggarna. ", true);
+            tools.TypeLine("Någon har haft lite för mycket fritid, verkar det som. Den självlysande färgen är stark nog för att lysa upp vägen framför dina fötter.", true);
+            tools.TypeLine("Du följer den steniga vägen längre in i berget, uppför breda trappor, tills du kommer till en gigantisk sal mitt i berget. \n", true);
+            tools.TypeLine("Du kan inte räkna hur många pelare som finns i salen, men det är minst en, kanske till och med två.", true);
+            tools.TypeLine("Det du kan se mellan sagda stenpelare är kopiösa högar med sällsynta och dyrbara värdesaker.", true);
+        }
+        else if (part == 2)
+        {
+            WriteLine();
+            tools.TypeLine("Vad vill du göra nu?", true);
+            WriteLine("1. Gå söderut (tillbaka)");
+        }
+    }
 }
