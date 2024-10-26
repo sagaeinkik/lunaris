@@ -98,5 +98,10 @@
         "name": "Drakfjäll",
         "description": "Fjäll som fällts av en drake. Används i trolldryck för exceptionell styrka och kan ge visioner om framtiden.",
         "classification": "Academia"
+    }, 
+    {
+        "name": "George Skörwes Pärla", 
+        "description": "En gigantisk pärla som skiftar i regnbågens alla färger. Den ser ofantligt dyrbar ut. Den som äger pärlan vill nog väldigt gärna ha tillbaka den...",
+        "classification": "Valuable"
     }
 ]

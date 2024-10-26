@@ -170,6 +170,15 @@ public class GameFlow
             WriteLine("\n \n");
 
         }
+        else if (beast == "georgeSkörwe")
+        {
+            tools.TypeLine("George Skörwen har inga öron, men de två utstickande flikarna på odjurets huvud läggs platt bakåt i en handling som avslöjar dess sinnesstämning, inte helt olikt en tjurig fuxmärr.", true);
+            tools.TypeLine("Samtidigt fäller besten ut den krage av hudflikar som tidigare legat avslappnat mot dess hals, mycket olikt ovan nämnda fuxmärr.", true);
+            tools.TypeLine("George Skörwen ryter så det skär i dina öron innan den blixtsnabbt virar sin svans runt din vrist och drar ner dit i sjön.", true);
+            tools.TypeLine("När du dras ner i djupet lämnar luften dina lungor i ett spår av bubblor efter dig. Det dröjer inte länge förrän mörkret i Bråddjupa Brallblötan omsluter dig.", true);
+            WriteLine("\n \n");
+
+        }
 
         tools.printMessage(true, true, ConsoleColor.DarkRed, "G A M E   O V E R ");
         tools.printMessage(true, true, ConsoleColor.DarkRed, "Du dog! Bättre lycka nästa gång.");
@@ -180,7 +189,6 @@ public class GameFlow
     {
         if (part == 1)
         {
-            tools.printMessage(true, false, ConsoleColor.Green, "Lägret");
             tools.TypeLine("Framför dig ser du en lägereld som knappt pyr längre. Du är omgiven av tät skog i alla riktningar, men du ser en stig som leder norrut. \n", true);
         }
         else if (part == 2)
@@ -237,18 +245,62 @@ public class GameFlow
     }
 
     //Skogsstig väst
-    public void westTrailDesc()
+    public void westTrailDesc(int part)
     {
-
+        if (part == 1)
+        {
+            tools.TypeLine("Du har gått ganska långt på den här skogsleden. Det är ganska trivsamt att vandra med fågelkvitter som ljudspår, speciellt i den grönskan som omger dig.", true);
+            tools.TypeLine("Ändå börjar du fråga dig själv om du verkligen vill fortsätta vidare på den här vägen, eller om du har ändrat dig. \n", true);
+        }
+        else if (part == 2)
+        {
+            tools.TypeLine("Vad vill du göra? \n", true);
+            WriteLine("1. Gå västerut");
+            WriteLine("2. Gå österut");
+        }
     }
 
     //Trolltrakten
-    public void trollTraktenDesc()
+    public void trollTraktenDesc(bool trollDead, int part)
     {
+        //Om troll lever
+        if (!trollDead)
+        {
+            tools.TypeLine("Du ser något på stigen längre fram. Det ser ut som en stor sten, med det lilla undantaget att det rör sig...  \n", true);
+            tools.TypeLine("Du stannar tvärt när du ser att det är ett troll. Det har en gråaktig ton, stripigt hår ner till hakan, och så grov hy att det närmast liknar en klipphäll.", true);
+            tools.TypeLine("Trollet byggt i stort sett som Röjar-Ralf, bredaxlat med gigantiska underarmar och händer, litet huvud, och orimligt korta små ben. \n Det stirrar på dig med små grisögon innan det plötsligt rusar framåt och sträcker ut sina väldiga armar för att hugga tag i dig.", true);
+            WriteLine();
+            tools.TypeLine("Vad vill du göra?", true);
+            WriteLine("1. Gör en kullerbytta västerut för att undvika trollet");
+            WriteLine("2. Plocka upp stenen vid dina fötter och kasta den på trollet");
+            WriteLine("3. Stå på dig och gör dig stor; avskräck skenattacken");
+            WriteLine("4. Gör en kullerbytta österut för att undvika trollet");
+        }
 
+        else if (trollDead && part == 1)
+        {
+            // Troll är dödd han 
+            tools.TypeLine("Du når en bekant plats i skogen. Bredvid stigen ligger kadavret av trollet, med den blodiga stenen strax intill.", true);
+            tools.TypeLine("Du tänker på hur imponerade alla hemma ska bli när de hör att du numera kan titulera dig själv Trolldräpare. \n", true);
+
+        }
+        else if (trollDead && part == 2)
+        {
+            tools.TypeLine("Vad vill du göra?", true);
+            WriteLine("1. Kullerbytta västerut; inte för att det behövs, utan för att det var kul");
+            WriteLine("2. Kullerbytta österut, av samma anledning");
+        }
     }
 
     //Besegra troll
+    public void killTrollDesc()
+    {
+        tools.TypeLine("Du böjer dig ner kvickt som attan för att plocka upp stenen samtidigt som du dyker undan från trollets väg. När du rätat lite på dig busvisslar du, och trollet vänder sig dumt mot dig.", true);
+        tools.TypeLine("Du sular iväg stenen så hårt du förmår och lyckas kasta den med en träffsäkerhet som skulle göra New York Jets' quarterback Zach Wilson alldeles grön av avund.", true);
+        tools.TypeLine("Seriöst, snubben har riktiga problem med att kasta under press. Och han spelar i NFL! \n", true);
+        tools.TypeLine("I alla fall, stenen träffar sitt mål rakt mellan trollets ögon, där det måste ha funnits en svag punkt. Trollet vacklar till innan det rasar ihop i en hög. Nu ser det verkligen ut som en sten.", true);
+        tools.TypeLine("När trollet kollapsar ramlar ett föremål ut ur... ja, nånstans ifrån. \n", true);
+    }
 
     //Grottmynning
 

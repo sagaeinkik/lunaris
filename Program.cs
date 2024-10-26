@@ -1,4 +1,9 @@
-﻿using System.Reflection.Emit;
+﻿/* MAIN: 
+Här ligger själva spelet och handlingarna som påverkar det (valen man gör). 
+Det är i sort sett ett nätverk av switch-satser.
+ */
+
+using System.Reflection.Emit;
 
 namespace lunaris;
 
@@ -10,7 +15,7 @@ class Program
     private static Inventory invy = new();
     private static List<Item> allItems = new();
 
-    private bool trollDead = false;
+    private static bool trollDead = false;
     private bool sphinxCleared = false;
     private bool seamonsterVisited = false;
     static void Main(string[] args)
@@ -44,10 +49,12 @@ class Program
     //Lägret
     static void campFireScene(bool firstTime)
     {
+        tools.printMessage(true, false, ConsoleColor.Green, "Lägret");
         //Hitta item
         Item mungiga = invy.getItem(10);
 
         Clear();
+        //Text att visa om det är första gången man är i rummet
         if (firstTime)
         {
             tools.TypeLine("Ditt äventyr börjar, som så många andras, med att du vaknar upp i en liten skogsglänta helt utan att minnas hur du hamnade där. \n Lyckligtvis är du en sån där lättsam person som inte ser några konstigheter alls i din situation.", true);
@@ -60,7 +67,7 @@ class Program
         bool itemOwned = flow.isOwned(mungiga, invy);
         if (!itemOwned)
         {
-            tools.TypeLine($"I kanten av gläntan ser du något som ligger och glittrar i morgonsolen. En {mungiga.name}! {mungiga.description}. \n", true);
+            tools.TypeLine($"I kanten av gläntan ser du något som ligger och glittrar i morgonsolen. En {mungiga.name}! {mungiga.description} \n", true);
             flow.wantToAdd(mungiga, invy);
         }
         flow.campFireDesc(2);
@@ -81,6 +88,7 @@ class Program
                 case "go north":
                     Clear();
                     WriteLine("Du gick norrut!");
+                    //Gå till skogsglänta
                     forestClearing();
                     validChoice = true;
                     break;
@@ -88,6 +96,7 @@ class Program
                 case "inventory":
                     Clear();
                     invy.viewInventory();
+                    //Visa vägval igen
                     flow.campFireDesc(2);
                     break;
                 default:
@@ -138,6 +147,7 @@ class Program
                 case "go south west":
                     Clear();
                     WriteLine("Du gick Sydväst!");
+                    //Gå till Lilla södergläntan
                     southClearing();
                     validChoice = true;
                     break;
@@ -152,6 +162,8 @@ class Program
                 case "v":
                     Clear();
                     WriteLine("Du gick väst!");
+                    //Gå till västra skogsstigen
+                    westTrail();
                     validChoice = true;
                     break;
                 case "3":
@@ -212,6 +224,7 @@ class Program
                 case "inventory":
                     Clear();
                     invy.viewInventory();
+                    //Visa vägval igen
                     flow.forestClearingDesc(2);
                     break;
                 default:
@@ -255,14 +268,16 @@ class Program
                 case "go north east":
                 case "go ne":
                     Clear();
+                    WriteLine("Du gick nordöst!");
+                    //Gå till skogsgläntan
                     forestClearing();
-                    southClearing();
                     validChoice = true;
                     break;
                 case "i":
                 case "inventory":
                     Clear();
                     invy.viewInventory();
+                    //Visa vägval igen
                     flow.southClearingDesc(2);
                     break;
                 default:
@@ -275,15 +290,247 @@ class Program
     //Skogsstig väst
     static void westTrail()
     {
+        tools.printMessage(true, false, ConsoleColor.Green, "Västra skogsstigen");
+        flow.westTrailDesc(1);
+        flow.westTrailDesc(2);
 
+        //ANVÄNDARVAL
+        //Knapp till while-loop
+        bool validChoice = false;
+        //Switchsats
+        while (!validChoice)
+        {
+            string userChoice = ReadLine()!.ToLower();
+            switch (userChoice)
+            {
+                case "1":
+                case "väst":
+                case "gå väst":
+                case "v":
+                case "gå v":
+                case "västerut":
+                case "gå västerut":
+                case "fortsätt västerut":
+                case "go west":
+                case "go w":
+                    Clear();
+                    WriteLine("Du gick västerut!");
+                    trollTrakten();
+                    validChoice = true;
+                    break;
+                case "2":
+                case "öst":
+                case "gå öst":
+                case "österut":
+                case "gå österut":
+                case "east":
+                case "go east":
+                case "e":
+                case "ö":
+                    Clear();
+                    WriteLine("Du gick österut!");
+                    forestClearing();
+                    validChoice = true;
+                    break;
+                case "i":
+                case "inventory":
+                    Clear();
+                    invy.viewInventory();
+                    flow.westTrailDesc(2);
+                    break;
+                default:
+                    tools.printMessage(true, false, ConsoleColor.Yellow, "Förstod inte inmatningen. Testa skriva antingen alternativets siffra, eller riktningen på svenska eller engelska!");
+                    break;
+            }
+        }
     }
 
     //Trolltrakten
     static void trollTrakten()
     {
+        tools.printMessage(true, false, ConsoleColor.Green, "Trolltrakten");
 
+
+        //Om trollet ej är dött:
+        if (!trollDead)
+        {
+            //Skicka med false för trollDead
+            flow.trollTraktenDesc(false, 0);
+
+            //ANVÄNDARVAL
+            //Knapp till while-loop
+            bool validChoice = false;
+            //Switchsats
+            while (!validChoice)
+            {
+                string userChoice = ReadLine()!.ToLower();
+                switch (userChoice)
+                {
+                    case "1":
+                    case "väst":
+                    case "gå väst":
+                    case "kullerbytta väst":
+                    case "kullerbytta västerut":
+                    case "kullerbytta v":
+                    case "v":
+                    case "gå v":
+                    case "västerut":
+                    case "gå västerut":
+                    case "fortsätt västerut":
+                    case "go west":
+                    case "go w":
+                        Clear();
+                        WriteLine("Du kullerbyttade västerut förbi trollet!");
+                        validChoice = true;
+                        break;
+                    case "2":
+                    case "plocka upp sten":
+                    case "kasta sten":
+                    case "kasta":
+                    case "sten":
+                    case "pick up rock":
+                    case "throw rock":
+                    case "throw":
+                    case "rock":
+                        Clear();
+                        WriteLine("Du kastade sten!");
+                        trollDefeated();
+                        validChoice = true;
+                        break;
+                    case "3":
+                    case "stå på dig":
+                    case "stand your ground":
+                    case "stå":
+                    case "stand":
+                    case "stor":
+                        Clear();
+                        WriteLine("Du står kvar!");
+                        flow.gameOver("troll");
+                        validChoice = true;
+                        break;
+                    case "4":
+                    case "öst":
+                    case "gå öst":
+                    case "österut":
+                    case "gå österut":
+                    case "kullerbytta öst":
+                    case "kullerbytta österut":
+                    case "kullerbytta ö":
+                    case "east":
+                    case "go east":
+                    case "e":
+                    case "ö":
+                        Clear();
+                        WriteLine("Du kullerbyttade österut!");
+                        westTrail();
+                        validChoice = true;
+                        break;
+                    case "i":
+                    case "inventory":
+                        tools.TypeLine("Det är inte läge att kolla det nu! Du har ett argt troll att hålla koll på!", true);
+                        break;
+                    default:
+                        tools.printMessage(true, false, ConsoleColor.Yellow, "Förstod inte inmatningen. Testa skriva antingen alternativets siffra, eller riktningen på svenska eller engelska!");
+                        break;
+                }
+            }
+
+        }
+        else
+        {
+            //Funktion med besegrat troll 
+            trollDefeated();
+        }
     }
 
+    //Döda troll
+    static void trollDefeated()
+    {
+        //Om trollet lever: detta är resultat av att kasta sten i trolltrakten
+        if (!trollDead)
+        {
+            //Visa text om hur trollet dör
+            flow.killTrollDesc();
+
+        }
+        else
+        {
+            //Beskriv rummet med dött troll
+            flow.trollTraktenDesc(true, 1);
+        }
+        //Lutan
+        Item luta = invy.getItem(13);
+        //Kolla om lutan ägs 
+        if (!flow.isOwned(luta, invy))
+        {
+            tools.TypeLine("Föremålet som trollet tappade i sitt dödsögonblick ligger kvar på stigen.", true);
+            tools.TypeLine($"En {luta.name}! {luta.description}", true);
+            flow.wantToAdd(luta, invy);
+
+        }
+        //Ge alternativ för riktning
+        flow.trollTraktenDesc(true, 2);
+
+        //Slå om trollDead till true 
+        trollDead = true;
+
+        //ANVÄNDARVAL
+        //Knapp till while-loop
+        bool validChoice = false;
+        //Switchsats
+        while (!validChoice)
+        {
+            string userChoice = ReadLine()!.ToLower();
+            switch (userChoice)
+            {
+                case "1":
+                case "väst":
+                case "gå väst":
+                case "kullerbytta väst":
+                case "kullerbytta västerut":
+                case "kullerbytta v":
+                case "v":
+                case "gå v":
+                case "västerut":
+                case "gå västerut":
+                case "fortsätt västerut":
+                case "go west":
+                case "go w":
+                    Clear();
+                    WriteLine("Du gick västerut!");
+                    validChoice = true;
+                    break;
+                case "2":
+                case "öst":
+                case "gå öst":
+                case "österut":
+                case "gå österut":
+                case "kullerbytta öst":
+                case "kullerbytta österut":
+                case "kullerbytta ö":
+                case "east":
+                case "go east":
+                case "e":
+                case "ö":
+                    Clear();
+                    WriteLine("Du gick österut!");
+                    westTrail();
+                    validChoice = true;
+                    break;
+                case "i":
+                case "inventory":
+                    Clear();
+                    invy.viewInventory();
+                    tools.TypeLine("Vad vill du göra?", true);
+                    WriteLine("1. Kullerbytta västerut; inte för att det behövs, utan för att det var kul");
+                    WriteLine("2. Kullerbytta österut, av samma anledning");
+                    break;
+                default:
+                    tools.printMessage(true, false, ConsoleColor.Yellow, "Förstod inte inmatningen. Testa skriva antingen alternativets siffra, eller riktningen på svenska eller engelska!");
+                    break;
+            }
+        }
+    }
     //Grottmynning
 
     //Trollgrotta

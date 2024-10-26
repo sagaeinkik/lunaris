@@ -49,7 +49,7 @@ public class Tools
         foreach (var letter in message)
         {
             Write(letter);
-            Thread.Sleep(10);
+            Thread.Sleep(15);
         }
         Thread.Sleep(200);
         //Om <br> används, gör ny rad
