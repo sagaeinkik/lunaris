@@ -10,7 +10,7 @@ public class GameFlow
 {
 
     Tools tools = new();
-    Program mainGame = new();
+
 
     /* SPELPÅVERKANDE METODER */
 
@@ -20,6 +20,7 @@ public class GameFlow
         string result;
         //Fråga om man vill lägga till
         tools.printMessage(false, true, ConsoleColor.Gray, $"Vill du lägga till {item.name} i din inventarie? [y / n] ");
+
         //Lagra användarinput
         string userChoice = ReadLine()!.ToLower();
 
@@ -182,6 +183,11 @@ public class GameFlow
 
         tools.printMessage(true, true, ConsoleColor.DarkRed, "G A M E   O V E R ");
         tools.printMessage(true, true, ConsoleColor.DarkRed, "Du dog! Bättre lycka nästa gång.");
+
+        //Credits
+        tools.gameCredits();
+        //avsluta
+        Environment.Exit(0);
     }
 
     //Läger
@@ -207,10 +213,8 @@ public class GameFlow
         if (part == 1)
         {
             tools.TypeLine("Du kommer fram till en glänta i skogen som liknar ett mossklätt torg, med vägar att följa i flera olika riktningar. ", true);
-            tools.TypeLine("I mitten av gläntan står en urblekt skylt med pilar i olika riktningar. Texten är svårtydd, men den pil som pekar nordväst verkar läsa 'Norra strand'.", true);
-            tools.TypeLine("Pilen västerut är omöjlig att läsa, men ordet slutar på 'grotta'.", true);
-            tools.TypeLine("En pil visar nordöst, men orden på skylten har suddats bort av årens hand. \n", true);
-
+            tools.TypeLine("I mitten av gläntan står en urblekt skylt med pilar i olika riktningar. Texten ser ut att ha varit med om sju svåra år och är därmed svårtydd.", true);
+            tools.TypeLine("Du lyckas utröna att en grotta ligger västerut, Norra strand nordväst, och Bråddjupa Brallblötan (står det verkligen så?) till nordöst.", true);
         }
         else if (part == 2)
         {
@@ -225,7 +229,7 @@ public class GameFlow
             WriteLine("3. Följ vägen nordväst");
             WriteLine("4. Följ vägen nordöst");
             WriteLine("5. Mosa dig in på östra stigen");
-            WriteLine("6. Gå tillbaka söderut (till lägret)");
+            WriteLine("6. Gå söderut (till lägret)");
         }
     }
 
@@ -339,6 +343,35 @@ public class GameFlow
             WriteLine();
             tools.TypeLine("Vad vill du göra nu?", true);
             WriteLine("1. Gå söderut (tillbaka)");
+        }
+    }
+
+    //Skoggstig österut
+    public void eastTrailDesc()
+    {
+        tools.TypeLine("Att kalla det för stig är generöst; det är mer en vag skymt av färdväg genom tätvuxen och snårig skog. Du mosar dig igenom kvistar och löv, men fastnar frustrerande nog ganska konstant. ", true);
+        tools.TypeLine("Du tänkte kanske att stigen hade trampats upp av skogens djur, men du inser ganska snabbt att om djur ligger bakom detta rör det sig snarare om ett lämmeltåg än en stadig älg.", true);
+        tools.TypeLine("Det tar inte särskilt lång tid innan du blir svettig, varm och irriterad, och du börjar ifrågasätta hur klokt beslut det var att försöka ta sig in den här vägen. \n", true);
+
+        tools.TypeLine("Vad vill du göra nu?", true);
+        WriteLine("1. Gå västerut");
+        WriteLine("1. Gå österut");
+    }
+
+    //Halvöstra strand
+    public void halfEastBeachDesc(int part)
+    {
+        if (part == 1)
+        {
+            tools.TypeLine("Du hör älvens brus innan du ser den, men plötsligt viker skogen undan och du finner dig själv ståendes på en smal strandkant.", true);
+            tools.TypeLine("Träden trängs nästan hela vägen fram till älvkanten, som kommer tvärt och plötsligt. Du slår vad om att det finns fin öring i dessa vatten.", true);
+            tools.TypeLine("På andra sidan älven anar du ett tält bland träden. \n", true);
+        }
+        else if (part == 2)
+        {
+            tools.TypeLine("Vad vill du göra nu?", true);
+            WriteLine("1. Gå västerut");
+
         }
     }
 }

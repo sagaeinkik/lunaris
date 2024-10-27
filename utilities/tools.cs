@@ -7,6 +7,43 @@ namespace lunaris;
 public class Tools
 {
     /* --- FUNKTIONER --- */
+    //Funktion för att slippa skriva switch-satser om och om igen
+    public void dirHandler(List<Command> commands)
+    {
+        //Av/på-knapp till input
+        bool validChoice = false;
+
+        //loop som körs tills man skrivit in accepterat input
+        while (!validChoice)
+        {
+            string userChoice = Console.ReadLine()!.ToLower();
+            //Flagga för att köra felmeddelande om inmatning
+            bool foundCommand = false;
+
+            //Loopa igenom alla commands
+            foreach (var command in commands)
+            {
+                //Kolla om kommandot finns i alias-listan:
+                if (command.Aliases.Contains(userChoice))
+                {
+                    //Kalla på funktionen som anges
+                    command.Execute();
+                    //Bryt loopen om så anges
+                    if (command.EndsLoop) validChoice = true;
+
+                    //Flagga att vi hittat ett kommando
+                    foundCommand = true;
+                    break; //Bryter foreach-loopen ifall ifall
+                }
+            }
+            //Hittades inte kommandot i listan över alias, visa felmeddelandet 
+            if (!foundCommand)
+            {
+                printMessage(true, false, ConsoleColor.Yellow, "Förstod inte inmatningen. Testa skriva antingen alternativets siffra, eller riktningen på svenska eller engelska!");
+            }
+        }
+    }
+
     //Återanvänd funktion från tidigare moment för att lägga till lite färg
     public void printMessage(bool newLine, bool typed, ConsoleColor color, string message)
     {
@@ -46,9 +83,11 @@ public class Tools
     //METOD FÖR SKRIVMASKINSEFFEKT
     public void TypeLine(String message, bool br)
     {
+        //Loopa igenom sträng
         foreach (var letter in message)
         {
             Write(letter);
+            //Fördröjning
             Thread.Sleep(15);
         }
         Thread.Sleep(200);
