@@ -214,7 +214,7 @@ public class GameFlow
         {
             tools.TypeLine("Du kommer fram till en glänta i skogen som liknar ett mossklätt torg, med vägar att följa i flera olika riktningar. ", true);
             tools.TypeLine("I mitten av gläntan står en urblekt skylt med pilar i olika riktningar. Texten ser ut att ha varit med om sju svåra år och är därmed svårtydd.", true);
-            tools.TypeLine("Du lyckas utröna att en grotta ligger västerut, Norra strand nordväst, och Bråddjupa Brallblötan (står det verkligen så?) till nordöst.", true);
+            tools.TypeLine("Du lyckas utröna att en grotta ligger västerut, Norra strand nordväst, och Bråddjupa Brallblötan (står det verkligen så?) till nordöst. \n", true);
         }
         else if (part == 2)
         {
@@ -355,7 +355,7 @@ public class GameFlow
 
         tools.TypeLine("Vad vill du göra nu?", true);
         WriteLine("1. Gå västerut");
-        WriteLine("1. Gå österut");
+        WriteLine("2. Gå österut");
     }
 
     //Halvöstra strand
@@ -373,5 +373,79 @@ public class GameFlow
             WriteLine("1. Gå västerut");
 
         }
+    }
+    public void northwestTrailDesc()
+    {
+        tools.TypeLine("Du går på en trevlig och bred stig, alternativt en trevlig och smal väg beroende på hur man ser på det. Den tycks fortsätta i all oändlighet.", true);
+        tools.TypeLine("Periodvis växer det hallon längsmed vägen.", true);
+        tools.TypeLine("Dina fötter känns lite trötta, så du stannar och plockar några att mumsa på för att få lite energi.", true);
+        tools.TypeLine("Du börjar fundera på om du vill fortsätta på den här vägen, eller om du vill vända tillbaka. \n", true);
+
+
+        tools.TypeLine("Vad vill du göra?", true);
+        WriteLine("1. Följ vägen nordväst");
+        WriteLine("2. Följ vägen sydöst");
+    }
+
+    //Drakglänta
+    public void dragonClearingDesc(int part)
+    {
+        if (part == 1)
+        {
+            tools.TypeLine("Du kommer till stort, stort fält med mjukt, högt gräs. Du går genom höggräset och drar av frön från rajstjälkarna eftersom det är fysiskt omöjligt att inte göra det när man går genom gräs.", true);
+            tools.TypeLine("Det härliga vädret och den fantastiska lägdan till trots har du ett stort problem. \n", true);
+            tools.TypeLine("En enorm drake är ute och sträcker på sina vingar högt över fältet. Det finns inte en chans att du kan slåss mot den; ditt enda hopp är att undgå att bli upptäckt.", true);
+            tools.TypeLine("Du stelnar till och tänker. Du känner dig osäker på hur drakar fungerar.", true);
+            tools.TypeLine("Om du kryper långsamt och försiktigt över fältet kanske draken inte lägger märke till dina rörelser, men den kanske kan känna doften av dig, och du syns nog uppifrån. \n Om du springer syns inte lika mycket av din kroppsyta uppifrån, och du spenderar mindre tid totalt på fältet, vilket kan innebära mindre tid att bli upptäckt av draken på. Men det är kanske lättare att lägga märke till någon som springer än någon som kryper?", true);
+        }
+        else if (part == 2)
+        {
+            tools.TypeLine("Vad vill du göra?", true);
+            WriteLine("1. Kryp västerut");
+            WriteLine("2. Spring västerut");
+            WriteLine("3. Kryp norrut");
+            WriteLine("4. Spring norrut");
+            WriteLine("5. Kryp sydöst");
+            WriteLine("6. Spring sydöst");
+        }
+    }
+
+    //Trädkantälvrand
+    public void treelineRiverDesc(int part)
+    {
+        if (part == 1)
+        {
+            tools.TypeLine("Det tar evigheter att krypa över fältet. Flera gånger är du bergsäker på att draken sett dig, och det har stuckit obehagligt längsmed ryggraden när du hört dess vingslag precis ovanför dig utan att kunna se odjuret.", true);
+            tools.TypeLine("Men till din stora förvåning kommer du så småningom till slutet på fältet, där du vågar resa dig. Draken syns inte till. \n", true);
+            tools.TypeLine("Nu finner du dig själv stående vid älvens strandkant. \n", true);
+        }
+        else if (part == 2)
+        {
+            tools.TypeLine("Vad vill du göra?", true);
+            WriteLine("1. Gå nordöst längsmed älvkanten");
+            WriteLine("2. Gå österut, tillbaka mot draken");
+        }
+    }
+
+    //Älvbank: Direction är riktning användaren kommer ifrån
+    public void riverBankDesc(string direction)
+    {
+        if (direction == "sv")
+        {
+            //Om man kom från sydväst, via älvkanten
+            tools.TypeLine("Du följer strandkanten, nervös över att draken ska bredda sitt flygområde, men du tröstar dig med att om det skulle skita sig kan du alltid slänga dig ner i älven.", true);
+
+        }
+        else if (direction == "s")
+        {
+            //Om man kom söderifrån, över drakgläntan
+            tools.TypeLine("Det tar evigheter att krypa över fältet. Flera gånger är du bergsäker på att draken sett dig, och det har stuckit obehagligt längsmed ryggraden när du hört dess vingslag precis ovanför dig utan att kunna se odjuret.", true);
+            tools.TypeLine("Men till din stora förvåning kommer du så småningom till slutet på fältet, där du vågar resa dig. Draken syns inte till. \n", true);
+        }
+
+        tools.TypeLine("Framför dig ligger en båt och guppar nära strandkanten. Den är inte fastlåst på något vis. \n", true);
+        tools.TypeLine("Vad vill du göra?", true);
+        WriteLine("1. Kliv ner i båten och ro norrut");
+        WriteLine("2. Gå söderut, tillbaka mot draken");
     }
 }

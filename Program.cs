@@ -62,7 +62,6 @@ class Program
         var inputs = new List<Command> {
             //Norrut
             new Command(new List<string>{ "1", "norr", "norrut", "gå norr", "gå norrut", "north", "go north", "n", "gå n", "go n" }, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du gick norrut!");
                 //Gå till skogsglänta
@@ -105,7 +104,6 @@ class Program
         var inputs = new List<Command> {
             //Sydväst till lilla södergläntan
             new Command(new List<string>{ "1", "sydväst", "gå sydväst", "sv", "gå sv", "sw", "go sw", "southwest", "south west", "go southwest", "go south west" }, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du gick sydväst!");
                 //Gå till Lilla södergläntan
@@ -113,7 +111,6 @@ class Program
             }),
             //Västerut till västra skogsstigen
             new Command(new List<string>{ "2", "väst", "gå väst", "v", "gå v", "västerut", "gå västerut", "west", "go west", "w", "go w" }, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du gick västerut!");
                 //Gå till Västra skogsstigen
@@ -121,21 +118,19 @@ class Program
             }),
             //Nordväst, till skogsstig nv
             new Command(new List<string>{ "3", "nordväst", "gå nordväst", "nv", "gå nv", "nw", "go nw", "northwest", "north west", "go northwest", "go north west" }, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du gick nordväst!");
-                //Gå till 
+                //Gå till nordvästra skogsstigen
+                northwestTrail();
             }),
             //Nordöst, till Bro vässia
             new Command(new List<string>{ "4", "nordöst", "gå nordöst", "nö", "gå nö", "ne", "go ne", "northeast", "north east", "go northeast", "go north east" }, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du gick nordöst!");
                 //Gå till 
             }),
             //ÖSterut till östra skogsstigen
             new Command(new List<string>{ "5", "öst", "gå öst", "österut", "gå österut", "ö", "gå ö", "e", "go e", "east", "go east" }, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du gick österut!");
                 //Gå till östra skogsstigen
@@ -143,9 +138,9 @@ class Program
             }),
             //Söderut till glänta
             new Command(new List<string>{ "6", "syd", "gå syd", "söderut", "gå söderut", "s", "gå s", "go s", "south", "go south" }, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du gick söderut!");
+                campFireScene(false);
             }),
             //Kolla inventory
             new Command(new List<string>{ "i", "inventory" }, () => {
@@ -179,7 +174,6 @@ class Program
         var inputs = new List<Command> {
             //Nordöst tillbaka till glänta
             new Command(new List<string>{ "1", "nordöst", "gå nordöst", "nö", "gå nö", "northeast", "go northeast", "north east", "go north east", "ne", "go ne" }, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du gick nordöst!");
                 //Gå till skogsglänta
@@ -211,7 +205,6 @@ class Program
         var inputs = new List<Command> {
             //Västerut
             new Command(new List<string>{ "1", "väst", "gå väst", "v", "gå v", "västerut", "gå västerut", "west", "go west", "w", "go w" }, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du gick västerut!");
                 //Gå till trolltrakten
@@ -219,7 +212,6 @@ class Program
             }),
             //Österut
             new Command(new List<string>{ "2", "öst", "gå öst", "österut", "gå österut", "ö", "gå ö", "e", "go e", "east", "go east" }, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du gick österut!");
                 //Gå till glänta
@@ -253,7 +245,6 @@ class Program
             var inputs = new List<Command> {
             //Kullerbytta västerut
             new Command(new List<string>{ "1", "väst", "gå väst", "v", "gå v", "västerut", "gå västerut", "west", "go west", "w", "go w", "kullerbytta väst", "kullerbytta västerut"}, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du kullerbyttade västerut förbi trollet!");
                 //Gå till grottmynning
@@ -261,7 +252,6 @@ class Program
             }),
             //Kasta sten
             new Command(new List<string>{ "2", "plocka upp sten", "kasta sten", "kasta", "sten", "pick up rock", "throw rock", "throw", "rock"}, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du valde att kasta sten!");
                 //Gå till trollDefeated
@@ -269,7 +259,6 @@ class Program
             }),
             //Stå på dig
             new Command(new List<string>{ "3", "stå på dig", "stand your ground", "stå", "stand", "stor"}, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du står kvar på plats!");
                 //Gå till Game over;
@@ -277,7 +266,6 @@ class Program
             }),
             //Kullerbytta västerut
             new Command(new List<string>{ "4", "öst", "gå öst", "ö", "gå ö", "österut", "gå österut", "east", "go east", "e", "go e", "kullerbytta öst", "kullerbytta österut"}, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du kullerbyttade österut förbi trollet!");
                 //Gå till Skogsstig väst
@@ -335,7 +323,6 @@ class Program
         var inputs = new List<Command> {
             //Västerut till grottmynning
             new Command(new List<string>{ "1", "väst", "gå väst", "v", "gå v", "västerut", "gå västerut", "west", "go west", "w", "go w", "kullerbytta väst", "kullerbytta västerut" }, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du kullerbyttade västerut!");
                 //Gå till grottmynning
@@ -343,7 +330,6 @@ class Program
             }),
             //Österut till västra skogsstigen
             new Command(new List<string>{ "2", "öst", "gå öst", "ö", "gå ö", "österut", "gå österut", "east", "go east", "e", "go e", "kullerbytta öst", "kullerbytta österut" }, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du kullerbyttade österut!");
                 //Gå till skogsstig
@@ -383,7 +369,6 @@ class Program
         var inputs = new List<Command> {
             //In i berget
             new Command(new List<string>{ "1", "norr", "norrut", "gå norr", "gå norrut", "north", "go north", "n", "gå n", "go n", }, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du gick norrut in i berget!");
                 //Gå till trollsalen
@@ -391,7 +376,6 @@ class Program
             }),
             //Österut, till trolltrakten
             new Command(new List<string>{ "2", "öst", "gå öst", "ö", "gå ö", "österut", "gå österut", "east", "go east", "e", "go e", }, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du gick österut!");
                 //Gå till trolltrakten
@@ -428,7 +412,6 @@ class Program
         var inputs = new List<Command> {
             //Söderut
             new Command(new List<string>{ "1", "syd", "gå syd", "söderut", "gå söderut", "s", "gå s", "go s", "south", "go south" }, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du gick tillbaka söderut!");
                 //Gå till grottmynning
@@ -458,7 +441,6 @@ class Program
         var inputs = new List<Command> {
             //Västerut till glänta
             new Command(new List<string>{ "1", "väst", "gå väst", "v", "gå v", "västerut", "gå västerut", "west", "go west", "w", "go w" }, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du gick västerut!");
                 //Gå till skogsglänta
@@ -466,7 +448,6 @@ class Program
             }),
             //Österut till Halvöstra strand
             new Command(new List<string>{ "2", "öst", "gå öst", "ö", "gå ö", "österut", "gå österut", "east", "go east", "e", "go e" }, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du gick österut!");
                 //Gå till stranden
@@ -479,7 +460,7 @@ class Program
                 //Visa val igen
                 tools.TypeLine("Vad vill du göra nu?", true);
                      WriteLine("1. Gå västerut");
-                     WriteLine("1. Gå österut");
+                     WriteLine("2. Gå österut");
             }, false)
         };
 
@@ -507,7 +488,6 @@ class Program
         var inputs = new List<Command> {
             //Västerut
             new Command(new List<string>{ "1", "väst", "gå väst", "v", "gå v", "västerut", "gå västerut", "west", "go west", "w", "go w" }, () => {
-                //Töm skärm
                 Clear();
                 WriteLine("Du gick västerut!");
                 //Gå till skogsstig östra
@@ -518,7 +498,7 @@ class Program
                 Clear();
                 invy.viewInventory();
                 //Visa val igen
-                flow.westTrailDesc(2);
+                flow.halfEastBeachDesc(2);
             }, false)
         };
 
@@ -526,4 +506,201 @@ class Program
         tools.dirHandler(inputs);
     }
 
+    //Nordvästra skogsstigen
+    static void northwestTrail()
+    {
+        tools.printMessage(true, false, ConsoleColor.Green, "Nordvästra skogsstigen");
+
+        flow.northwestTrailDesc();
+
+        //VALMÖJLIGHETER
+        var inputs = new List<Command> {
+            //Nordväst mot drakglänta
+            new Command(new List<string>{ "1", "nordväst", "gå nordväst", "nv", "gå nv", "nw", "go nw", "northwest", "north west", "go northwest", "go north west"}, () => {
+                Clear();
+                WriteLine("Du gick nordväst");
+                //Gå till drakglänta
+                dragonClearing();
+            }),
+            //Sydöst mot skogsglänta
+            new Command(new List<string>{ "2", "sydöst", "gå sydöst", "sö", "gå sö", "sw", "go sw", "southeast", "south east", "go southeast", "go south east"}, () => {
+                Clear();
+                WriteLine("Du gick sydöst!");
+                //Gå till skogsglänta
+                forestClearing();
+            }),
+            //Kolla inventory
+            new Command(new List<string>{ "i", "inventory" }, () => {
+                Clear();
+                invy.viewInventory();
+                //Visa val igen
+                tools.TypeLine("Vad vill du göra?", true);
+                WriteLine("1. Följ vägen nordväst");
+                WriteLine("1. Följ vägen sydöst");
+            }, false)
+        };
+
+        //anropa dirHandler med kommandon
+        tools.dirHandler(inputs);
+    }
+
+    static void dragonClearing()
+    {
+        tools.printMessage(true, false, ConsoleColor.Green, "Drakgläntan");
+
+        Item drakfjall = invy.getItem(19);
+
+        flow.dragonClearingDesc(1);
+
+        if (!flow.isOwned(drakfjall, invy))
+        {
+            WriteLine();
+            tools.TypeLine($"Medan du funderar på vad du ska göra blänker någonting till i gräset. Ett {drakfjall.name}! \n {drakfjall.description} \n", true);
+            flow.wantToAdd(drakfjall, invy);
+        }
+
+        flow.dragonClearingDesc(2);
+
+        //VALMÖJLIGHETER
+        var inputs = new List<Command> {
+            //Kryp västerut
+            new Command(new List<string>{ "1", "kryp västerut", "kryp väst", "kryp v", "crawl west", "crawl w"}, () => {
+                Clear();
+                WriteLine("Du kröp västerut!");
+                //Gå till trädrantälvkant
+                treeLineRiver();
+            }),
+            //Spring västerut
+            new Command(new List<string>{ "2", "spring västerut", "spring väst", "spring v", "run west", "run w"}, () => {
+                Clear();
+                WriteLine("Du sprang västerut!");
+                //Gå till game over
+                flow.gameOver("drake");
+            }),
+            //Kryp norrut
+            new Command(new List<string>{ "3", "kryp norrut", "kryp norr", "kryp n", "crawl north", "crawl n" }, () => {
+                Clear();
+                WriteLine("Du kröp norrut!");
+                //Gå till älvbanken
+                riverBank("s");
+            }),
+            //Spring norrut
+            new Command(new List<string>{ "4", "spring norrut", "spring norr", "spring n", "run north", "run n" }, () => {
+                Clear();
+                WriteLine("Du sprang norrut!");
+                //Gå till game over
+                flow.gameOver("drake");
+            }),
+            //Kryp sydöst
+            new Command(new List<string>{ "5", "kryp sydöst", "kryp sö", "kryp sydösterut", "crawl southeast", "crawl south east", "crawl se" }, () => {
+                Clear();
+                WriteLine("Du kröp sydöst!");
+                //Gå till nordvästra stigen
+                northwestTrail();
+            }),
+            //Spring Sydöst
+            new Command(new List<string>{ "6", "spring sydöst", "spring sö", "spring sydösterut", "run southeast", "run south east", "run se" }, () => {
+                Clear();
+                WriteLine("Du sprang sydöst!");
+                //Gå till game over
+                flow.gameOver("drake");
+            }),
+            //Kolla inventory
+            new Command(new List<string>{ "i", "inventory" }, () => {
+                Clear();
+                invy.viewInventory();
+                //Visa val igen
+                flow.dragonClearingDesc(2);
+            }, false)
+        };
+
+        //anropa dirHandler med kommandon
+        tools.dirHandler(inputs);
+    }
+
+    //Trädrandälvkant
+    static void treeLineRiver()
+    {
+        tools.printMessage(true, false, ConsoleColor.Green, "Trädrandälvkant");
+
+        Item bestiarium = invy.getItem(18);
+
+        flow.treelineRiverDesc(1);
+
+        //Kolla om bestiarium ägs redan, lägg till annars
+        if (!flow.isOwned(bestiarium, invy))
+        {
+            tools.TypeLine($"Vid älvkanten har någon glömt ett föremål. Du tar upp det och tittar närmre på det. '{bestiarium.name}' står det. \n {bestiarium.description}", true);
+            flow.wantToAdd(bestiarium, invy);
+            WriteLine();
+        }
+
+        flow.treelineRiverDesc(2);
+
+        //VALMÖJLIGHETER
+        var inputs = new List<Command> {
+            //Nordöst
+            new Command(new List<string>{ "1", }, () => {
+                Clear();
+                WriteLine("Du gick nordöst!");
+                //Gå till älvbanken
+                riverBank("sw");
+            }),
+            //Österut
+            new Command(new List<string>{ "2", "öst", "gå öst", "ö", "gå ö", "österut", "gå österut", "east", "go east", "e", "go e" }, () => {
+                Clear();
+                WriteLine("Du gick österut!");
+                //Gå till drakglänta
+                dragonClearing();
+            }),
+            //Kolla inventory
+            new Command(new List<string>{ "i", "inventory" }, () => {
+                Clear();
+                invy.viewInventory();
+                //Visa val igen
+                flow.treelineRiverDesc(2);
+            }, false)
+        };
+
+        //anropa dirHandler med kommandon
+        tools.dirHandler(inputs);
+
+    }
+    //Älvbanken
+    static void riverBank(string direction)
+    {
+        tools.printMessage(true, false, ConsoleColor.Green, "Älvbanken");
+
+        //Beskrivning med riktning
+        flow.riverBankDesc(direction);
+
+        //VALMÖJLIGHETER
+        var inputs = new List<Command> {
+            //Kliv i båten, ro norr
+            new Command(new List<string>{ "1", "norr", "norrut", "gå norr", "gå norrut", "ro norr", "ro norrut", "ro", "kliv i båten", "north", "go north", "get in boat", "start rowing", "row north", "row n", "go n", "gå n", "n"}, () => {
+                Clear();
+                WriteLine("Du började ro norrut!");
+                //Gå till 
+            }),
+            //Söderut
+            new Command(new List<string>{ "2", "syd", "gå syd", "söderut", "gå söderut", "s", "gå s", "go s", "south", "go south" }, () => {
+                Clear();
+                WriteLine("Du gick söderut");
+
+                dragonClearing();
+            }),
+            //Kolla inventory
+            new Command(new List<string>{ "i", "inventory" }, () => {
+                Clear();
+                invy.viewInventory();
+                //Visa val igen
+                tools.TypeLine("Vad vill du göra?", true);
+                WriteLine("1. Kliv ner i båten och ro norrut");
+                WriteLine("2. Gå söderut, tillbaka mot draken");
+            }, false)
+        };
+
+        //anropa dirHandler med kommandon
+        tools.dirHandler(inputs);
+    }
 }
