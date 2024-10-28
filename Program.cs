@@ -3,6 +3,7 @@ Här ligger själva spelet och handlingarna som påverkar det (valen man gör).
  */
 
 using System.Reflection.Emit;
+using System.Security.Cryptography;
 
 namespace lunaris;
 
@@ -34,11 +35,12 @@ class Program
     //Lägret
     static void campFireScene(bool firstTime)
     {
+        Clear();
+        tools.printTitle("Lägret");
+
         //Hitta item
         Item mungiga = invy.getItem(10);
 
-        Clear();
-        tools.printMessage(true, false, ConsoleColor.Green, "Lägret");
         //Text att visa om det är första gången man är i rummet
         if (firstTime)
         {
@@ -86,7 +88,7 @@ class Program
     {
         //Lagra boots
         Item boots = invy.getItem(8);
-        tools.printMessage(true, false, ConsoleColor.Green, "Skogsgläntan");
+        tools.printTitle("Skogsgläntan");
         flow.forestClearingDesc(1);
 
         //Kolla om boots finns i inventory, annars erbjud att lägga till
@@ -120,7 +122,7 @@ class Program
             new Command(new List<string>{ "3", "nordväst", "gå nordväst", "nv", "gå nv", "nw", "go nw", "northwest", "north west", "go northwest", "go north west" }, () => {
                 Clear();
                 WriteLine("Du gick nordväst!");
-                //Gå till nordvästra skogsstigen
+                //Gå till nordvästra skogsleden
                 northwestTrail();
             }),
             //Nordöst, till Bro vässia
@@ -160,7 +162,7 @@ class Program
     {
         //Lagra scroll
         Item scroll = invy.getItem(16);
-        tools.printMessage(true, false, ConsoleColor.Green, "Lilla södergläntan");
+        tools.printTitle("Lilla södergläntan");
         flow.southClearingDesc(1);
         if (!flow.isOwned(scroll, invy))
         {
@@ -197,7 +199,8 @@ class Program
     //Skogsstig väst
     static void westTrail()
     {
-        tools.printMessage(true, false, ConsoleColor.Green, "Västra skogsstigen");
+        tools.printTitle("Västra skogsstigen");
+
         flow.westTrailDesc(1);
         flow.westTrailDesc(2);
 
@@ -233,7 +236,8 @@ class Program
     //Trolltrakten
     static void trollTrakten()
     {
-        tools.printMessage(true, false, ConsoleColor.Green, "Trolltrakten");
+
+        tools.printTitle("Trolltrakten");
 
 
         //Om trollet ej är dött:
@@ -350,7 +354,7 @@ class Program
     //Grottmynning
     static void caveEntrance()
     {
-        tools.printMessage(true, false, ConsoleColor.Green, "Grottmynningen");
+        tools.printTitle("Grottmynningen");
         Item skuggkappa = invy.getItem(5);
 
         //Del 1
@@ -397,7 +401,7 @@ class Program
     //Trollgrotta
     static void trollHall()
     {
-        tools.printMessage(true, false, ConsoleColor.Green, "Trollsalen");
+        tools.printTitle("Trollsalen");
         Item trollspegel = invy.getItem(0);
 
         flow.trollCaveDesc(1);
@@ -433,7 +437,7 @@ class Program
     //Östra skogsstigen
     static void eastTrail()
     {
-        tools.printMessage(true, false, ConsoleColor.Green, "Östra skogsstigen");
+        tools.printTitle("Östra skogsstigen");
 
         flow.eastTrailDesc();
 
@@ -471,7 +475,7 @@ class Program
     //Halvöstra strand
     static void halfEastBeach()
     {
-        tools.printMessage(true, false, ConsoleColor.Green, "Halvöstra strand");
+        tools.printTitle("Halvöstra strand");
 
         flow.halfEastBeachDesc(1);
 
@@ -509,7 +513,7 @@ class Program
     //Nordvästra skogsstigen
     static void northwestTrail()
     {
-        tools.printMessage(true, false, ConsoleColor.Green, "Nordvästra skogsstigen");
+        tools.printTitle("Nordvästra leden");
 
         flow.northwestTrailDesc();
 
@@ -546,7 +550,7 @@ class Program
 
     static void dragonClearing()
     {
-        tools.printMessage(true, false, ConsoleColor.Green, "Drakgläntan");
+        tools.printTitle("Drakgläntan");
 
         Item drakfjall = invy.getItem(19);
 
@@ -621,7 +625,7 @@ class Program
     //Trädrandälvkant
     static void treeLineRiver()
     {
-        tools.printMessage(true, false, ConsoleColor.Green, "Trädrandälvkant");
+        tools.printTitle("Trädrandälvkant");
 
         Item bestiarium = invy.getItem(18);
 
@@ -669,7 +673,8 @@ class Program
     //Älvbanken
     static void riverBank(string direction)
     {
-        tools.printMessage(true, false, ConsoleColor.Green, "Älvbanken");
+
+        tools.printTitle("Älvbanken");
 
         //Beskrivning med riktning
         flow.riverBankDesc(direction);
@@ -677,10 +682,11 @@ class Program
         //VALMÖJLIGHETER
         var inputs = new List<Command> {
             //Kliv i båten, ro norr
-            new Command(new List<string>{ "1", "norr", "norrut", "gå norr", "gå norrut", "ro norr", "ro norrut", "ro", "kliv i båten", "north", "go north", "get in boat", "start rowing", "row north", "row n", "go n", "gå n", "n"}, () => {
+            new Command(new List<string>{ "1", "kliv ner i båten", "kliv i båt", "kliv i båten", "båt", "båten", "boat", "the boat", "get in boat", "get in the boat" }, () => {
                 Clear();
-                WriteLine("Du började ro norrut!");
-                //Gå till 
+                WriteLine("Du steg ner i båten!");
+                //Gå till båtscen
+                inBoat();
             }),
             //Söderut
             new Command(new List<string>{ "2", "syd", "gå syd", "söderut", "gå söderut", "s", "gå s", "go s", "south", "go south" }, () => {
@@ -695,8 +701,93 @@ class Program
                 invy.viewInventory();
                 //Visa val igen
                 tools.TypeLine("Vad vill du göra?", true);
-                WriteLine("1. Kliv ner i båten och ro norrut");
+                WriteLine("1. Kliv ner i båten");
                 WriteLine("2. Gå söderut, tillbaka mot draken");
+            }, false)
+        };
+
+        //anropa dirHandler med kommandon
+        tools.dirHandler(inputs);
+    }
+
+    static void inBoat()
+    {
+        Item pumps = invy.getItem(9);
+
+        tools.printTitle("Ombord på båt");
+
+        flow.inBoatDesc(1);
+
+        if (!flow.isOwned(pumps, invy))
+        {
+            tools.TypeLine($"Medan du river runt bland grejerna på båten drar du undan en presenning och blottlägger ett förvånande föremål. {pumps.name}? ", true);
+            tools.TypeLine($"{pumps.description} ", true);
+            flow.wantToAdd(pumps, invy);
+        }
+
+        flow.inBoatDesc(2);
+
+        //VALMÖJLIGHETER
+        var inputs = new List<Command> {
+            //Norrut mot norra strand
+            new Command(new List<string>{ "1", "norr", "norrut", "n", "north", "go north", "gå norr", "gå norrut", "go n", "gå n" }, () => {
+                Clear();
+                WriteLine("Du kommenderar båten med tvekan i rösten. Till din lättnad börjar den röra sig lätt norrut.");
+                //Gå till norra strand
+                northShore();
+            }),
+            //Söderut mot älvkanten
+            new Command(new List<string>{ "2",  "syd", "gå syd", "söderut", "gå söderut", "s", "gå s", "go s", "south", "go south" }, () => {
+                Clear();
+                WriteLine("Du kommenderar båten med tvekan i rösten. Till din lättnad börjar den röra sig lätt söderut.");
+                //Gå till älvkant
+                riverBank("n");
+            }),
+            //Kolla inventory
+            new Command(new List<string>{ "i", "inventory" }, () => {
+                Clear();
+                invy.viewInventory();
+                //Visa val igen
+                flow.inBoatDesc(2);
+            }, false)
+        };
+
+        //anropa dirHandler med kommandon
+        tools.dirHandler(inputs);
+
+    }
+
+    static void northShore()
+    {
+        tools.printTitle("Norra strand");
+
+        Item silvertejp = invy.getItem(2);
+        flow.northShoreDesc(1);
+
+        if (!flow.isOwned(silvertejp, invy))
+        {
+            tools.TypeLine($"Där båten lägger an vid stranden sparkar du av misstag till någonting. Det verkar vara {silvertejp.name}...", true);
+            tools.TypeLine($"{silvertejp.description} ", true);
+            flow.wantToAdd(silvertejp, invy);
+        }
+
+        flow.northShoreDesc(2);
+
+        //VALMÖJLIGHETER
+        var inputs = new List<Command> {
+            //Riktning
+            new Command(new List<string>{ "1","kliv ner i båten", "kliv i båt", "kliv i båten", "båt", "båten", "boat", "the boat", "get in boat", "get in the boat" }, () => {
+                Clear();
+                WriteLine("Du klev tillbaka ner i båten! ");
+                //Gå till båt
+                inBoat();
+            }),
+            //Kolla inventory
+            new Command(new List<string>{ "i", "inventory" }, () => {
+                Clear();
+                invy.viewInventory();
+                //Visa val igen
+                flow.northShoreDesc(2);
             }, false)
         };
 

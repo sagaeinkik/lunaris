@@ -103,4 +103,10 @@ public class Tools
         printMessage(true, false, ConsoleColor.DarkGray, credits);
     }
 
+    //METOD FÖR TITEL I RUMMET
+    public void printTitle(string title)
+    {
+        printMessage(true, false, ConsoleColor.Green, title);
+    }
+
 }

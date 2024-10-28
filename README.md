@@ -52,7 +52,8 @@ När man ska välja riktning fungerar följande (exempel med sydväst, men funka
 Det finns en funktion som räknar igenom användarens föremål och kategorier. Om en användare skulle plocka på sig bara ett föremål från vardera kategori och lämna den femte fickan tom så utgår programmet från det föremål som användaren plockade på sig allra först.  
 Det är fullt möjligt att "gå i mål" utan att plocka på sig ett enda föremål.
 
-För att samla på sig alla fem föremål inom en och samma kategori måste man ha att göra med sjöodjuret. För att sjöodjuret inte ska döda en automatiskt behöver man plocka på sig ett föremål, en pärla, att byta med djuret. Därefter får man välja vilken kategori på föremål man önskar att få i utbyte.
+För att samla på sig alla fem föremål inom en och samma kategori måste man ha att göra med sjöodjuret. För att sjöodjuret inte ska döda en automatiskt behöver man plocka på sig ett föremål, en pärla, att byta med djuret. Därefter får man välja vilken kategori på föremål man önskar att få i utbyte.  
+Odjuret ger Game Over om man besöker det utan att ha pärlan i sin inventory.
 
 ## Walkthrough
 
@@ -60,11 +61,11 @@ Ni har kanske inte tid att sitta och fumla er igenom hela mitt spel, även om de
 Från skogsgläntan:
 
 -   Sydväst leder till ett föremål.
--   Västerut leder så småningom till en trollgrotta. På vägen stöter man på ett troll. Besegra trollet genom att kasta sten på det, ellet undvik trollet genom att göra kullerbytta
+-   Västerut leder så småningom till en trollgrotta. På vägen stöter man på ett troll. Besegra trollet genom att kasta sten på det, ellet undvik trollet genom att göra kullerbytta. Andra alternativ leder till Game over.
 -   Vägen nordöst leder till en drake. Kryp i valfri riktning för att inte dö av den. Fortsätt nordöst för att komma till Norra strand. Det finns flera föremål på denna väg.
 -   Vägen nordöst leder till en bro (här kan man gå nordväst för att hitta ett föremål i en glänta). Direkt efter bron stöter man på en sfinx; svara rätt på gåtan så är du säker från henne efter det. Svarar du fel tre gånger dör du.
 -   Söderut från denna punkt finns det ett tält med ett föremål.
--   Öster om Storslätta finns pärlan.
+-   Direkt öster om Storslätta finns pärlan.
 -   Norr om Storslätta finns en sjö med ett odjur. Har man inte plockat på sig pärlan dör man. Har man plockat på sig pärlan men säger nej till att byta dör man. Har man pärla och vill byta så får man välja den kategori av föremål som man samlar på i utbyte.
 -   Några steg väster om sjön ligger Lunaris, trollkarlstornet. Väster om detta ligger ett föremål.
 -   Inne i Lunaris får du ett av sex slut av trollkarlen.

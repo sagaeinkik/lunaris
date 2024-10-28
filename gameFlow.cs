@@ -1,5 +1,7 @@
 /* 
 ----- Kontroller, WriteLines, texten som ska visas i varje "scen", annan köttig kod som har med spelet att göra ------
+
+OBS: Jag är medveten om att else if(part == 2) är överflödigt. Jag har valt att skriva så för att själv enklare hålla reda på delarna och anrop.
  */
 using System;
 using System.Linq;
@@ -395,11 +397,12 @@ public class GameFlow
             tools.TypeLine("Du kommer till stort, stort fält med mjukt, högt gräs. Du går genom höggräset och drar av frön från rajstjälkarna eftersom det är fysiskt omöjligt att inte göra det när man går genom gräs.", true);
             tools.TypeLine("Det härliga vädret och den fantastiska lägdan till trots har du ett stort problem. \n", true);
             tools.TypeLine("En enorm drake är ute och sträcker på sina vingar högt över fältet. Det finns inte en chans att du kan slåss mot den; ditt enda hopp är att undgå att bli upptäckt.", true);
-            tools.TypeLine("Du stelnar till och tänker. Du känner dig osäker på hur drakar fungerar.", true);
+            tools.TypeLine("Du stelnar till och tänker. Du känner dig osäker på hur drakar fungerar. \n", true);
             tools.TypeLine("Om du kryper långsamt och försiktigt över fältet kanske draken inte lägger märke till dina rörelser, men den kanske kan känna doften av dig, och du syns nog uppifrån. \n Om du springer syns inte lika mycket av din kroppsyta uppifrån, och du spenderar mindre tid totalt på fältet, vilket kan innebära mindre tid att bli upptäckt av draken på. Men det är kanske lättare att lägga märke till någon som springer än någon som kryper?", true);
         }
         else if (part == 2)
         {
+            WriteLine();
             tools.TypeLine("Vad vill du göra?", true);
             WriteLine("1. Kryp västerut");
             WriteLine("2. Spring västerut");
@@ -442,10 +445,52 @@ public class GameFlow
             tools.TypeLine("Det tar evigheter att krypa över fältet. Flera gånger är du bergsäker på att draken sett dig, och det har stuckit obehagligt längsmed ryggraden när du hört dess vingslag precis ovanför dig utan att kunna se odjuret.", true);
             tools.TypeLine("Men till din stora förvåning kommer du så småningom till slutet på fältet, där du vågar resa dig. Draken syns inte till. \n", true);
         }
+        else if (direction == "n")
+        {
+            //Om man kom norrifrån, från båt
+            tools.TypeLine("Sakta men säkert glider båten mot älvkanten och anlägger sig själv vid stranden.", true);
+            tools.TypeLine("Du stiger ur båten och vänder dig om. \n", true);
+
+        }
 
         tools.TypeLine("Framför dig ligger en båt och guppar nära strandkanten. Den är inte fastlåst på något vis. \n", true);
         tools.TypeLine("Vad vill du göra?", true);
-        WriteLine("1. Kliv ner i båten och ro norrut");
+        WriteLine("1. Kliv ner i båten");
         WriteLine("2. Gå söderut, tillbaka mot draken");
+    }
+
+    //Till båt
+    public void inBoatDesc(int part)
+    {
+        if (part == 1)
+        {
+            tools.TypeLine("Du stiger ner i båten, varpå den på eget bevåg börjar ta sig ut på älven. Du uppskattar den otroliga snitsigheten med en båt som självror.", true);
+            tools.TypeLine("Inget gott varar dock för evigt. Båten stannar till halvvägs ut på älven. Du börjar rota runt i båten efter någon form av redskap som kan användas för att driva båten fram mot strandkanten. ", true);
+            tools.TypeLine("Kanske ett par åror, eller en Mercury Verado V12 7.6L som producerar 600hk, med cirkapris på 870'000 kronor. \n", true);
+        }
+        else if (part == 2)
+        {
+            WriteLine();
+            tools.TypeLine("I brist på andra idéer får du utgå från att båten styrs verbalt.", true);
+            tools.TypeLine("Vad vill du göra?", true);
+            WriteLine("1. Säg åt båten att ta dig norrut");
+            WriteLine("2. Säg åt båten att ta dig söderut");
+        }
+    }
+
+    public void northShoreDesc(int part)
+    {
+        if (part == 1)
+        {
+            tools.TypeLine("Du kliver ur båten på en liten isolerad strandsnutt. Den är omgiven av skog och verkar inte gå att ta sig till på något annat vis än den väg du just kom.", true);
+            tools.TypeLine("Eller ja, det skulle säkert gå att skärmflyga hit. Eller hoppa mellan träden, om man nu besitter samma akrobatisk förmåga som en gibbonapa.", true);
+            tools.TypeLine("Den lilla stranden och den tillhörande gräsplätten är i vilket fall alldeles förtjusande och skulle vara en förträfflig plats för en picknick. \n", true);
+        }
+        else if (part == 2)
+        {
+            WriteLine();
+            tools.TypeLine("Vad vill du göra?", true);
+            WriteLine("1. Kliv ner i båten");
+        }
     }
 }
