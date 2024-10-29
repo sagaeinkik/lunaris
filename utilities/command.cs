@@ -1,6 +1,6 @@
 /* KOMMANDOKLASS: För att slippa skriva en miljon switchsatser.
 Kopplad till tools-funktionen dirHandler */
-
+namespace lunaris;
 public class Command
 {
     //För lista med acceptabla input, ex gå norr/gå norrut/n

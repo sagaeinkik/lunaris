@@ -72,8 +72,12 @@ public class Inventory
             WriteLine("Här var det tomt!");
         }
     }
-
-    //Fixa fram alla items
+    //Returnera användarens inventory
+    public Item[] returnInvy()
+    {
+        return userInventory;
+    }
+    //Fixa fram alla items: tror inte denna behövs
     public List<Item> getAllItems()
     {
         return allItems;

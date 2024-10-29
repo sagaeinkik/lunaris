@@ -52,8 +52,7 @@ När man ska välja riktning fungerar följande (exempel med sydväst, men funka
 Det finns en funktion som räknar igenom användarens föremål och kategorier. Om en användare skulle plocka på sig bara ett föremål från vardera kategori och lämna den femte fickan tom så utgår programmet från det föremål som användaren plockade på sig allra först.  
 Det är fullt möjligt att "gå i mål" utan att plocka på sig ett enda föremål.
 
-För att samla på sig alla fem föremål inom en och samma kategori måste man ha att göra med sjöodjuret. För att sjöodjuret inte ska döda en automatiskt behöver man plocka på sig ett föremål, en pärla, att byta med djuret. Därefter får man välja vilken kategori på föremål man önskar att få i utbyte.  
-Odjuret ger Game Over om man besöker det utan att ha pärlan i sin inventory.
+För att samla på sig alla fem föremål inom en och samma kategori måste man ha att göra med sjöodjuret. För att sjöodjuret inte ska döda en automatiskt behöver man plocka på sig ett föremål, en pärla, att byta med djuret. Därefter får man välja vilken kategori på föremål man önskar att få i utbyte.
 
 ## Walkthrough
 
@@ -71,3 +70,5 @@ Från skogsgläntan:
 -   Inne i Lunaris får du ett av sex slut av trollkarlen.
 
 !!! SKRIV MER DETALJERAT HÄR SEN
+
+Flytta denna sektion till en fuskmapp med flödesschemat

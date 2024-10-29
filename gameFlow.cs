@@ -6,11 +6,11 @@ OBS: Jag är medveten om att else if(part == 2) är överflödigt. Jag har valt 
 using System;
 using System.Linq;
 using System.Reflection.Emit;
+using System.Runtime.CompilerServices;
 namespace lunaris;
 
 public class GameFlow
 {
-
     Tools tools = new();
 
 
@@ -177,8 +177,8 @@ public class GameFlow
         {
             tools.TypeLine("George Skörwen har inga öron, men de två utstickande flikarna på odjurets huvud läggs platt bakåt i en handling som avslöjar dess sinnesstämning, inte helt olikt en tjurig fuxmärr.", true);
             tools.TypeLine("Samtidigt fäller besten ut den krage av hudflikar som tidigare legat avslappnat mot dess hals, mycket olikt ovan nämnda fuxmärr.", true);
-            tools.TypeLine("George Skörwen ryter så det skär i dina öron innan den blixtsnabbt virar sin svans runt din vrist och drar ner dit i sjön.", true);
-            tools.TypeLine("När du dras ner i djupet lämnar luften dina lungor i ett spår av bubblor efter dig. Det dröjer inte länge förrän mörkret i Bråddjupa Brallblötan omsluter dig.", true);
+            tools.TypeLine("George Skörwen ryter så det skär i dina öron innan den blixtsnabbt virar sin svans runt din vrist och drar ner dig i sjön.", true);
+            tools.TypeLine("När du dras ner i djupet lämnar luften dina lungor i ett spår av bubblor efter dig. Det dröjer inte länge förrän mörkret i Bråddjupa Brallblötan kväver dig.", true);
             WriteLine("\n \n");
 
         }
@@ -201,7 +201,6 @@ public class GameFlow
         }
         else if (part == 2)
         {
-            //Obs: Vet att else if är onödigt här, men jag har det för min skull 
             WriteLine();
             tools.TypeLine("Vad vill du göra nu?", true);
             WriteLine("1. Gå norrut");
@@ -216,7 +215,7 @@ public class GameFlow
         {
             tools.TypeLine("Du kommer fram till en glänta i skogen som liknar ett mossklätt torg, med vägar att följa i flera olika riktningar. ", true);
             tools.TypeLine("I mitten av gläntan står en urblekt skylt med pilar i olika riktningar. Texten ser ut att ha varit med om sju svåra år och är därmed svårtydd.", true);
-            tools.TypeLine("Du lyckas utröna att en grotta ligger västerut, Norra strand nordväst, och Bråddjupa Brallblötan (står det verkligen så?) till nordöst. \n", true);
+            tools.TypeLine("Du lyckas utröna att en grotta ligger västerut, Norra strand nordväst, och brallblötan (står det verkligen så?) till nordöst. \n", true);
         }
         else if (part == 2)
         {
@@ -478,12 +477,13 @@ public class GameFlow
         }
     }
 
+    //Norra strand
     public void northShoreDesc(int part)
     {
         if (part == 1)
         {
             tools.TypeLine("Du kliver ur båten på en liten isolerad strandsnutt. Den är omgiven av skog och verkar inte gå att ta sig till på något annat vis än den väg du just kom.", true);
-            tools.TypeLine("Eller ja, det skulle säkert gå att skärmflyga hit. Eller hoppa mellan träden, om man nu besitter samma akrobatisk förmåga som en gibbonapa.", true);
+            tools.TypeLine("Eller ja, såvida du inte skärmflyger hit eller råkar vara en gibbonapa.", true);
             tools.TypeLine("Den lilla stranden och den tillhörande gräsplätten är i vilket fall alldeles förtjusande och skulle vara en förträfflig plats för en picknick. \n", true);
         }
         else if (part == 2)
@@ -493,4 +493,235 @@ public class GameFlow
             WriteLine("1. Kliv ner i båten");
         }
     }
+
+    //Bro vässia
+    public void bridgeWestDesc(string dir)
+    {
+        if (dir == "sw")
+        {
+            //Om man kommer från skogsgläntan
+            tools.TypeLine("Du följer skogsvägen nordösterut och efter bara några kilometer börjar du höra älvbruset i bakgrunden.", true);
+            tools.TypeLine("Träden börjar glesna och inom kort finner du dig själv ståendes vid en välvd stenbo över älven.", true);
+            tools.TypeLine("Från stenbron ser du en stig löpa nordvästerut, in i tätare skogen igen. \n", true);
+        }
+        else if (dir == "nw")
+        {
+            //Om man kommer från lilla nordergläntan
+            tools.TypeLine("Du går tillbaka på den lilla stigen tills du kommer tillbaka till stenbron.", true);
+            tools.TypeLine("Du blir nästan lite stolt över dig själv som har kommit hit, för du har just inget lokalsinne att tala om, och du har gått vilse inne på ICA mer än en gång. \n", true);
+        }
+        else if (dir == "e")
+        {
+            //om man kommer från bron: össia
+            tools.TypeLine("Du styr dina steg över bron medan du håller ett krampaktigt tag om stenräcket. Älven dånar under dig och du är nog lite rädd för höjder ändå.", true);
+            tools.TypeLine("Men innan du vet ordet av befinner du dig på solid mark och sänker därmed risken för att plötsligt bli blöt avsevärt. \n", true);
+        }
+
+        tools.TypeLine("Vad vill du göra?", true);
+        WriteLine("1. Följ nordvästra stigen");
+        WriteLine("2. Gå österut över bron");
+        WriteLine("3. Följ skogsvägen sydväst");
+    }
+
+    //Lilla nordergläntan
+    public void northClearingDesc(int part)
+    {
+        if (part == 1)
+        {
+            tools.TypeLine("Du följer den nordvästra stigen in i skogen. Skogen visar sig från sin alla bästa sida. Ljuset filtreras genom lövverket på ett sagolikt sätt.", true);
+            tools.TypeLine("Vemodet infinner sig snabbt när du kommer fram till stigens slut; det som såg ut som en glänta verkar snarare vara ett ärr i skogen, ett bevis på något fasansfullt.", true);
+            tools.TypeLine("Träd ligger avbrutna och brända, marken är svedd och svart, som att skogen har blivit massakrerad. \n", true);
+        }
+        else if (part == 2)
+        {
+            WriteLine();
+            tools.TypeLine("Du vill helst inte spendera mer tid än du måste här. Vad vill du göra?", true);
+            WriteLine("1. Följ stigen tillbaka sydöst");
+        }
+    }
+
+    //Sfinx
+    public void sphinxChallengeDesc(int part)
+    {
+        if (part == 1)
+        {
+            tools.TypeLine("Du knatar med ostadiga ben över stenbron och försöker att inte titta ner på vattnet som forsar under dina fötter. \n Du försöker framförallt att inte tänka på hur snabbt du skulle svepas med av strömmen om du ramlade i.", true);
+            tools.TypeLine("Den lättnad du känner när du tagit dig förbi detta vattenhinder byts snabbt ut till oförstående och sedan fasa. Det sitter en sfinx framför dig på stigen. \n", true);
+            tools.TypeLine("Sfinxen har ett kvinnoansikte som skulle ha kunnat kallas för vackert om det inte vore för den obehagligt breda munnen och de gula ögonen med små, runda pupiller.", true);
+            tools.TypeLine("Hon hade sina gigantiska örnvingar infällda mot kroppen innan du kom, men nu när hon ser dig fäller hon ut dem lätt. Hennes kropp är som ett lejons, och svansen är en bitsk huggorm som spänner blicken i dig.", true);
+            tools.TypeLine("Ord kan inte beskriva hur ofantligt massiv hon är. Du har sällan känt dig så liten.", true);
+            WriteLine();
+            tools.TypeLine("'Får jag komma förbi, tack och snälla? Du sitter lite i vägen', frågar du med tunn röst.", true);
+            tools.TypeLine("'Endast den värdige får mig passera oskadd', svarar sfinxen med en röst som tycks vibrera. 'Skänk mig det rätta svaret på min gåta, och jag bedömer dig värdig.'", true);
+            tools.TypeLine("'Jag är inte så bra på gåtor', säger du. 'Måste jag?'", true);
+            tools.TypeLine("Sfinxens pupiller vidgas lätt som av förväntan. 'Du svarar efter eget gottfinnande. Men att ej svara är i sig själv ett svar.'", true);
+            tools.TypeLine("'Vad händer om jag svarar fel?' undrar du.", true);
+            tools.TypeLine("'Jag kräver ditt liv som lön' svarar hon enkelt.", true);
+            WriteLine();
+            tools.TypeLine("Detta var ju högst beklagligt. Du verkar inte ha så mycket till val.", true);
+            tools.TypeLine("'Nej, jag undviker gärna att dö. Låt höra gåtan', säger du.", true);
+        }
+        else if (part == 2)
+        {
+            WriteLine();
+            tools.TypeLine("Vad faller en mot, \n som snubblar över trädrot?", true);
+            /* tools.TypeLine("Jag ligger stilla, vad än sker, \n vad än i världen händer. \n Jag går alltjämt upp och ner, \n men blott ett steg i sänder", true); */
+        }
+    }
+    //Bro: össia
+    public void bridgeEastDesc(int part, bool firstTime = false)
+    {
+        Riddle randomRiddle = tools.generateRiddle();
+
+        if (part == 1 && firstTime == true)
+        {
+            //Om man preciiis har "besegrat" sfinxen 
+            tools.TypeLine("Sfinxen sitter till en början orörlig med ett oläsligt ansiktsuttryck. Du håller andan med hjärtat hamrandes hårt i halsgropen. \n", true);
+            tools.TypeLine("Varje sekund känns som en livstid. \n", true);
+            tools.TypeLine("...", true);
+            WriteLine();
+            tools.TypeLine("'Du har så rätt', säger hon till sist. Anar du besvikelse i hennes röst? 'Du får lov att passera mig, oskadd, var gång din väg bär dig förbi mig.'", true);
+            tools.TypeLine("Och med det fäller hon ut sina vingar (de når nästan till träden på vardera sida), tar ett par kraftiga slag, och försvinner upp i luften. \n", true);
+            tools.TypeLine("Stigen delar sig norrut och åt sydöst.", true);
+        }
+        else if (part == 1 && firstTime == false)
+        {
+            //Om man besegrade sfinxen innan
+            tools.TypeLine("Du kommer fram till en bekant plats och en bekant figur. Sfinxen sitter precis där hon satt förut, och det rycker lätt i ormen som är hennes svans.", true);
+            tools.TypeLine("'Välkommen åter, vandrare! Vägen är föga vältrafikerad och jag finner mig själv utled på denna enformighet. Vill du höra en gåta?' \n", true);
+            tools.TypeLine("Innan du hinner svara tar hon ton. \n", true);
+            tools.TypeLine($"'{randomRiddle.Question}'", true);
+            tools.TypeLine("Du stirrar stumt på henne.", true);
+            tools.TypeLine($"'{randomRiddle.Answer}'", true);
+            tools.TypeLine("Hon slänger ut med sina lejonarmar, höjer ögonbrynen och ler brett med öppen mun. \n", true);
+            tools.TypeLine("Du pressar fram ett ansträngt leende och skyndar dig förbi. \n", true);
+        }
+        else if (part == 2)
+        {
+            //Val
+            tools.TypeLine("Vad vill du göra?", true);
+            WriteLine("1. Gå norrut");
+            WriteLine("2. Gå västerut över bron");
+            WriteLine("3. Gå sydöst");
+        }
+    }
+
+    //Tämliga tältet
+    public void tentSceneDesc(int part)
+    {
+        if (part == 1)
+        {
+            tools.TypeLine("Du går längsmed älvkanten bland glesa träd och kommer fram till en tältplats. Det gulgröna tältet ser ut att vara välanvänt och står stadigt uppställt.", true);
+            tools.TypeLine("Det gulgröna tältet ser ut att vara välanvänt och står stadigt uppställt, men ändå övergivet. Du ser inte tältets ägare någonstans. \n \n Du känner en överväldigande nyfikenhet på vems tält det är, och varför det står här.", true);
+            tools.TypeLine("Du tvekar litegrann. Ska du våga gå in? \n", true);
+        }
+        else if (part == 2)
+        {
+            WriteLine();
+            tools.TypeLine("Vad vill du göra?", true);
+            WriteLine("1. Gå tillbaka nordväst");
+        }
+    }
+
+    //Storslätta
+    public void storSlattDesc(int part)
+    {
+        if (part == 1)
+        {
+            tools.TypeLine("Du kommer fram till den största slätten du nånsin sett.", true);
+            tools.TypeLine("Åt alla riktningar framför dig är det bara vidöppna, böljande fält med gulgrönt gräs.", true);
+            tools.TypeLine("Det hade varit en episk plats för ett stort slag. \n", true);
+            tools.TypeLine("Du ser en gammal träskylt som är mer grå än brun, blekt av solen och alla år som gått. Den har en pil som pekar norrut. ", true);
+            tools.TypeLine("Inristat på skylten är en teckning av ett monster. Ovanför monstret står det 'VARNING' med stora bokstäver, och längst ner står det 'Bråddjupa Brallblötan'. \n", true);
+        }
+        else if (part == 2)
+        {
+            WriteLine();
+            tools.TypeLine("Vart vill du gå?", true);
+            WriteLine("1. Västerut");
+            WriteLine("2. Norrut");
+            WriteLine("3. Österut");
+            WriteLine("4. Söderut");
+        }
+    }
+    //Bråddjupa brallblötan
+    public void brallblotanDesc(int part)
+    {
+        if (part == 1)
+        {
+            //Om detta är första gången man är i brallblötan, dvs första gången man träffar george
+            tools.TypeLine("Ju längre norrut du går desto tätare växer sig ett mörker runtomkring.", true);
+            tools.TypeLine("Slätten byts så sakteliga ut mot döda, förvridna, svarta träd med nakna, vassa grenar. \n ", true);
+            tools.TypeLine("Mellan träden ser du en stor, svart sjö. Bråddjupa Brallblötan.", true);
+            tools.TypeLine("Strandkanten till sjön prys av benknotor. Här och där kan du se delar av någon gammal rostig rustning. Du försöker att inte tänka på det för mycket. \n", true);
+        }
+        else if (part == 2)
+        {
+            //Del 2 
+            WriteLine();
+            tools.TypeLine("Vad vill du göra nu?", true);
+            WriteLine("1. Gå söderut");
+
+        }
+    }
+
+    //George Skörwen!
+    public void georgeSkoerweDesc(bool pearlPossession, int part)
+    {
+        if (part == 0)
+        {
+            WriteLine();
+            tools.TypeLine("Någonting rör sig under sjöns blanka yta. Det kommer närmare, mycket snabbt!", true);
+            tools.TypeLine("Sedan är det som att ytan exploderar. Ur djupet av sjön stiger vad som ser ut som en tjock stam upp med hisnande fart.", true);
+            tools.TypeLine("Framför dig tornar ett gigantiskt vidunder upp sig; ändå är det bara huvud, hals och en bit av ryggen som syns. \n Odjurets huvud beskrivs bäst som en blandning mellan en hund och en ödla, med en krage av hudflikar som ligger avslappnat bakåt, och kalla gråa kattögon. \n", true);
+            tools.TypeLine("Den spänner blicken i dig. Sedan blir allt lugnt och tyst, nästan som att odjuret väntar på något.", true);
+            WriteLine();
+            tools.TypeLine("Slutligen öppnar besten sitt gap, och börjar tala.", true);
+            tools.TypeLine("'Har du min pärla?' frågar den med mullrande röst.", true);
+            tools.TypeLine("Vidundrets ögon börjar lysa när det tittar på dig, och du känner dig plötsligt obehagligt naken, alldeles avklädd.", true);
+        }
+
+        //Om man har pärlan i inventory:
+        else if (pearlPossession && part == 1)
+        {
+            WriteLine();
+            tools.TypeLine("'Jag ser att du har min pärla på din person', dånar besten.", true);
+            tools.TypeLine("'Är du George Skörwe?' piper du tillbaka.", true);
+            tools.TypeLine("'Jag är en George Skörwe, ty det är inte ett namn utan en art', svarar George Skörwen.", true);
+            tools.TypeLine("'Jag förlorade min pärla för länge sedan, och mången vandrare har funnit sin väg hit utan att ha min pärla med sig', fortsätter den. 'Jag vill ha den tillbaka.'", true);
+            tools.TypeLine("'Rättvisa är mig kär och ära sätter jag högt, ty jag är en George Skörwe; jag föreslår ett byte. Återlämna mig min dyrbara pärla, och du skall i gengäld få ett föremål av valfri art. Vad sägs?'", true);
+            WriteLine();
+            tools.TypeLine("Du funderar ett slag. Vad vill du göra?", true);
+            WriteLine("1. Gå med på ett byte.");
+            WriteLine("2. Tacka nej.");
+        }
+        else if (pearlPossession && part == 2)
+        {
+            WriteLine();
+            tools.TypeLine("George Skörwen ser tillfreds ut. 'Vad skall ditt föremål vara av för natur?'", true);
+            WriteLine("1. Magic artefact");
+            WriteLine("2. Wearables");
+            WriteLine("3. Instrument");
+            WriteLine("4. Academia");
+        }
+        else if (pearlPossession && part == 3)
+        {
+            WriteLine();
+            tools.TypeLine("George Skörwen håller i sin dyrbara pärla med gigantiska händer.", true);
+            tools.TypeLine("Den ser rört på dig. 'Du har min eviga tacksamhet!'", true);
+            tools.TypeLine("Anar du tårar i monstrets ögon? 'Tack själv', svarar du. \n", true);
+            tools.TypeLine("Och med det dyker George Skörwen bakåt och försvinner ner i djupet, för att aldrig kräva en vilsen vandrares liv igen. \n", true);
+        }
+        else if (!pearlPossession)
+        {
+            //Om man inte har pärlan i inventory
+            WriteLine();
+            tools.TypeLine("'Ännu en själ som frivilligt vandrar till sitt slut', bullrar besten djupt.", true);
+            tools.TypeLine("'Vad menar du?', piper du tillbaka.", true);
+            tools.TypeLine("Monstrets ögon smalnar till strimmor. \n 'Jag förlorade min pärla för länge sedan, och ingen jag mött har bringat den tillbaka till mig. Den enda nytta ni tjänar mig är att fylla min mage.' \n", true);
+        }
+
+    }
+
+
 }

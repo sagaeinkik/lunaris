@@ -109,4 +109,20 @@ public class Tools
         printMessage(true, false, ConsoleColor.Green, title);
     }
 
+    //Metod för att slumpa fram en gåta
+    public Riddle generateRiddle()
+    {
+        //Lista med dumma gåtor
+        List<Riddle> riddle = new List<Riddle>();
+        riddle.Add(new Riddle("Hur många grönsaker finns det på Finlandsfärjorna?", "En per-silja!"));
+        riddle.Add(new Riddle("Vad berättar korna för varandra när ljuset är släckt i fjöset?", "Spenande historier!"));
+        riddle.Add(new Riddle("I vilket slag föll Karl XVII?", "Hans sista!"));
+        riddle.Add(new Riddle("Hur är vädret i Tjernobyl?", "Strålande!"));
+        riddle.Add(new Riddle("Vilket grundämne flyter sämst?", "Zink!"));
+        Random rnd = new Random();
+        Index index = rnd.Next(4);
+
+        return riddle[index];
+    }
+
 }
