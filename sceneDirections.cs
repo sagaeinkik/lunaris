@@ -968,7 +968,8 @@ public class SceneDirection
             new Command(new List<string>{ "1", }.Concat(northwest).ToList(), () => {
                 Clear();
                 WriteLine("Du gick nordväst!");
-                //Gå till
+                //Gå till utsidan lunaris
+                Program.outsideLunaris("se");
             }),
             //Norrut: tidsslöseri 3
             new Command(new List<string>{ "2", }.Concat(north).ToList(), () => {
@@ -1070,7 +1071,8 @@ public class SceneDirection
             new Command(new List<string>{ "1", }.Concat(west).ToList(), () => {
                 Clear();
                 WriteLine("Du gick västerut");
-                //Gå till 
+                //Gå till utsidan av lunaris
+                Program.outsideLunaris("e");
             }),
             //österut
             new Command(new List<string>{ "2", }.Concat(east).ToList(), () => {
@@ -1091,12 +1093,83 @@ public class SceneDirection
                 Clear();
                 invy.viewInventory();
                 //Visa val igen
-                
+                flow.wasteOfTimeDesc(3, 2);
             }, false)
         };
 
         //anropa dirHandler med kommandon
         tools.dirHandler(inputs);
 
+    }
+
+    //Utanför Lunaris
+    public void outsideLunarisCtrl(Inventory invy)
+    {
+        //VALMÖJLIGHETER
+        var inputs = new List<Command> {
+            //Gå in
+            new Command(new List<string>{ "1", "gå in", "in", "inside", "go inside", "gå in i tornet", "gå in i torn", "lunaris"}, () => {
+                Clear();
+                WriteLine("Du gick in i Lunaris!");
+                //Gå till insideLunaris
+                Program.insideLunaris();
+            }),
+            //Gå västerut
+            new Command(new List<string>{ "2" }.Concat(west).ToList(), () => {
+                Clear();
+                WriteLine("Du gick västerut!");
+                //Gå till hemliga hörnet
+                Program.secretCorner();
+            }),
+            //Gå österut
+            new Command(new List<string>{ "3" }.Concat(east).ToList(), () => {
+                Clear();
+                WriteLine("Du gick österut!");
+                //Gå till tw3
+                Program.timeWaste3();
+            }),
+            //Gå österut
+            new Command(new List<string>{ "4" }.Concat(southeast).ToList(), () => {
+                Clear();
+                WriteLine("Du gick sydöst!");
+                //Gå till storslätta
+                Program.storSlatt();
+            }),
+            //Kolla inventory
+            new Command(new List<string>{ "i", "inventory" }, () => {
+                Clear();
+                invy.viewInventory();
+                //Visa val igen
+                flow.outsideLunarisDesc(2, "");
+            }, false)
+        };
+
+        //anropa dirHandler med kommandon
+        tools.dirHandler(inputs);
+    }
+
+    //Hemliga hörnet
+    public void secretCornerCtrl(Inventory invy)
+    {
+        //VALMÖJLIGHETER
+        var inputs = new List<Command> {
+            //Riktning
+            new Command(new List<string>{ "1" }.Concat(east).ToList(), () => {
+                Clear();
+                WriteLine("Du gick österut!");
+                //Gå till utsidan Lunaris
+                Program.outsideLunaris("w");
+            }),
+            //Kolla inventory
+            new Command(new List<string>{ "i", "inventory" }, () => {
+                Clear();
+                invy.viewInventory();
+                //Visa val igen
+                flow.secretCornerDesc(2);
+            }, false)
+        };
+
+        //anropa dirHandler med kommandon
+        tools.dirHandler(inputs);
     }
 }

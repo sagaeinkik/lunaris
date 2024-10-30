@@ -90,7 +90,7 @@ public class Tools
             //Fördröjning
             Thread.Sleep(15);
         }
-        Thread.Sleep(200);
+        Thread.Sleep(150);
         //Om <br> används, gör ny rad
         if (br)
         {
@@ -99,6 +99,9 @@ public class Tools
     }
     public void gameCredits()
     {
+        WriteLine();
+        printMessage(true, true, ConsoleColor.Green, "T H E  E N D ");
+        WriteLine($"Tack för att du spelade!");
         string credits = "Skapat av Saga Einarsdotter Kikajon för kursen Programmering i C# .NET på Mittuniversitetet 2024.";
         printMessage(true, false, ConsoleColor.DarkGray, credits);
     }

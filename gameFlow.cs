@@ -123,7 +123,7 @@ public class GameFlow
         tools.printMessage(false, false, ConsoleColor.DarkYellow, "R ");
         tools.printMessage(false, false, ConsoleColor.Red, "I ");
         tools.printMessage(false, false, ConsoleColor.DarkMagenta, "S \n \n");
-        WriteLine("Lunaris är ett textbaserat spel där du ska samla på dig föremål, ta dig förbi hinder och gå i mål.");
+        WriteLine("Lunaris är ett textbaserat spel där du ska samla på dig föremål, ta dig förbi hinder och besöka trollkarlen för att gå i mål.");
         WriteLine("Det finns fyra kategorier av föremål, och baserat på vilken kategori du har plockat på dig flest föremål av kommer du att få ett av fem olika slut.");
         WriteLine("Du har bara utrymme för fem föremål i din inventory, så plocka upp saker med lite omsorg! \n");
         WriteLine("För att navigera runt i spelet kan du antingen skriva in svarsalternativen du får med siffor, eller skriva den riktning du vill gå i, till exempel norr/norrut, väst/västerut, syd/söderut, öst/österut. Spelet är på svenska men klarar av vissa engelska fraser som yes/y, no/n, west/north/east/south, och leave. \n");
@@ -196,7 +196,8 @@ public class GameFlow
         {
             WriteLine();
             tools.TypeLine("Vad vill du göra nu?", true);
-            WriteLine("1. Gå norrut");
+            WriteLine("1. Gå norrut \n \n");
+            tools.printMessage(true, true, ConsoleColor.Gray, "Tips! När du blir ombedd att välja riktning kan du alltid skriva 'i' eller 'inventory' för att kolla din inventarie.");
         }
 
     }
@@ -208,7 +209,7 @@ public class GameFlow
         {
             tools.TypeLine("Du kommer fram till en glänta i skogen som liknar ett mossklätt torg, med vägar att följa i flera olika riktningar. ", true);
             tools.TypeLine("I mitten av gläntan står en urblekt skylt med pilar i olika riktningar. Texten ser ut att ha varit med om sju svåra år och är därmed svårtydd.", true);
-            tools.TypeLine("Du lyckas utröna att en grotta ligger västerut, Norra strand nordväst, och brallblötan (står det verkligen så?) till nordöst. \n", true);
+            tools.TypeLine("Du lyckas utröna att en grotta ligger västerut, Norra strand nordväst, och Lunaris till nordöst. \n", true);
         }
         else if (part == 2)
         {
@@ -785,7 +786,7 @@ public class GameFlow
             //Tidsslöseri 1
             if (part == 1)
             {
-                tools.TypeLine("Du går längsmed kanten på världen. Här finns absolut ingenting. Det känns som att tiden still.", true);
+                tools.TypeLine("Du går längsmed kanten på världen. Här finns absolut ingenting.", true);
                 tools.TypeLine("Du måste ha gått i timmar, eller så känns det bara som att tiden står still. \n", true);
             }
             else if (part == 2)
@@ -832,4 +833,182 @@ public class GameFlow
 
         }
     }
+
+    //Utsidan av lunaris
+    public void outsideLunarisDesc(int part, string direction)
+    {
+        //Part 1 baserat på om man kommer österifrån/söderifrån
+        if (part == 1)
+        {
+            //Om man kommer från tidsslöseri 3 eller spurten
+            if (direction == "e" || direction == "se")
+            {
+                tools.TypeLine("Du ser ett torn i fjärran. Ju närmre det kommer desto större blir det (lustigt hur det där funkar).", true);
+            }
+            else if (direction == "w")
+            {
+                //Om man kommer från hemliga hörnet
+                tools.TypeLine("Du går tillbaka till mot Lunaris. Eftersom du kom västerifrån måste du gå runt alla träd för att komma till framsidan av tornet.", true);
+                tools.TypeLine("Det orkar du inte, så du försöker gå igenom den lilla skogen. Det är i stort sett bottenlöst och du får kämpa dig upp ur sumphål efter sumphål som slukat dig till midjan.", true);
+                tools.TypeLine("Det måste ju vara en trollformel för att skydda tornet från anfall? \n", true);
+                tools.TypeLine("Du tar dig äntligen ut från träden, täckt av dy. Din heder lämnade du kvar i gyttjan. \n", true);
+            }
+
+            //Gemensam beskrivning
+            tools.TypeLine("Tornet är fullkomligt massivt och när du står vid foten av det ser det ut att nå till himlen.", true);
+            tools.TypeLine("Det är byggt av trä och sten och ser faktiskt exakt ut så som man tänker sig att ett trollkarlstorn ska se ut. \n", true);
+        }
+
+
+        //Valbeskrivning
+        if (part == 2)
+        {
+            WriteLine();
+            tools.TypeLine("Vad vill du göra nu?", true);
+            WriteLine("1. Gå in i tornet");
+            WriteLine("2. Gå västerut");
+            WriteLine("3. Gå österut");
+            WriteLine("4. Gå sydöst");
+        }
+    }
+
+    //Hemliga hörnet
+    public void secretCornerDesc(int part)
+    {
+        if (part == 1)
+        {
+            tools.TypeLine("Du känner en dragning till den plätt som syns bakom Lunaris, bredvid älvkanten. Du kan inte förklara varför.", true);
+            tools.TypeLine("Platsen känns som en fridfull fristad. \n", true);
+        }
+        else if (part == 2)
+        {
+            WriteLine();
+            tools.TypeLine("Vad vill du göra nu?", true);
+            WriteLine("1. Gå österut");
+        }
+    }
+
+    //Inne i Lunaris
+    public void insideLunaris()
+    {
+        //Gå in i tornet
+        tools.TypeLine("Du trycker upp dörren till tornet och kliver in. \n Hallen är mycket stor och fylld med tavlor, böcker, kartor och förtrollade ting.", true);
+        tools.TypeLine("En underlig mackapär med kugghjul hänger fritt i luften och tickar. \n", true);
+        tools.TypeLine("Hallen delar sig i flera andra rum, men du känner på dig att du inte ska snoka. Istället vänder du dig mot den lååånga spiraltrappan, vars steg är klädda i safirfärgad matta. \n", true);
+        tools.TypeLine("När du går uppför trappan passerar du våning efter våning.", true);
+        tools.TypeLine("Våning 2 verkar vara ett växthus med magiskt förstärkt ljus.", true);
+        tools.TypeLine("Våning 3, 5 och 7 är alla bibliotek.", true);
+        tools.TypeLine("Våning 4 och 6 verkar vara laboratorier.", true);
+        tools.TypeLine("Du tappar räkningen medan du klättrar, men det känns mycket hemtrevligare än du väntade dig. Gott om sittplatser och plantor. \n", true);
+        tools.TypeLine("Till sist kommer du upp till trollkarlens studierum, eller kontor, du är lite osäker på vad man ska kalla det.", true);
+        tools.TypeLine("Du drar ett djupt andetag och knackar på dörren. \n \n", true);
+        tools.printMessage(true, true, ConsoleColor.DarkGray, "Tryck på nån tangent för att fortsätta...");
+        ReadKey();
+        Clear();
+        //Träffa trollkarlen
+        tools.printTitle("Trollkarlens studierum");
+        tools.TypeLine("Dörren svänger upp av sig själv. Rummet är enormt och runt med fönster åt nästan alla håll. Det är fyllt med spännande krimskrams. ", true);
+        tools.TypeLine("Du ser ett mäktigt teleskop som står ute på en slags stenterrass som löper runt hela utsidan. ", true);
+        tools.TypeLine("Men du ser inte trollkarlen till en början, även om du hör hans rotande någonstans i rummet. Det visar sig komma från bakom skrivbordet. \n", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Öh... ursäkta om jag stör. Jag vaknade upp i skogen utan att minnas hur jag hamnade där. Finns det något du kan göra?'");
+        tools.TypeLine(" undrar du försynt. \n \n", false);
+        tools.TypeLine("Rotandet slutar tvärt och trollkarlen reser sig med ryggen mot dig. Han har på sig en glittrig, skir rock ovanpå läderbyxor.", true);
+        tools.TypeLine("Du begriper inte riktigt vad som försiggår med hans kropp, förrän han vänder sig om och du med nöd och näppe lyckas undvika att utbrista något olämpligt.", true);
+        tools.TypeLine("Ditt ansikte måste dock ha förrått dig, för trollkarlen får en irriterad uppsyn (imponerande bedrift, faktiskt).", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Det var en trollformel som slog slint. Jag försöker leta upp en motformel!'");
+        tools.TypeLine(" bräker han fram. \n \n ", false);
+        tools.TypeLine("Har du någonsin sett en damaskus-get? Bockarna har häpnadsväckande konvexa nosryggar, långa halsar och groteska underbett.", true);
+        tools.TypeLine("Ta en sådan gets huvud och sätt det på en lindorms kropp, smäll på lite glesa fjädrar och ge den människoarmar och ben, så har du trollkarlen. \n", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Hur mycket av ditt minne är borta? Några bestående men?'");
+        tools.TypeLine(" brölar trollkarlen. \n", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag minns allt utom hur jag hamnade i gläntan'");
+        tools.TypeLine(" svarar du. \n", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Då tycker jag faktiskt inte att det är värt att lägga tid på att gräva i det där. Låt det vara en konstig grej.'");
+        tools.TypeLine(" Trollkarlen plirar mot dig med sina horisontella pupiller. Han är faktiskt jätteful. ", false);
+        tools.printMessage(true, true, ConsoleColor.DarkCyan, "'Har du tagit med dig några föremål att visa mig?'");
+        WriteLine();
+        tools.printMessage(true, true, ConsoleColor.DarkGray, "Tryck på nån tangent för att fortsätta...");
+        ReadKey();
+        Clear();
+        //Visa föremål
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Man kan lära sig mycket om en person baserat på innehållet i dess fickor, både vart hen kom ifrån och vad hen ska bli");
+        tools.TypeLine(", säger trollkarlen brummigt och gestikulerar mot sitt skrivbord. ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Kom fram här och visa mig vad du har plockat på dig på din färd.' \n");
+        tools.TypeLine("Du går långsamt fram till skrivbordet.", true);
+
+    }
+
+    /* --- VARIANTER PÅ SLUT --- */
+
+    //Tjuvslut
+    public void thiefEnding()
+    {
+        WriteLine();
+        tools.TypeLine("När du lägger upp George Skörwens Pärla på skrivbordet mörknar trollkarlens blick (ännu en imponerande bedrift).", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Den där pärlan är inte din'");
+        tools.TypeLine(", säger trollkarlen dovt. Du känner dig med ens skyldig och skamsen, som ett skolbarn som klottrat på toan. ", false);
+        tools.printMessage(true, true, ConsoleColor.DarkCyan, "'Varför behöll du något som inte är ditt?'");
+        tools.TypeLine("Du vet inte vad du ska svara på den frågan. Du öppnar och stänger munnen flera gånger som en fisk.", true);
+        tools.printMessage(true, true, ConsoleColor.DarkCyan, "'Varelser över hela riket har letat länge och väl efter den. Dess rättmätiga ägare är djupt upprörd över förlusten av dess käraste ägodel.'");
+        tools.printMessage(true, true, ConsoleColor.DarkCyan, "'Och här går du omkring med pärlan i fickan utan en tanke på alla som har fått sätta livet till för att de dumdristigt korsat George Skörwens väg utan att ha pärlan?' \n");
+        tools.TypeLine("Trollkarlen pilar runt skrivbordet och tar ett ilsket tag om din krage.", true);
+        tools.printMessage(true, true, ConsoleColor.DarkCyan, "'Tänkte du behålla den för dig själv, va? Tänkte du att du kunde sälja den dyrt, va? TJUV!!' \n");
+        WriteLine();
+        tools.printMessage(true, true, ConsoleColor.DarkGray, "Tryck på nån tangent för att fortsätta...");
+        ReadKey();
+        Clear();
+        tools.TypeLine("Plötsligt är det som att trollkarlen återfår besinningen. Han släpper taget om dig och tar ett lugnt steg tillbaka.", true);
+        tools.TypeLine("Han lyfter en hand mot dig, och du känner hur hela din kropp förstenas. Du försöker streta emot, men du kan inte röra en fena.", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'All meningslös blodsspillan måste få ett slut. George Skörwens vrede måste stillas'");
+        tools.TypeLine(", förkunnar han sakligt. ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Vid nästa gryning kommer pärlan att återlämnas till George Skörwen, och som straff för vad du har gjort kommer ditt liv att skänkas till besten.' \n");
+        tools.TypeLine("Du hade skrikit rakt ut om du kunde kontrollera din kropp.", true);
+        tools.printMessage(true, true, ConsoleColor.DarkCyan, "'Vi skulle kunna ha gjort det redan ikväll, men klockan börjar bli middagsdags och jag har en torskgratäng i ugnen, så jag känner inte för det.' \n");
+        tools.TypeLine("Och med det öppnar trollkarlen en lucka i golvet med hjälp av magi och puttar ner dig.", true);
+        tools.TypeLine("Det är en lång rutschkana med loopar och svängar, och till sist spottar den ut dig på ett hårt, kallt stengolv i en fuktig fängelsehåla.", true);
+        tools.TypeLine("Där sitter du till gryningen och förbannar dig själv för att du inte tog vägen förbi Bråddjupa Brallblötan efter att du plockade på dig pärlan.", true);
+        WriteLine("\n \n");
+        tools.TypeLine("Nåväl. Det är lätt att vara efterklok. \n \n", true);
+        tools.TypeLine("Du fick tjuvens slut!", true);
+        tools.gameCredits();
+
+    }
+
+    //Dåligt slut
+    public void badEnding()
+    {
+        WriteLine();
+        tools.TypeLine("Du vänder ut och in på dina tomma fickor. Du plockade ju aldrig upp några föremål på färden hit.", true);
+        tools.TypeLine("...", true);
+        tools.TypeLine("Trollkarlen ser besviket på dig (också en bedrift). ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag tycker det är oförskämt att komma hit och kräva min tid alldeles tomhänt.' \n");
+        tools.printMessage(true, true, ConsoleColor.DarkCyan, "'Jag tycker faktiskt inte att det är mycket begärt. Jag vill liksom inte ta dina föremål ifrån dig, jag vill bara analysera litegrann. Det är ju hela min grej.' \n");
+        tools.TypeLine("Han fäller frustrerat ut med händerna.", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Hela den här tiden som vi har stått och pratat nu hade jag kunnat lägga på att fixa mitt utseende. Vilket totalt slöseri!' \n \n");
+        tools.TypeLine("I ren irritation viftar han med handen mot dig och du känner med ens helt bisarra saker hända med din kropp, som att du mosas ihop av en högtryckspress och tänjs ut på samma gång.", true);
+        tools.TypeLine("Det sträcker och drar från alla håll och åt alla kanter, och plötsligt ligger du på marken och tittar upp. \n Du tror att du har öron. Det känns som att du har det. \n", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Vad har du gjort med mig!?' ");
+        tools.TypeLine("utbrister du förskräckt. ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag känner mig som en jakttrofé monterad på en träsköld!' \n");
+        tools.TypeLine("Trollkarlen har inga ögonbryn, för han har damaskusgetansikte, men han lyckas ändå se fantastiskt förvånad ut. ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Hur visste du det? Såg du din reflektion nånstans eller var det bara en lyckosam gissning?' \n");
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'ÄR jag en jakttrofé monterad på en träsköld!?' ");
+        tools.TypeLine("skriker du. \n ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Naturligtvis. Slösar du min tid så tänker jag slösa din'");
+        tools.TypeLine(", svarar han oberört och börjar hänga upp dig på väggen. ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Här kan du gott hänga och tänka igenom saker och ting. Mors!' \n \n");
+        tools.TypeLine("Trollkarlen spurtar ut ur rummet och lämnar dig där.", true);
+        WriteLine("\n");
+        tools.TypeLine("Och där hänger du. Dag ut och dag in. Du inser snabbt att det är lönlöst att böna och be trollkarlen om någonting.", true);
+        tools.TypeLine("Så småningom byter du taktik och börjar irritera trollkarlen så mycket och ofta du kan.", true);
+        tools.TypeLine("En konstig form av vänskap utvecklas mellan er. Du saknar honom när han inte är hemma, och han tycker resten av tornet är för tyst utan ditt kackel. \n", true);
+        tools.TypeLine("Det finns väl värre öden, antar du.", true);
+        WriteLine("\n \n");
+        WriteLine("Du fick den Tomhäntes slut!");
+
+        tools.gameCredits();
+    }
+
+    //Lärlingsslut
+
 }

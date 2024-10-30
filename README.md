@@ -13,15 +13,25 @@ Jag har valt att göra en konsollapplikation i form av ett spel där användaren
 
 Lunaris har dragit inspiration av klassiska textbaserade äventyrsspel/fantasyspel. Det finns i dagsläget inga vapen, ingen combat, inga poäng, och ingen möjlighet att använda items – detta är något som absolut kan vidareutvecklas.
 
-I nuvarande utförande går spelet helt enkelt ut på att användaren navigerar runt och samlar på sig 5 av 20 föremål som ligger utspridda lite här och där. Alla föremål hör till någon av fyra kategorier, och baserat på den mest prevalenta kategorin av föremål som användaren har plockat på sig får användaren ett av sex olika avslut.
+I nuvarande utförande går spelet helt enkelt ut på att användaren navigerar runt och samlar på sig 5 av 21 föremål som ligger utspridda lite här och där. Alla föremål (utom ett) hör till någon av fyra kategorier, och baserat på den mest prevalenta kategorin av föremål som användaren har plockat på sig får användaren ett av sex olika avslut.
 
 ### Struktur
 
-Det finns en undermapp för föremål. Alla föremål ligger i en json-fil, det finns en klass för Items, och en klass för hantering av inventory.
+gameFlow.cs innehåller beskrivningar av scenerna, Detta är för att inte program.cs ska bli lika texttungt. Innehåller också kontrollfrågor innan man lägger till föremål i inventory.
 
-Undermappen utilities innehåller saker som är bra att ha. command.cs innehåller en klass för att hantera inmatning av riktningar. Tools.cs innehåller funktioner jag återanvänder flitigt men som inte nödvändigtvis har med spelet att göra: funktioner för att styla text till skärmen samt för att inte behöva skriva om switch-satser med hjälp av command.cs.
+sceneDirections.cs innehåller all hantering av användarinput för att välja riktning att gå i.
 
-gameFlow.cs innehåller kontrollfrågor, ofta använda funktioner som relaterar till spelet, samt beskrivningar av scenerna. Detta är för att inte program.cs ska bli lika texttungt. I program.cs ligger de funktioner som påverkar spelet, det vill säga själva beslutsfattandet.
+program.cs innehåller alla "rum" och kallar på funktioner som beskrivningar, spelkontroller, och att faktiskt lägga till föremål i inventory.
+
+Undermapp items:  
+allitems.json innehåller samtliga föremål som finns i spelet.  
+item.cs är klassen som strukturerar föremål.  
+inventory.cs hanterar föremålen och användarens inventarie.
+
+Undermapp utilities:  
+command.cs innehåller en klass för användarinput.
+riddle.cs innehåller en klass för att strukturera gåtor.
+tools.cs innehåller funktioner för att styla texten som skrivs ut på skärmen, hantera gåtor, leta genom användarinput efter riktningar och så vidare.
 
 ## Bra att veta
 
@@ -48,6 +58,8 @@ När man ska välja riktning fungerar följande (exempel med sydväst, men funka
 | go south west|
 | sw |
 | go sw |
+
+Skriv "i" eller "inventory" i konsollen när du ska välja riktning för att kolla din inventory.
 
 Det finns en funktion som räknar igenom användarens föremål och kategorier. Om en användare skulle plocka på sig bara ett föremål från vardera kategori och lämna den femte fickan tom så utgår programmet från det föremål som användaren plockade på sig allra först.  
 Det är fullt möjligt att "gå i mål" utan att plocka på sig ett enda föremål.

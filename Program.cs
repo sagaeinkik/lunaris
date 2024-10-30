@@ -23,12 +23,14 @@ class Program
 
     static void Main(string[] args)
     {
-        //Visa meny!
+        /* //Visa meny!
         flow.intro();
         //Sätt first Time till true så man "vaknar upp"
         bool firstTime = true;
         //Första "rummet"
-        campFireScene(firstTime);
+        campFireScene(firstTime); */
+        insideLunaris();
+
 
     }
     /* --- "RUMMEN" ---- */
@@ -42,7 +44,9 @@ class Program
         //Text att visa om det är första gången man är i rummet
         if (firstTime)
         {
-            tools.TypeLine("Ditt äventyr börjar, som så många andras, med att du vaknar upp i en liten skogsglänta helt utan att minnas hur du hamnade där. \n Lyckligtvis är du en sån där lättsam person som inte ser några konstigheter alls i din situation.", true);
+            tools.TypeLine("Ditt äventyr börjar, som så många andras, med att du vaknar upp i en liten skogsglänta helt utan att minnas hur du hamnade där. Dina fickor är helt tomma. \n ", true);
+            tools.TypeLine("Lyckligtvis är du en sån där lättsam person som inte ser några konstigheter alls i din situation. Du vet att det finns en trollkarl i Lunaris som säkert kan hjälpa dig.", true);
+            tools.TypeLine("Han gillar dock inte att man kommer tomhänt. \n", true);
         }
         firstTime = false;
         //Beskrivning av scen
@@ -596,6 +600,66 @@ class Program
         flow.wasteOfTimeDesc(3, 2);
         //Spelktrl
         ctrl.tw3Ctrl(invy);
+    }
+    //Utanför lunaris
+    public static void outsideLunaris(string direction)
+    {
+        tools.printTitle("Utanför trollkarlstornet Lunaris");
+
+        flow.outsideLunarisDesc(1, direction);
+
+        flow.outsideLunarisDesc(2, direction);
+
+        ctrl.outsideLunarisCtrl(invy);
+    }
+
+    //Hemliga hörnet
+    public static void secretCorner()
+    {
+        tools.printTitle("Hemliga hörnet");
+
+        flow.secretCornerDesc(1);
+        //Lägg till
+        Item silverlyra = invy.getItem(12);
+        if (!flow.isOwned(silverlyra, invy))
+        {
+            tools.TypeLine("Du ser något vackert stå lutat mot ett träd nära stranden.", true);
+            tools.TypeLine($"Det ser ut att vara en {silverlyra.name}.", true);
+            tools.TypeLine($"{silverlyra.description} \n", true);
+            flow.wantToAdd(silverlyra, invy);
+        }
+
+        flow.secretCornerDesc(2);
+        ctrl.secretCornerCtrl(invy);
+    }
+
+    //TROLLKARLSTORNET!!
+    public static void insideLunaris()
+    {
+        tools.printTitle("Inuti trollkarlstornet Lunaris");
+        flow.insideLunaris();
+
+        //Om man äger pärla, skicka till tjuvslut på en gång.
+        if (flow.isOwned(invy.getItem(20), invy))
+        {
+            flow.thiefEnding();
+        }
+
+        //Kolla vilken kategori man plockat på sig flest av
+        string mostOwned = invy.distinctItemCounter();
+
+        switch (mostOwned)
+        {
+            case "Inga items!":
+                //Dålig ending
+                flow.badEnding();
+                break;
+            default:
+                break;
+        }
+
+
+
     }
 
 }
