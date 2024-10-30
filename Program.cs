@@ -29,6 +29,11 @@ class Program
         bool firstTime = true;
         //Första "rummet"
         campFireScene(firstTime); */
+        invy.addToInventory(invy.getItem(2));
+        invy.addToInventory(invy.getItem(12));
+        invy.addToInventory(invy.getItem(4));
+        invy.addToInventory(invy.getItem(19));
+        invy.addToInventory(invy.getItem(7));
         insideLunaris();
 
 
@@ -637,7 +642,7 @@ class Program
     public static void insideLunaris()
     {
         tools.printTitle("Inuti trollkarlstornet Lunaris");
-        flow.insideLunaris();
+        /* flow.insideLunaris(); */
 
         //Om man äger pärla, skicka till tjuvslut på en gång.
         if (flow.isOwned(invy.getItem(20), invy))
@@ -645,22 +650,49 @@ class Program
             flow.thiefEnding();
         }
 
+        //Hitta användarinventory
+        var userInvy = invy.returnInvy();
+
         //Kolla vilken kategori man plockat på sig flest av
         string mostOwned = invy.distinctItemCounter();
 
+        //Om inga items
+        if (mostOwned == "Inga Items!")
+        {
+            //Dålig ending
+            flow.badEnding();
+        }
+
+        //Skriv ut alla items i inventoryn till skärmen.
+        tools.TypeLine("Du börjar lassa upp dina föremål på skrivbordet under trollkarlens getblickar. \n", true);
+        foreach (Item item in userInvy)
+        {
+            if (item != null)
+            {
+                tools.TypeLine($"{item.name}: {item.classification}. ", false);
+            }
+        }
+        Write("\n");
+        tools.TypeLine("Trollkarlen nickar för sig själv.", true);
+
+        //Switchsats för de fyra kategorierna
         switch (mostOwned)
         {
-            case "Inga items!":
-                //Dålig ending
-                flow.badEnding();
+            case "Magic Artefact":
+                flow.apprenticeEnd();
+                break;
+            case "Wearables":
+                flow.vagabondEnd();
+                break;
+            case "Instrument":
+                flow.bardEnd();
+                break;
+            case "Academia":
+                flow.kvaserEnd();
                 break;
             default:
                 break;
         }
-
-
-
     }
-
 }
 

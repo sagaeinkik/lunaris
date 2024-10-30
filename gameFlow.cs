@@ -899,6 +899,8 @@ public class GameFlow
         tools.TypeLine("Våning 2 verkar vara ett växthus med magiskt förstärkt ljus.", true);
         tools.TypeLine("Våning 3, 5 och 7 är alla bibliotek.", true);
         tools.TypeLine("Våning 4 och 6 verkar vara laboratorier.", true);
+        tools.TypeLine("Våning 8 verkar vara en ädelstensamling med glasskåp, och våning 9 ett förråd.", true);
+        tools.TypeLine("Våning 10 är helt tom sånär som på ett badkar mitt i det cirkulära rummet.", true);
         tools.TypeLine("Du tappar räkningen medan du klättrar, men det känns mycket hemtrevligare än du väntade dig. Gott om sittplatser och plantor. \n", true);
         tools.TypeLine("Till sist kommer du upp till trollkarlens studierum, eller kontor, du är lite osäker på vad man ska kalla det.", true);
         tools.TypeLine("Du drar ett djupt andetag och knackar på dörren. \n \n", true);
@@ -934,7 +936,7 @@ public class GameFlow
         tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Man kan lära sig mycket om en person baserat på innehållet i dess fickor, både vart hen kom ifrån och vad hen ska bli");
         tools.TypeLine(", säger trollkarlen brummigt och gestikulerar mot sitt skrivbord. ", false);
         tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Kom fram här och visa mig vad du har plockat på dig på din färd.' \n");
-        tools.TypeLine("Du går långsamt fram till skrivbordet.", true);
+        tools.TypeLine("Du går långsamt fram till skrivbordet. \n", true);
 
     }
 
@@ -1004,11 +1006,82 @@ public class GameFlow
         tools.TypeLine("En konstig form av vänskap utvecklas mellan er. Du saknar honom när han inte är hemma, och han tycker resten av tornet är för tyst utan ditt kackel. \n", true);
         tools.TypeLine("Det finns väl värre öden, antar du.", true);
         WriteLine("\n \n");
+        tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*~*~*");
         WriteLine("Du fick den Tomhäntes slut!");
 
         tools.gameCredits();
     }
 
     //Lärlingsslut
+    public void apprenticeEnd()
+    {
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Du tycks ha en preferens för det magiska'");
+        tools.TypeLine(", säger trollkarlen. \n", false);
+        tools.TypeLine("Du rycker på axlarna.", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, " 'Jag tycker det är spännande, antar jag.' \n");
+        tools.TypeLine("Trollkarlen gör en fundersam min (verkligen beundransvärd bedrift med tanke på getansiktet). Han börjar spatsera medan han tänker.", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Det råkar så vara'");
+        tools.TypeLine(", säger han, ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'att min förra hjälpreda var ute och skulle samla in drakfjäll åt mig, men då själva draken dök upp tappade han fullkomligt huvudet. Han sprang i panik och blev bränd till en kolbit av draken. Jag fick aldrig fjällen jag behövde.' \n \n");
+        tools.TypeLine("Trollkarlen gnider sitt absurda underbett innan han verkar bestämma sig.", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag skulle kunna dra nytta av att ha en ny hjälpreda, och i utbyte erbjuder jag dig mat, boende och mitt mentorskap.' \n ");
+        tools.TypeLine("Du blinkar chockat.", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'..Mentorskap? Menar du som din lärling?'");
+        tools.TypeLine(" frågar du dumt. \n", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Javisst. Du har en böjelse för magi; jag råkar vara trollkarl. Du behöver en lärare; jag behöver en lärling. Vad tycker du?'");
+        tools.TypeLine(" svarar han. \n \n", false);
+        tools.TypeLine("Du tvekar lite. Du vet inte hur klokt det är att tacka ja till att bli upplärd i magi av en trollkarl som just nu ser ut som en damaskus-get i ansiktet.", true);
+        tools.TypeLine("Men å andra sidan har du inte så mycket bättre för dig.", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Ja, varför inte? Ingen minns en fegis'");
+        tools.TypeLine(" säger du och sträcker fram handen för att skaka hans. \n", false);
+        WriteLine("\n");
+        tools.TypeLine("Du sätts i hård skola nästan med en gång. I början tror du att han bara ville ha en husa, och ångrade ditt val mer än en gång.", true);
+        tools.TypeLine("Men det dröjer faktiskt inte särskilt länge innan han börjar lära dig grunderna inom magi.", true);
+        tools.TypeLine("Du övar flitigt varje dag, och innan du vet ordet av kan du åstadkomma fantastiska trollerikonster du bara drömt om tidigare.", true);
+        tools.TypeLine("Du kan få saker att sväva, ändra färg och form, du till och med dra hundratals ihopknutna näsdukar ur din handflata! \n", true);
+        tools.TypeLine("Du känner dig tillfreds med hur saker och ting artade sig.", true);
+        WriteLine("\n \n");
+        tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*");
+        WriteLine("Du fick Trollkarlens lärlings slut!");
+        tools.gameCredits();
+    }
+
+    //Bardslut
+    public void bardEnd()
+    {
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Du tycks ha en preferens för det musikaliska'");
+        tools.TypeLine(", säger trollkarlen. \n", false);
+
+
+        WriteLine("\n \n");
+        tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~");
+        WriteLine("Du fick Bardens slut!");
+        tools.gameCredits();
+    }
+
+    //Vagabondslut
+    public void vagabondEnd()
+    {
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Du tycks ha en preferens för klädnader'");
+        tools.TypeLine(", säger trollkarlen. \n", false);
+
+
+        WriteLine("\n \n");
+        tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*~*~*");
+        WriteLine("Du fick Vagabondens slut!");
+        tools.gameCredits();
+    }
+
+    //Kvaserslut
+    public void kvaserEnd()
+    {
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Du tycks ha en preferens för det akademiska'");
+        tools.TypeLine(", säger trollkarlen. \n", false);
+        WriteLine("\n \n");
+        tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*");
+        WriteLine("Du fick Kvasers lärlings slut!");
+        tools.gameCredits();
+    }
+
 
 }
