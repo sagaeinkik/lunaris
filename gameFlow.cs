@@ -54,7 +54,7 @@ public class GameFlow
                 break;
 
             default:
-                tools.printMessage(true, false, ConsoleColor.Yellow, "Förstod inte inmatningen. Testa skriva antingen yes / no, ja / nej, y / no");
+                tools.printMessage(true, false, ConsoleColor.Yellow, "Förstod inte inmatningen. Testa skriva antingen yes / no, ja / nej, y / n");
                 wantToAdd(item, inventory);
                 break;
         }
@@ -64,15 +64,8 @@ public class GameFlow
     //Kontroll om item redan finns i inventory, avgör scenen: 
     public bool isOwned(Item item, Inventory inv)
     {
-        //Kolla om inventory redan innehåller item
-        if (inv.userInventory.Contains(item))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        bool ownership = inv.userInventory.Contains(item);
+        return ownership;
     }
 
     /* BESKRIVANDE TEXTER TILL SKÄRMEN */
@@ -394,7 +387,7 @@ public class GameFlow
         if (part == 1)
         {
             tools.TypeLine("Du kommer till stort, stort fält med mjukt, högt gräs. Du går genom höggräset och drar av frön från rajstjälkarna eftersom det är fysiskt omöjligt att inte göra det när man går genom gräs.", true);
-            tools.TypeLine("Det härliga vädret och den fantastiska lägdan till trots har du ett stort problem. \n", true);
+            tools.TypeLine("Det härliga vädret och den fantastiska lägdan till trots har du ett stort problem, vilket du bara inser först när du är halvvägs ut på fältet. \n", true);
             tools.TypeLine("En enorm drake är ute och sträcker på sina vingar högt över fältet. Det finns inte en chans att du kan slåss mot den; ditt enda hopp är att undgå att bli upptäckt.", true);
             tools.TypeLine("Du stelnar till och tänker. Du känner dig osäker på hur drakar fungerar. \n", true);
             tools.TypeLine("Om du kryper långsamt och försiktigt över fältet kanske draken inte lägger märke till dina rörelser, men den kanske kan känna doften av dig, och du syns nog uppifrån. \n Om du springer syns inte lika mycket av din kroppsyta uppifrån, och du spenderar mindre tid totalt på fältet, vilket kan innebära mindre tid att bli upptäckt av draken på. Men det är kanske lättare att lägga märke till någon som springer än någon som kryper?", true);
@@ -551,15 +544,24 @@ public class GameFlow
             tools.TypeLine("Hon hade sina gigantiska örnvingar infällda mot kroppen innan du kom, men nu när hon ser dig fäller hon ut dem lätt. Hennes kropp är som ett lejons, och svansen är en bitsk huggorm som spänner blicken i dig.", true);
             tools.TypeLine("Ord kan inte beskriva hur ofantligt massiv hon är. Du har sällan känt dig så liten.", true);
             WriteLine();
-            tools.TypeLine("'Får jag komma förbi, tack och snälla? Du sitter lite i vägen', frågar du med tunn röst.", true);
-            tools.TypeLine("'Endast den värdige får mig passera oskadd', svarar sfinxen med en röst som tycks vibrera. 'Skänk mig det rätta svaret på min gåta, och jag bedömer dig värdig.'", true);
-            tools.TypeLine("'Jag är inte så bra på gåtor', säger du. 'Måste jag?'", true);
-            tools.TypeLine("Sfinxens pupiller vidgas lätt som av förväntan. 'Du svarar efter eget gottfinnande. Men att ej svara är i sig själv ett svar.'", true);
-            tools.TypeLine("'Vad händer om jag svarar fel?' undrar du.", true);
-            tools.TypeLine("'Jag kräver ditt liv som lön' svarar hon enkelt.", true);
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Får jag komma förbi, tack och snälla? Du sitter lite i vägen'");
+            tools.TypeLine(", frågar du med tunn röst. \n", false);
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Endast den värdige får mig passera oskadd'");
+            tools.TypeLine(", svarar sfinxen med en röst som tycks vibrera. ", false);
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Skänk mig det rätta svaret på min gåta, och jag bedömer dig värdig.' \n");
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag är inte så bra på gåtor'");
+            tools.TypeLine(", säger du. ", false);
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Måste jag?' \n");
+            tools.TypeLine("Sfinxens pupiller vidgas lätt som av förväntan. ", false);
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Du svarar efter eget gottfinnande. Men att ej svara är i sig själv ett svar.' \n");
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Vad händer om jag svarar fel?'");
+            tools.TypeLine(" undrar du. \n", false);
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag kräver ditt liv som lön'");
+            tools.TypeLine(", svarar hon enkelt. \n", false);
             WriteLine();
             tools.TypeLine("Detta var ju högst beklagligt. Du verkar inte ha så mycket till val.", true);
-            tools.TypeLine("'Nej, jag undviker gärna att dö. Låt höra gåtan', säger du.", true);
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Nej, jag undviker gärna att dö. Låt höra gåtan'");
+            tools.TypeLine(", säger du. \n", false);
         }
         else if (part == 2)
         {
@@ -580,7 +582,10 @@ public class GameFlow
             tools.TypeLine("Varje sekund känns som en livstid. \n", true);
             tools.TypeLine("...", true);
             WriteLine();
-            tools.TypeLine("'Du har så rätt', säger hon till sist. Anar du besvikelse i hennes röst? 'Du får lov att passera mig, oskadd, var gång din väg bär dig förbi mig.'", true);
+            tools.printMessage(false, true, ConsoleColor.Cyan, "'Du har så rätt'");
+            tools.TypeLine(", säger hon till sist. Anar du besvikelse i hennes röst? ", false);
+            tools.printMessage(false, true, ConsoleColor.Cyan, "'Du får lov att passera mig, oskadd, var gång din väg bär dig förbi mig.'");
+            WriteLine();
             tools.TypeLine("Och med det fäller hon ut sina vingar (de når nästan till träden på vardera sida), tar ett par kraftiga slag, och försvinner upp i luften. \n", true);
             tools.TypeLine("Stigen delar sig norrut och åt sydöst.", true);
         }
@@ -588,12 +593,12 @@ public class GameFlow
         {
             //Om man besegrade sfinxen innan
             tools.TypeLine("Du kommer fram till en bekant plats och en bekant figur. Sfinxen sitter precis där hon satt förut, och det rycker lätt i ormen som är hennes svans.", true);
-            tools.TypeLine("'Välkommen åter, vandrare! Vägen är föga vältrafikerad och jag finner mig själv utled på denna enformighet. Vill du höra en gåta?' \n", true);
+            tools.printMessage(true, true, ConsoleColor.Cyan, "'Välkommen åter, vandrare! Vägen är föga vältrafikerad och jag finner mig själv utled på denna enformighet. Vill du höra en gåta?' \n");
             tools.TypeLine("Innan du hinner svara tar hon ton. \n", true);
-            tools.TypeLine($"'{randomRiddle.Question}'", true);
+            tools.printMessage(true, true, ConsoleColor.DarkCyan, $"'{randomRiddle.Question}'");
             tools.TypeLine("Du stirrar stumt på henne.", true);
-            tools.TypeLine($"'{randomRiddle.Answer}'", true);
-            tools.TypeLine("Hon slänger ut med sina lejonarmar, höjer ögonbrynen och ler brett med öppen mun. \n", true);
+            tools.printMessage(true, true, ConsoleColor.DarkCyan, $"'{randomRiddle.Answer}' \n");
+            tools.TypeLine("Hon slänger ut med sina lejonarmar, höjer ögonbrynen och ler brett med öppen mun.", true);
             tools.TypeLine("Du pressar fram ett ansträngt leende och skyndar dig förbi. \n", true);
         }
         else if (part == 2)
@@ -653,7 +658,7 @@ public class GameFlow
             tools.TypeLine("Ju längre norrut du går desto tätare växer sig ett mörker runtomkring.", true);
             tools.TypeLine("Slätten byts så sakteliga ut mot döda, förvridna, svarta träd med nakna, vassa grenar. \n ", true);
             tools.TypeLine("Mellan träden ser du en stor, svart sjö. Bråddjupa Brallblötan.", true);
-            tools.TypeLine("Strandkanten till sjön prys av benknotor. Här och där kan du se delar av någon gammal rostig rustning. Du försöker att inte tänka på det för mycket. \n", true);
+            tools.TypeLine("Strandkanten till sjön pryds av benknotor. Här och där kan du se delar av någon gammal rostig rustning. Du försöker att inte tänka på det för mycket. \n", true);
         }
         else if (part == 2)
         {
@@ -677,7 +682,8 @@ public class GameFlow
             tools.TypeLine("Den spänner blicken i dig. Sedan blir allt lugnt och tyst, nästan som att odjuret väntar på något.", true);
             WriteLine();
             tools.TypeLine("Slutligen öppnar besten sitt gap, och börjar tala.", true);
-            tools.TypeLine("'Har du min pärla?' frågar den med mullrande röst.", true);
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Har du min pärla?'");
+            tools.TypeLine(" frågar den med mullrande röst. \n", false);
             tools.TypeLine("Vidundrets ögon börjar lysa när det tittar på dig, och du känner dig plötsligt obehagligt naken, alldeles avklädd.", true);
         }
 
@@ -685,20 +691,25 @@ public class GameFlow
         else if (pearlPossession && part == 1)
         {
             WriteLine();
-            tools.TypeLine("'Jag ser att du har min pärla på din person', dånar besten.", true);
-            tools.TypeLine("'Är du George Skörwe?' piper du tillbaka.", true);
-            tools.TypeLine("'Jag är en George Skörwe, ty det är inte ett namn utan en art', svarar George Skörwen.", true);
-            tools.TypeLine("'Jag förlorade min pärla för länge sedan, och mången vandrare har funnit sin väg hit utan att ha min pärla med sig', fortsätter den. 'Jag vill ha den tillbaka.'", true);
-            tools.TypeLine("'Rättvisa är mig kär och ära sätter jag högt, ty jag är en George Skörwe; jag föreslår ett byte. Återlämna mig min dyrbara pärla, och du skall i gengäld få ett föremål av valfri art. Vad sägs?'", true);
+
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag ser att du har min pärla på din person'");
+            tools.TypeLine(", dånar besten. \n", false);
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Är du George Skörwe?'");
+            tools.TypeLine(" piper du tillbaka. \n", false);
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag är en George Skörwe, inte ensam i mitt slag'");
+            tools.TypeLine(", svarar George Skörwen. \n", false);
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag förlorade min pärla för länge sedan, och mången vandrare har funnit sin väg hit utan att ha min pärla med sig'");
+            tools.TypeLine(", fortsätter den. ", false);
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag vill ha den tillbaka.' \n");
+            tools.printMessage(true, true, ConsoleColor.DarkCyan, "''Rättvisa är mig kär och ära sätter jag högt, ty jag är en George Skörwe; jag föreslår ett byte. Återlämna mig min dyrbara pärla, och du skall i gengäld få ett föremål av valfri art. Vad sägs?'");
             WriteLine();
-            tools.TypeLine("Du funderar ett slag. Vad vill du göra?", true);
-            WriteLine("1. Gå med på ett byte.");
-            WriteLine("2. Tacka nej.");
+            tools.TypeLine("Du funderar ett slag. Går du med på ett byte? [ y / n ]", true);
         }
         else if (pearlPossession && part == 2)
         {
             WriteLine();
-            tools.TypeLine("George Skörwen ser tillfreds ut. 'Vad skall ditt föremål vara av för natur?'", true);
+            tools.TypeLine("George Skörwen ser tillfreds ut. ", false);
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Vad skall ditt föremål vara av för natur?' \n");
             WriteLine("1. Magic artefact");
             WriteLine("2. Wearables");
             WriteLine("3. Instrument");
@@ -708,20 +719,117 @@ public class GameFlow
         {
             WriteLine();
             tools.TypeLine("George Skörwen håller i sin dyrbara pärla med gigantiska händer.", true);
-            tools.TypeLine("Den ser rört på dig. 'Du har min eviga tacksamhet!'", true);
-            tools.TypeLine("Anar du tårar i monstrets ögon? 'Tack själv', svarar du. \n", true);
+            tools.TypeLine("Den ser rört på dig. ", false);
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Du har min eviga tacksamhet!' \n");
+            tools.TypeLine("Anar du tårar i monstrets ögon? ", false);
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Tack själv'");
+            tools.TypeLine(", svarar du. \n ", false);
             tools.TypeLine("Och med det dyker George Skörwen bakåt och försvinner ner i djupet, för att aldrig kräva en vilsen vandrares liv igen. \n", true);
         }
         else if (!pearlPossession)
         {
             //Om man inte har pärlan i inventory
             WriteLine();
-            tools.TypeLine("'Ännu en själ som frivilligt vandrar till sitt slut', bullrar besten djupt.", true);
-            tools.TypeLine("'Vad menar du?', piper du tillbaka.", true);
-            tools.TypeLine("Monstrets ögon smalnar till strimmor. \n 'Jag förlorade min pärla för länge sedan, och ingen jag mött har bringat den tillbaka till mig. Den enda nytta ni tjänar mig är att fylla min mage.' \n", true);
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Ännu en själ som frivilligt vandrar till sitt slut'");
+            tools.TypeLine(", bullrar besten djupt. \n", false);
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Vad menar du?'");
+            tools.TypeLine(", piper du tillbaka. \n", false);
+            tools.TypeLine("Monstrets ögon smalnar till strimmor.", true);
+            tools.printMessage(true, true, ConsoleColor.DarkCyan, "'Jag förlorade min pärla för länge sedan, och ingen jag mött har bringat den tillbaka till mig. Den enda nytta ni tjänar mig är att fylla min mage.'");
+
         }
 
     }
 
+    //Förtvivlans fält
+    public void despairFieldDesc(int part)
+    {
+        if (part == 1)
+        {
+            tools.TypeLine("Du går och går och går. Du börjar nästan känna det som att du är på självaste världens kant. \n", true);
+        }
+        else if (part == 2)
+        {
+            WriteLine();
+            tools.TypeLine("Vad vill du göra?", true);
+            WriteLine("1. Gå västerut");
+            WriteLine("2. Gå norrut");
+        }
+    }
 
+    //Spurten!! 
+    public void spurtenDesc(int part)
+    {
+        if (part == 1)
+        {
+            tools.TypeLine("Du går på ett fält som löper längsmed älven.", true);
+            tools.TypeLine("Långt nordväst kan du skönja något som sticker upp i horisonten, men vad det är kan du inte se. ", true);
+            tools.TypeLine("Solen står lägre på himlen nu, och du börjar bli trött. \n", true);
+
+        }
+        else if (part == 2)
+        {
+            WriteLine();
+            tools.TypeLine("Vad vill du göra?", true);
+            WriteLine("1. Gå nordväst");
+            WriteLine("2. Gå norrut");
+            WriteLine("3. Gå österut");
+        }
+    }
+
+    //Tidsslöseri 1
+    public void wasteOfTimeDesc(int version, int part)
+    {
+        if (version == 1)
+        {
+            //Tidsslöseri 1
+            if (part == 1)
+            {
+                tools.TypeLine("Du går längsmed kanten på världen. Här finns absolut ingenting. Det känns som att tiden still.", true);
+                tools.TypeLine("Du måste ha gått i timmar, eller så känns det bara som att tiden står still. \n", true);
+            }
+            else if (part == 2)
+            {
+                //Valbeskrivningar
+                tools.TypeLine("Var vill du gå?", true);
+                WriteLine("1. Västerut");
+                WriteLine("2. Söderut");
+            }
+        }
+        else if (version == 2)
+        {
+            //Tidsslöseri 2
+            if (part == 1)
+            {
+                tools.TypeLine("Här finns ingenting heller. Dina fötter värker. Du börjar bli törstig.", true);
+                tools.TypeLine("Landskapet är totalt öde. \n", true);
+            }
+            else if (part == 2)
+            {
+                //Valbeskrivningar
+                tools.TypeLine("Var vill du gå?", true);
+                WriteLine("1. Västerut");
+                WriteLine("2. Österut");
+            }
+
+        }
+        else if (version == 3)
+        {
+            //Tidsslöseri 3
+            if (part == 1)
+            {
+                tools.TypeLine("Här är allt tomt, kargt, stort och ogästvänligt. Finns det något här att finna?", true);
+                tools.TypeLine("Du ser ingenting annat än öppna ytor och någon enstaka kråkfågel. \n", true);
+            }
+            else if (part == 2)
+            {
+                //Valbeskrivningar
+                tools.TypeLine("Var vill du gå?", true);
+                WriteLine("1. Västerut");
+                WriteLine("2. Österut");
+                WriteLine("3. Söderut");
+            }
+
+        }
+    }
 }
