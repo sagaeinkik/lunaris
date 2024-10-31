@@ -640,7 +640,7 @@ class Program
     public static void insideLunaris()
     {
         tools.printTitle("Inuti trollkarlstornet Lunaris");
-        /* flow.insideLunaris(); */
+        flow.insideLunaris();
 
 
         //Kolla vilken kategori man plockat på sig flest av

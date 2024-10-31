@@ -97,13 +97,21 @@ public class Tools
             WriteLine();
         }
     }
-    public void gameCredits()
+    public void gameCredits(bool gameFinished = false)
     {
         WriteLine();
         printMessage(true, true, ConsoleColor.Green, "T H E  E N D ");
         WriteLine($"Tack för att du spelade!");
         string credits = "Skapat av Saga Einarsdotter Kikajon för kursen Programmering i C# .NET på Mittuniversitetet 2024.";
         printMessage(true, false, ConsoleColor.DarkGray, credits);
+
+        if (gameFinished)
+        {
+            printMessage(true, false, ConsoleColor.DarkGray, "\t (Tillägnas David, som har peppat, stöttat, och lyssnat på mitt gnäll.)");
+
+        }
+
+        //Avsluta, för den gör inte alltid det självmant. Vet ej varför
         Environment.Exit(0);
     }
 

@@ -993,7 +993,7 @@ public class GameFlow
         tools.TypeLine("Nåväl. Det är lätt att vara efterklok. \n \n", true);
         tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*~*~*~*~*");
         tools.TypeLine("Du fick tjuvens slut!", true);
-        tools.gameCredits();
+        tools.gameCredits(true);
 
     }
 
@@ -1027,10 +1027,10 @@ public class GameFlow
         tools.TypeLine("En konstig form av vänskap utvecklas mellan er. Du saknar honom när han inte är hemma, och han tycker resten av tornet är för tyst utan ditt kackel. \n", true);
         tools.TypeLine("Det finns väl värre öden, antar du.", true);
         WriteLine("\n");
-        tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*~*~*");
+        tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*~*~*~*");
         WriteLine("Du fick den Tomhäntes slut!");
 
-        tools.gameCredits();
+        tools.gameCredits(true);
     }
 
     //Lärlingsslut
@@ -1070,7 +1070,7 @@ public class GameFlow
         {
             tools.congratulations("Magic Artefact");
         }
-        tools.gameCredits();
+        tools.gameCredits(true);
     }
 
     //Bardslut
@@ -1117,7 +1117,7 @@ public class GameFlow
         {
             tools.congratulations("Instrument");
         }
-        tools.gameCredits();
+        tools.gameCredits(true);
     }
 
     //Vagabondslut
@@ -1168,7 +1168,7 @@ public class GameFlow
         {
             tools.congratulations("Wearables");
         }
-        tools.gameCredits();
+        tools.gameCredits(true);
     }
 
     //Kvaserslut
@@ -1234,7 +1234,7 @@ public class GameFlow
         {
             tools.congratulations("Academia");
         }
-        tools.gameCredits();
+        tools.gameCredits(true);
     }
 
 
