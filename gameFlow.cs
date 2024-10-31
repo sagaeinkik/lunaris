@@ -1236,6 +1236,4 @@ public class GameFlow
         }
         tools.gameCredits(true);
     }
-
-
 }

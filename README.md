@@ -11,7 +11,7 @@ Jag har valt att göra en konsollapplikation i form av ett spel där användaren
 
 ## Lunaris
 
-Lunaris har dragit inspiration av klassiska textbaserade äventyrsspel/fantasyspel. Det finns i dagsläget inga vapen, ingen combat, inga poäng, och ingen möjlighet att använda items – detta är något som absolut kan vidareutvecklas.
+Lunaris har dragit inspiration av klassiska textbaserade äventyrsspel/fantasyspel. Det finns i dagsläget inga vapen, ingen combat, inga poäng, och ingen möjlighet att använda items – så det finns stora möjligheter för vidareutveckling.
 
 I nuvarande utförande går spelet helt enkelt ut på att användaren navigerar runt och samlar på sig 5 av 21 föremål som ligger utspridda lite här och där. Alla föremål (utom ett) hör till någon av fyra kategorier, och baserat på den mest prevalenta kategorin av föremål som användaren har plockat på sig får användaren ett av sex olika avslut.
 
@@ -33,7 +33,7 @@ command.cs innehåller en klass för användarinput.
 riddle.cs innehåller en klass för att strukturera gåtor.
 tools.cs innehåller funktioner för att styla texten som skrivs ut på skärmen, hantera gåtor, leta genom användarinput efter riktningar och så vidare.
 
-## Bra att veta
+### Bra att veta
 
 Spelet utgår från svenska, men klarar att hantera utvalda svarsalternativ även på engelska.
 Acceptabla inmatningar för ja/nej-frågor:
@@ -66,7 +66,9 @@ Det är fullt möjligt att gå i mål utan att plocka på sig ett enda föremål
 
 För att samla på sig alla fem föremål inom en och samma kategori måste man ha att göra med sjöodjuret. För att sjöodjuret inte ska döda en automatiskt behöver man plocka på sig ett föremål, en pärla, att byta med djuret. Därefter får man välja vilken kategori på föremål man önskar att få i utbyte.
 
-## Lathund
+Det går _inte_ att släppa föremål när man väl har plockat upp dem.
+
+### Lathund
 
 I undermappen **"fusk"** hittar ni bild på karta och flödesschema, länk till Figma-fil samt facit på hela spelet.
 

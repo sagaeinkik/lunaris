@@ -13,4 +13,3 @@ public class Riddle
         Answer = a;
     }
 }
-

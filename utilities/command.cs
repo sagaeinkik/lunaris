@@ -19,5 +19,4 @@ public class Command
         Execute = exec;
         EndsLoop = endsLoop;
     }
-
 }
