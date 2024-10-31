@@ -908,6 +908,7 @@ public class GameFlow
         ReadKey();
         Clear();
         //Träffa trollkarlen
+        WriteLine();
         tools.printTitle("Trollkarlens studierum");
         tools.TypeLine("Dörren svänger upp av sig själv. Rummet är enormt och runt med fönster åt nästan alla håll. Det är fyllt med spännande krimskrams. ", true);
         tools.TypeLine("Du ser ett mäktigt teleskop som står ute på en slags stenterrass som löper runt hela utsidan. ", true);
@@ -933,6 +934,7 @@ public class GameFlow
         ReadKey();
         Clear();
         //Visa föremål
+        WriteLine();
         tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Man kan lära sig mycket om en person baserat på innehållet i dess fickor, både vart hen kom ifrån och vad hen ska bli");
         tools.TypeLine(", säger trollkarlen brummigt och gestikulerar mot sitt skrivbord. ", false);
         tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Kom fram här och visa mig vad du har plockat på dig på din färd.' \n");
@@ -947,30 +949,31 @@ public class GameFlow
     {
         WriteLine();
         tools.TypeLine("När du lägger upp George Skörwens Pärla på skrivbordet mörknar trollkarlens blick (ännu en imponerande bedrift).", true);
-        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Den där pärlan är inte din'");
-        tools.TypeLine(", säger trollkarlen dovt. Du känner dig med ens skyldig och skamsen, som ett skolbarn som klottrat på toan. ", false);
-        tools.printMessage(true, true, ConsoleColor.DarkCyan, "'Varför behöll du något som inte är ditt?'");
-        tools.TypeLine("Du vet inte vad du ska svara på den frågan. Du öppnar och stänger munnen flera gånger som en fisk.", true);
-        tools.printMessage(true, true, ConsoleColor.DarkCyan, "'Varelser över hela riket har letat länge och väl efter den. Dess rättmätiga ägare är djupt upprörd över förlusten av dess käraste ägodel.'");
-        tools.printMessage(true, true, ConsoleColor.DarkCyan, "'Och här går du omkring med pärlan i fickan utan en tanke på alla som har fått sätta livet till för att de dumdristigt korsat George Skörwens väg utan att ha pärlan?' \n");
-        tools.TypeLine("Trollkarlen pilar runt skrivbordet och tar ett ilsket tag om din krage.", true);
-        tools.printMessage(true, true, ConsoleColor.DarkCyan, "'Tänkte du behålla den för dig själv, va? Tänkte du att du kunde sälja den dyrt, va? TJUV!!' \n");
-        WriteLine();
-        tools.printMessage(true, true, ConsoleColor.DarkGray, "Tryck på nån tangent för att fortsätta...");
-        ReadKey();
-        Clear();
-        tools.TypeLine("Plötsligt är det som att trollkarlen återfår besinningen. Han släpper taget om dig och tar ett lugnt steg tillbaka.", true);
-        tools.TypeLine("Han lyfter en hand mot dig, och du känner hur hela din kropp förstenas. Du försöker streta emot, men du kan inte röra en fena.", true);
-        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'All meningslös blodsspillan måste få ett slut. George Skörwens vrede måste stillas'");
-        tools.TypeLine(", förkunnar han sakligt. ", false);
-        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Vid nästa gryning kommer pärlan att återlämnas till George Skörwen, och som straff för vad du har gjort kommer ditt liv att skänkas till besten.' \n");
-        tools.TypeLine("Du hade skrikit rakt ut om du kunde kontrollera din kropp.", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Vad ska det här föreställa!?'");
+        tools.TypeLine(", frågar han anklagande, som man gör till en hund med kattsand på nosen efter att ha varit och kalasat i kattlådan. \n ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Det är en pärla'");
+        tools.TypeLine(", svarar du osäkert. Hans getögon kanske gör det svårt för honom? \n", false);
+        tools.printMessage(true, true, ConsoleColor.DarkCyan, "'Ja, det ser jag väl. Det är George Skörwens Pärla. Den är inte din.' \n");
+        tools.TypeLine("Trollkarlen smäller handflatorna i bordet och stirrar ner dig. Han är ännu fulare framifrån, för då ser han skelögd ut till råge på allt.", true);
+        tools.printMessage(true, true, ConsoleColor.DarkCyan, "'Vet du hur många som har fått sätta livet till för att George Skörwens Pärla har varit på vift? Vet du hur många lik som pryder Bråddjupa Brallblötans stränder?' \n");
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Och här går du runt med den i fickan och bryr dig inte alls om all blodspillan du har orsakat. Jag borde gott offra dig till George Skörwen som straff'");
+        tools.TypeLine(", fräser han irriterat. Sedan är det som att han hajar till. \n \n ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Det var faktiskt inte en helt dum idé'");
+        tools.TypeLine(", säger han, mer för sig själv än till dig. \n ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jo det var det, det var en jättedum idé. Jag tycker inte alls om den'");
+        tools.TypeLine(", skyndar du dig att säga, i hopp om att tanken inte ska hinna slå rot i hans huvud. \n ", false);
+        tools.TypeLine("Men trollkarlen viftar bort dina protester.", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jo, så får det bli!'");
+        tools.TypeLine(", bestämmer han. \n", false);
+        tools.TypeLine("Han sträcker ut en hand mot dig och plötsligt känner du hur hela din kropp binds av rep som dyker upp ur tomma intet. Du kan inte röra en fena, inte ens öppna munnen för att prata. Du är en repmumie. ", true);
+        tools.printMessage(true, true, ConsoleColor.DarkCyan, "'Imorgon vid gryningen återförenar jag George Skörwen med sin pärla, och ditt liv ska bli det sista som krävs av odjuret, som straff för de liv du inte skonade på grund av din girighet.' \n");
         tools.printMessage(true, true, ConsoleColor.DarkCyan, "'Vi skulle kunna ha gjort det redan ikväll, men klockan börjar bli middagsdags och jag har en torskgratäng i ugnen, så jag känner inte för det.' \n");
         tools.TypeLine("Och med det öppnar trollkarlen en lucka i golvet med hjälp av magi och puttar ner dig.", true);
         tools.TypeLine("Det är en lång rutschkana med loopar och svängar, och till sist spottar den ut dig på ett hårt, kallt stengolv i en fuktig fängelsehåla.", true);
         tools.TypeLine("Där sitter du till gryningen och förbannar dig själv för att du inte tog vägen förbi Bråddjupa Brallblötan efter att du plockade på dig pärlan.", true);
-        WriteLine("\n \n");
+        WriteLine("\n ");
         tools.TypeLine("Nåväl. Det är lätt att vara efterklok. \n \n", true);
+        tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*~*~*~*~*");
         tools.TypeLine("Du fick tjuvens slut!", true);
         tools.gameCredits();
 
@@ -1005,7 +1008,7 @@ public class GameFlow
         tools.TypeLine("Så småningom byter du taktik och börjar irritera trollkarlen så mycket och ofta du kan.", true);
         tools.TypeLine("En konstig form av vänskap utvecklas mellan er. Du saknar honom när han inte är hemma, och han tycker resten av tornet är för tyst utan ditt kackel. \n", true);
         tools.TypeLine("Det finns väl värre öden, antar du.", true);
-        WriteLine("\n \n");
+        WriteLine("\n");
         tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*~*~*");
         WriteLine("Du fick den Tomhäntes slut!");
 
@@ -1040,7 +1043,7 @@ public class GameFlow
         tools.TypeLine("Du övar flitigt varje dag, och innan du vet ordet av kan du åstadkomma fantastiska trollerikonster du bara drömt om tidigare.", true);
         tools.TypeLine("Du kan få saker att sväva, ändra färg och form, du till och med dra hundratals ihopknutna näsdukar ur din handflata! \n", true);
         tools.TypeLine("Du känner dig tillfreds med hur saker och ting artade sig.", true);
-        WriteLine("\n \n");
+        WriteLine("\n");
         tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*");
         WriteLine("Du fick Trollkarlens lärlings slut!");
         tools.gameCredits();
@@ -1049,12 +1052,40 @@ public class GameFlow
     //Bardslut
     public void bardEnd()
     {
+        WriteLine();
         tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Du tycks ha en preferens för det musikaliska'");
         tools.TypeLine(", säger trollkarlen. \n", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Vem älskar inte musik?'");
+        tools.TypeLine(", svarar du. \n", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Kan du spela en truddelutt för mig?'");
+        tools.TypeLine(", frågar han, och gestikulerar mot en One-Man Band-rigg. \n", false);
+        tools.TypeLine("Du stelnar lite. Du har aldrig i ditt liv spelat på ett sånt.", true);
+        tools.TypeLine("Men du är inget om inte ofantligt begåvad (och ödmjuk), så du går fram till riggen, sätter allt på plats, och börjar spela. \n", true);
+        tools.TypeLine("Det du åstadkommer är rentav häpnadsväckande.", true);
+        tools.TypeLine("Du börjar undra om riggen är magiskt betingad, för aldrig i ditt liv har du lyckats producera sådana ljud via instrument.", true);
+        tools.TypeLine("Det är en fullkomlig amalgamation av alla de sämsta delarna hos varje instrument. Trummorna låter slappa och spelas i otakt.", true);
+        tools.TypeLine("Gitarren klingar helt falskt. Munspelet låter väl som vilket munspel som helst om man inte kan spela munspel.", true);
+        tools.TypeLine("Cymbalerna ska vi inte ens tala om. \n", true);
+
+        tools.TypeLine("Trollkarlen applåderar glatt med lysande ögon (om nu en damaskus-get kan ha den blicken).", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Det där lät rent förjävligt'");
+        tools.TypeLine(", säger han lyckligt. ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Du behöver en replokal! Det råkar så vara att jag har en ljudisolerad källarvåning, den användes förr till att tortera fångar. Nu har jag inte tid med sånt, så du får gärna använda den för att finslipa dina förmågor.' \n");
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Menar du verkligen det?'");
+        tools.TypeLine(", frågar du hoppfullt. \n", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Absolut! Sådär kan du inte gå runt och låta. Jag gör samhället en tjänst, tro mig.'");
+        tools.TypeLine(" svarar han. \n \n", false);
+        tools.TypeLine("Och så visar han dig vägen ner i källaren, där det mycket riktigt finns en hel våning där du kan trumma och humma bäst du vill.", true);
+        tools.TypeLine("Du spenderar timmar, som blir till veckor, som blir till månader i din replokal.", true);
+        tools.TypeLine("Ibland kommer trollkarlen för att lyssna. Du blir stadigt bättre och bemästrar snart de flesta instrument du tar dig an. \n", true);
+        tools.TypeLine("Till sist är du redo att ge dig av.", true);
+        tools.TypeLine("Du tackar trollkarlen så mycket innan du spelar din väg genom världen, och sprider glädje och musik var du än går.", true);
+        tools.TypeLine("Du blir välkänd som en av de bästa trubadurer världen någonsin har skådat, och du spelar för trollkarlen på hans födelsedagar.", true);
+        tools.TypeLine("När du slutligen dör - gammal, lycklig och med musik i hjärtat - blir du ihågkommen under hundratals år framöver.", true);
 
 
-        WriteLine("\n \n");
-        tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~");
+        WriteLine("\n");
+        tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*");
         WriteLine("Du fick Bardens slut!");
         tools.gameCredits();
     }
@@ -1064,9 +1095,41 @@ public class GameFlow
     {
         tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Du tycks ha en preferens för klädnader'");
         tools.TypeLine(", säger trollkarlen. \n", false);
+        tools.TypeLine("Du lägger huvudet lite på sned.", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag gillar att de har olika bakgrund. Att klä sig i dem är som att bära små historier från sina resor.' \n");
+        tools.TypeLine("Någonting glittrar till i trollkarlens skelögda getögon.", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Det gillar jag att höra'");
+        tools.TypeLine(", säger trollkarlen.", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag har något åt dig.' \n \n");
+        tools.TypeLine("Han dyker ner bakom skrivbordet igen. Du lutar dig lätt framåt över bordet för att se vad han gör.", true);
+        tools.TypeLine("Han slänger upp locket på en stor kista och river ut ting efter ting som han vårdslöst slänger över sin axel på jakt efter något särskilt.", true);
+        tools.TypeLine("En pälsmössa med öronlappar. Ett svart stearinljus. En tom fågelbur. En uppdragbar råtta. En bok om det ockulta. Du funderar lätt nervöst på om dessa objekt är relaterade till varandra. \n", true);
 
+        tools.TypeLine("Plötsligt håller han triumferande upp det han sökt. En karta?", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Här ska du få se!'");
+        tools.TypeLine(" bräker han lyckligt. ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Det här är en magisk karta över de säkraste färdvägarna på kontinenten. Vägarna förändras enligt rådande säkerhetsläge, så att du alltid kan resa utan att oroa dig för att råka illa ut.' \n");
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Imponerande'");
+        tools.TypeLine(", svarar du. Trollkarlen sticker kartan i din hand. Du börjar protestera. ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Inte kan jag ta den!' \n");
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jovisst kan du det! Jag har överfört den kartan till mitt medvetande, så jag har allt här uppe'");
+        tools.TypeLine(", säger han och knackar sig lätt i tinningen. Du vet inte om du litar på det, men du tar emot kartan ändå. ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'En sak till! Med detta sigill får du kompispris på alla de bästa pubarna i varje halvstor stad.' \n");
+        tools.TypeLine("Han höjer en hand, och någonting bränner till på din handled. En symbol dyker upp där det brände.", true);
+        tools.TypeLine("Du stryker med tummen över den, men symbolen smetas inte ens ut. En magisk tatuering? \n", true);
 
-        WriteLine("\n \n");
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Hur ska jag kunna tacka dig?'");
+        tools.TypeLine(" frågar du. \n", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Kom på besök nån gång ibland.'");
+        tools.TypeLine(" svarar han. \n \n", false);
+
+        tools.TypeLine("Och med det ger du dig av för att påbörja en ny resa.", true);
+        tools.TypeLine("Du reser överallt du kan ta dig. Ibland sysslar du med byteshandel, ibland agerar du köpman.", true);
+        tools.TypeLine("Du samlar på kläder och historier, klär din kropp i minnena från alla dina äventyr, och blir igenkänd i världens alla hörn som ett bekant ansikte.", true);
+        tools.TypeLine("Du stannar aldrig länge på ett ställe, för din ande kan inte förankras, och du hör inte till ett enda ställe.", true);
+        tools.TypeLine("Världen är ditt hem.", true);
+
+        WriteLine("\n");
         tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*~*~*");
         WriteLine("Du fick Vagabondens slut!");
         tools.gameCredits();
@@ -1076,9 +1139,56 @@ public class GameFlow
     public void kvaserEnd()
     {
         tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Du tycks ha en preferens för det akademiska'");
-        tools.TypeLine(", säger trollkarlen. \n", false);
+        tools.TypeLine(", säger trollkarlen. ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Är du kunskapstörstande?' \n");
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag vill lära mig allt om allt'");
+        tools.TypeLine(", bekräftar du. \n", false);
+        tools.TypeLine("Trollkarlen ler, vilket ser fantastiskt ocharmigt ut med tanke på get-underbettet.", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'I såna fall har jag någon jag vill att du ska träffa'");
+        tools.TypeLine(", säger han. Han går till väggen och drar i ett snöre som sitter monterat på väggen, och när han gör det hörs en ringklocka någonstans. \n", false);
+        tools.TypeLine("Du ser frågande på honom. Han säger ingenting. \n", true);
+        tools.TypeLine("Efter några minuters spänd väntan har det inte hänt någonting. Han ringer igen.", true);
+        tools.TypeLine("Efter några till minuter blir du obekväm av tystnaden, börjar vagga på fötterna och göra den där fingerknäpp-till-klapp-grejen med händerna medan du visslar svagt.", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag vet inte vad problemet är, han brukar alltid infinna sig snabbt när man ringer efter honom'");
+        tools.TypeLine(", mumlar trollkarlen urskuldrande. \n Han går fram till dörren, sticker ut huvudet, och skriker för full hals ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'KVASER!!!!' \n");
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Kvaser?'");
+        tools.TypeLine(" börjar du fråga, men tystnar tvärt. \n \n", false);
+
+        tools.TypeLine("In i rummet kommer självaste Kvaser. Luften tycks spraka runt honom. Du står och betraktar en livs levande gud.", true);
+        tools.TypeLine("Född av salivet från två gudasläkten, självaste gestaltningen av vishet och fred.", true);
+        tools.TypeLine("Kvaser, den allvetande som kan svara på varje fråga som ställs honom, som är klokare än någon annan, som står för förening och harmoni.", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Tjenare'");
+        tools.TypeLine(", hälsar han. \n \n", false);
+
+        WriteLine();
+        tools.printMessage(true, true, ConsoleColor.DarkGray, "Tryck på nån tangent för att fortsätta...");
+        ReadKey();
+        Clear();
+        WriteLine();
+
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Vad tog dig sån tid? Det är ju pinsamt att stå här och vänta'");
+        tools.TypeLine(", förbarmar sig trollkarlen. Kvaser ser totalt oberörd ut. \n", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag var lite upptagen med annat, men du kan förlita dig på att jag släppte allt så snart jag kunde för att komma till dig, min vän'");
+        tools.TypeLine(", svarar Kvaser milt. Sedan tittar han på dig. ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Vem är du?' \n");
+        tools.TypeLine("Du höjer ett ögonbryn. Borde han inte redan veta det?", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Naturligtvis vet jag det'");
+        tools.TypeLine(", säger han som om han kunde läsa dina tankar. ", false);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag frågade mest för att vara artig. Du kom till trollkarlen för att få hjälp, och trollkarlen vill att jag ska ta dig an som lärling.' \n");
+        tools.TypeLine("Trollkarlen nickar entusiastiskt och Kvaser ler.", true);
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag ska lära dig allt jag kan'");
+        tools.TypeLine(", nickar Kvaser. \n \n", false);
+
+        tools.TypeLine("Det visar sig att Kvaser kan ganska mycket, så att lära sig allt han kan är inte helt realistiskt.", true);
+        tools.TypeLine("Men han lär dig om trolldrycker, om alkemi, om astronomi, om biologi, om kemi, om alla andra läror som slutar på i.", true);
+        tools.TypeLine("Under hans mentorskap blir du snart sedd som en vis och lärd person som besitter stor kunskap om allting.", true);
+        tools.TypeLine("Folk kommer till dig för att få hjälp med nästan vad som helst; bota deras husdjur från sjukdomar, råda dem om kärleksproblem, investera deras pengar.", true);
+        tools.TypeLine("Med Kvaser som vägledare löser du tvister, förlöser barn och filosoferar om livet.", true);
+        tools.TypeLine("Trist, det som hände med Kvaser senare.", true);
+
         WriteLine("\n \n");
-        tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*");
+        tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~");
         WriteLine("Du fick Kvasers lärlings slut!");
         tools.gameCredits();
     }
