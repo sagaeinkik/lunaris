@@ -20,22 +20,16 @@ class Program
     private static bool trollDead = false;
     private static bool sphinxCleared = false;
     private static bool seamonsterVisited = false;
+    private static bool firstTimeDragon = true;
 
     static void Main(string[] args)
     {
-        /* //Visa meny!
+        //Visa meny!
         flow.intro();
         //Sätt first Time till true så man "vaknar upp"
         bool firstTime = true;
         //Första "rummet"
-        campFireScene(firstTime); */
-        invy.addToInventory(invy.getItem(17));
-        invy.addToInventory(invy.getItem(12));
-        invy.addToInventory(invy.getItem(4));
-        invy.addToInventory(invy.getItem(19));
-        invy.addToInventory(invy.getItem(7));
-        insideLunaris();
-
+        campFireScene(firstTime);
 
     }
     /* --- "RUMMEN" ---- */
@@ -241,21 +235,22 @@ class Program
         Item klykring = invy.getItem(4);
         if (!flow.isOwned(klykring, invy))
         {
-            tools.TypeLine($"Ett av träden har så långa och låga grenar att det nästan nuddar vattnet. På en av kvistarna ser du något underligt. Det ser ut som en... {klykring.name}", true);
+            tools.TypeLine($"Ett av träden har så långa och låga grenar att det nästan nuddar vattnet. På en av kvistarna ser du något underligt. Det ser ut som en... {klykring.name}.", true);
             tools.TypeLine($"{klykring.description}", true);
             flow.wantToAdd(klykring, invy);
             WriteLine();
         }
+        flow.halfEastBeachDesc(2);
         //Spelkontroll
         ctrl.halfEastBeachCtrl(invy);
     }
 
-    //Nordvästra skogsstigen
-    public static void northwestTrail()
+    //Nordvästra skogsstigen, skicka med riktning man kom från
+    public static void northwestTrail(string direction)
     {
         tools.printTitle("Nordvästra leden");
 
-        flow.northwestTrailDesc();
+        flow.northwestTrailDesc(direction);
 
         ctrl.nwTrailCtrl(invy);
     }
@@ -265,7 +260,7 @@ class Program
         tools.printTitle("Drakgläntan");
 
         //Beskriv scen
-        flow.dragonClearingDesc(1);
+        flow.dragonClearingDesc(1, firstTimeDragon);
 
         //Lägg till
         Item drakfjall = invy.getItem(19);
@@ -275,10 +270,12 @@ class Program
             tools.TypeLine($"Medan du funderar på vad du ska göra blänker någonting till i gräset. Ett {drakfjall.name}! \n {drakfjall.description} \n", true);
             flow.wantToAdd(drakfjall, invy);
         }
+        firstTimeDragon = false;
         //Beskrivning av val
-        flow.dragonClearingDesc(2);
+        flow.dragonClearingDesc(2, firstTimeDragon);
         //Spelkontroller
-        ctrl.dragonClearingCtrl(invy);
+        ctrl.dragonClearingCtrl(invy, firstTimeDragon);
+
     }
 
     //Trädrandälvkant
@@ -361,7 +358,7 @@ class Program
     //Bro: Vässia
     public static void bridgeWest(string direction)
     {
-        tools.printTitle("Bro: vässia");
+        tools.printTitle("Bro: Vässia");
 
         flow.bridgeWestDesc(direction);
         //Spelkontroller, skicka med bool för om man klarar sfinxens gåta (till när man ska österut)
@@ -371,7 +368,7 @@ class Program
     //Lilla nordergläntan
     public static void northClearing()
     {
-        tools.printTitle("Lilla nordergläntan");
+        tools.printTitle("Lilla Nordergläntan");
 
         flow.northClearingDesc(1);
 
@@ -551,6 +548,7 @@ class Program
 
     }
 
+    //Spurten
     public static void spurten()
     {
         tools.printTitle("Spurten");
@@ -642,7 +640,7 @@ class Program
     public static void insideLunaris()
     {
         tools.printTitle("Inuti trollkarlstornet Lunaris");
-        /* flow.insideLunaris(); */
+        flow.insideLunaris();
 
 
         //Kolla vilken kategori man plockat på sig flest av

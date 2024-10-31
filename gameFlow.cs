@@ -124,7 +124,7 @@ public class GameFlow
         tools.printMessage(false, false, ConsoleColor.Red, "I ");
         tools.printMessage(false, false, ConsoleColor.DarkMagenta, "S \n \n");
         WriteLine("Lunaris är ett textbaserat spel där du ska samla på dig föremål, ta dig förbi hinder och besöka trollkarlen för att gå i mål.");
-        WriteLine("Det finns fyra kategorier av föremål, och baserat på vilken kategori du har plockat på dig flest föremål av kommer du att få ett av fem olika slut.");
+        WriteLine("Det finns fyra kategorier av föremål, och baserat på vilken kategori du har plockat på dig flest föremål av kommer du att få ett av sex olika slut.");
         WriteLine("Du har bara utrymme för fem föremål i din inventory, så plocka upp saker med lite omsorg! \n");
         WriteLine("För att navigera runt i spelet kan du antingen skriva in svarsalternativen du får med siffor, eller skriva den riktning du vill gå i, till exempel norr/norrut, väst/västerut, syd/söderut, öst/österut. Spelet är på svenska men klarar av vissa engelska fraser som yes/y, no/n, west/north/east/south, och leave. \n");
         WriteLine("Du kan kolla din inventory under spelets gång genom att skriva 'i' eller 'inventory' när du får frågan om vilken riktning du vill gå. \n \n");
@@ -297,7 +297,7 @@ public class GameFlow
         tools.TypeLine("Du böjer dig ner kvickt som attan för att plocka upp stenen samtidigt som du dyker undan från trollets väg. När du rätat lite på dig busvisslar du, och trollet vänder sig dumt mot dig.", true);
         tools.TypeLine("Du sular iväg stenen så hårt du förmår och lyckas kasta den med en träffsäkerhet som skulle göra New York Jets' quarterback Zach Wilson alldeles grön av avund.", true);
         tools.TypeLine("Seriöst, snubben har riktiga problem med att kasta under press. Och han spelar i NFL! \n", true);
-        tools.TypeLine("I alla fall, stenen träffar sitt mål rakt mellan trollets ögon, där det måste ha funnits en svag punkt. Trollet vacklar till innan det rasar ihop i en hög. Nu ser det verkligen ut som en sten.", true);
+        tools.TypeLine("I alla fall, stenen träffar sitt mål rakt mellan trollets ögon, där det måste ha funnits en svag punkt. Trollet vacklar till innan det rasar ihop i en hög. Nu ser det verkligen ut som en stenbumling.", true);
         tools.TypeLine("När trollet kollapsar ramlar ett föremål ut ur... ja, nånstans ifrån. \n", true);
     }
 
@@ -345,7 +345,7 @@ public class GameFlow
     public void eastTrailDesc()
     {
         tools.TypeLine("Att kalla det för stig är generöst; det är mer en vag skymt av färdväg genom tätvuxen och snårig skog. Du mosar dig igenom kvistar och löv, men fastnar frustrerande nog ganska konstant. ", true);
-        tools.TypeLine("Du tänkte kanske att stigen hade trampats upp av skogens djur, men du inser ganska snabbt att om djur ligger bakom detta rör det sig snarare om ett lämmeltåg än en stadig älg.", true);
+        tools.TypeLine("Du tänkte kanske att stigen hade trampats upp av skogens djur, men du inser ganska snabbt att om djur ligger bakom detta rör det sig snarare om ett lämmeltåg än en stadig älg.\n ", true);
         tools.TypeLine("Det tar inte särskilt lång tid innan du blir svettig, varm och irriterad, och du börjar ifrågasätta hur klokt beslut det var att försöka ta sig in den här vägen. \n", true);
 
         tools.TypeLine("Vad vill du göra nu?", true);
@@ -369,9 +369,15 @@ public class GameFlow
 
         }
     }
-    public void northwestTrailDesc()
+    public void northwestTrailDesc(string direction)
     {
-        tools.TypeLine("Du går på en trevlig och bred stig, alternativt en trevlig och smal väg beroende på hur man ser på det. Den tycks fortsätta i all oändlighet.", true);
+        if (direction == "nw")
+        {
+            tools.TypeLine("Du hatar den här biten. Det tar evigheter att krypa, och det skrämmer slag på dig att höra draken bakom dig.", true);
+            tools.TypeLine("Det sticker och ilar i hela ryggen av skräck och ditt hjärta hamrar på som Meshuggah-trummisen Tomas Haake.", true);
+            tools.TypeLine("Till din stora lättnad kommer du så småningom till slutet på fältet, där du vågar resa dig. Draken syns inte till. \n", true);
+        }
+        tools.TypeLine("Nu går du på en trevlig och bred stig, alternativt en trevlig och smal väg beroende på hur man ser på det. Den tycks fortsätta i all oändlighet.", true);
         tools.TypeLine("Periodvis växer det hallon längsmed vägen.", true);
         tools.TypeLine("Dina fötter känns lite trötta, så du stannar och plockar några att mumsa på för att få lite energi.", true);
         tools.TypeLine("Du börjar fundera på om du vill fortsätta på den här vägen, eller om du vill vända tillbaka. \n", true);
@@ -382,16 +388,28 @@ public class GameFlow
         WriteLine("2. Följ vägen sydöst");
     }
 
-    //Drakglänta
-    public void dragonClearingDesc(int part)
+    //Drakglänta: bool på om man sett draken innan
+    public void dragonClearingDesc(int part, bool firstTime)
     {
         if (part == 1)
         {
             tools.TypeLine("Du kommer till stort, stort fält med mjukt, högt gräs. Du går genom höggräset och drar av frön från rajstjälkarna eftersom det är fysiskt omöjligt att inte göra det när man går genom gräs.", true);
-            tools.TypeLine("Det härliga vädret och den fantastiska lägdan till trots har du ett stort problem, vilket du bara inser först när du är halvvägs ut på fältet. \n", true);
-            tools.TypeLine("En enorm drake är ute och sträcker på sina vingar högt över fältet. Det finns inte en chans att du kan slåss mot den; ditt enda hopp är att undgå att bli upptäckt.", true);
-            tools.TypeLine("Du stelnar till och tänker. Du känner dig osäker på hur drakar fungerar. \n", true);
-            tools.TypeLine("Om du kryper långsamt och försiktigt över fältet kanske draken inte lägger märke till dina rörelser, men den kanske kan känna doften av dig, och du syns nog uppifrån. \n Om du springer syns inte lika mycket av din kroppsyta uppifrån, och du spenderar mindre tid totalt på fältet, vilket kan innebära mindre tid att bli upptäckt av draken på. Men det är kanske lättare att lägga märke till någon som springer än någon som kryper?", true);
+
+            //Om det är första gången: 
+            if (firstTime)
+            {
+                tools.TypeLine("Det härliga vädret och den fantastiska lägdan till trots har du ett stort problem, vilket du bara inser först när du är halvvägs ut på fältet. \n", true);
+                tools.TypeLine("En enorm drake är ute och sträcker på sina vingar högt över fältet. Det finns inte en chans att du kan slåss mot den; ditt enda hopp är att undgå att bli upptäckt.", true);
+                tools.TypeLine("Du stelnar till och tänker. Du känner dig osäker på hur drakar fungerar. \n", true);
+                tools.TypeLine("Om du kryper långsamt och försiktigt tar det lång tid att korsa fältet, du syns tydligare uppifrån, men du kanske inte drar till dig lika mycket uppmärksamhet.", true);
+                tools.TypeLine("Om du springer spenderar du inte lika lång tid på fältet, så draken får inte lika lång tid på sig att upptäcka dig, och du syns inte lika väl uppifrån, men du kan dra till dig mer uppmärksamhet.", true);
+            }
+            else
+            {
+                tools.TypeLine("Du tvärnitar när du ser draken flaxa omkring uppe i luften, spanandes över fältet efter något att grilla och äta.", true);
+                tools.TypeLine("Just fan. Det var ju den också. Du hade faktiskt hunnit glömma den. \n", true);
+                tools.TypeLine("Du suckar, stålsätter dig, och försöker att inte drabbas av paniken som stiger i halsen på dig.", true);
+            }
         }
         else if (part == 2)
         {
@@ -411,7 +429,7 @@ public class GameFlow
     {
         if (part == 1)
         {
-            tools.TypeLine("Det tar evigheter att krypa över fältet. Flera gånger är du bergsäker på att draken sett dig, och det har stuckit obehagligt längsmed ryggraden när du hört dess vingslag precis ovanför dig utan att kunna se odjuret.", true);
+            tools.TypeLine("Det tar evigheter att krypa över fältet. Flera gånger är du bergsäker på att draken har sett dig, och det har stuckit obehagligt längsmed ryggraden när du hört dess vingslag precis ovanför dig utan att kunna se odjuret.", true);
             tools.TypeLine("Men till din stora förvåning kommer du så småningom till slutet på fältet, där du vågar resa dig. Draken syns inte till. \n", true);
             tools.TypeLine("Nu finner du dig själv stående vid älvens strandkant. \n", true);
         }
@@ -435,7 +453,7 @@ public class GameFlow
         else if (direction == "s")
         {
             //Om man kom söderifrån, över drakgläntan
-            tools.TypeLine("Det tar evigheter att krypa över fältet. Flera gånger är du bergsäker på att draken sett dig, och det har stuckit obehagligt längsmed ryggraden när du hört dess vingslag precis ovanför dig utan att kunna se odjuret.", true);
+            tools.TypeLine("Det tar evigheter att krypa över fältet. Flera gånger är du bergsäker på att draken har sett dig, och det har stuckit obehagligt längsmed ryggraden när du hört dess vingslag precis ovanför dig utan att kunna se odjuret.", true);
             tools.TypeLine("Men till din stora förvåning kommer du så småningom till slutet på fältet, där du vågar resa dig. Draken syns inte till. \n", true);
         }
         else if (direction == "n")
@@ -464,7 +482,7 @@ public class GameFlow
         else if (part == 2)
         {
             WriteLine();
-            tools.TypeLine("I brist på andra idéer får du utgå från att båten styrs verbalt.", true);
+            tools.TypeLine("Du finner inget av det du letar efter. I brist på andra idéer får du utgå från att båten styrs verbalt.", true);
             tools.TypeLine("Vad vill du göra?", true);
             WriteLine("1. Säg åt båten att ta dig norrut");
             WriteLine("2. Säg åt båten att ta dig söderut");
@@ -1184,8 +1202,10 @@ public class GameFlow
         tools.TypeLine("Men han lär dig om trolldrycker, om alkemi, om astronomi, om biologi, om kemi, om alla andra läror som slutar på i.", true);
         tools.TypeLine("Under hans mentorskap blir du snart sedd som en vis och lärd person som besitter stor kunskap om allting.", true);
         tools.TypeLine("Folk kommer till dig för att få hjälp med nästan vad som helst; bota deras husdjur från sjukdomar, råda dem om kärleksproblem, investera deras pengar.", true);
-        tools.TypeLine("Med Kvaser som vägledare löser du tvister, förlöser barn och filosoferar om livet.", true);
+        tools.TypeLine("Med Kvaser som vägledare löser du tvister, förlöser barn och filosoferar om livet. \n", true);
         tools.TypeLine("Trist, det som hände med Kvaser senare.", true);
+
+        tools.printMessage(true, true, ConsoleColor.DarkGray, "(Du hade ingen roll i det)");
 
         WriteLine("\n \n");
         tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~");

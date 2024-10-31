@@ -104,6 +104,7 @@ public class Tools
         WriteLine($"Tack för att du spelade!");
         string credits = "Skapat av Saga Einarsdotter Kikajon för kursen Programmering i C# .NET på Mittuniversitetet 2024.";
         printMessage(true, false, ConsoleColor.DarkGray, credits);
+        Environment.Exit(0);
     }
 
     //METOD FÖR TITEL I RUMMET
@@ -122,6 +123,13 @@ public class Tools
         riddle.Add(new Riddle("I vilket slag föll Karl XVII?", "Hans sista!"));
         riddle.Add(new Riddle("Hur är vädret i Tjernobyl?", "Strålande!"));
         riddle.Add(new Riddle("Vilket grundämne flyter sämst?", "Zink!"));
+        riddle.Add(new Riddle("Vad händer om man korsar en flod och en öken?", "Man blir våt och törstig!"));
+        riddle.Add(new Riddle("En frukt- och grönsakshandlare är 54 år gammal, 175 cm lång och har 43 i skonummer. Vad väger han?", "Frukt och grönsaker!"));
+        riddle.Add(new Riddle("Varför kastar rovfåglarna längtansfyllda blickar in genom sovrumsfönstret?", "Det ligger örngott i sängen!"));
+        riddle.Add(new Riddle("När levde världens största narr?", "Mellan sin födsel och sin död!"));
+        riddle.Add(new Riddle("Heter den en rak kurva eller ett rak kurva?", "Det finns inga raka kurvor!"));
+        riddle.Add(new Riddle("Vilken fågel är bäst på IT?", "Hacker-spetten!"));
+        riddle.Add(new Riddle("Vad behöver man för att lokalisera sin varulv?", "En därulv!"));
         Random rnd = new Random();
         Index index = rnd.Next(4);
 

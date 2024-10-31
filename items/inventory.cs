@@ -50,6 +50,8 @@ public class Inventory
         if (userInventory.Length > 0)
         {
             WriteLine();
+            tools.printMessage(true, false, ConsoleColor.Green, "I N V E N T O R Y :");
+            WriteLine();
             //Loopa igenom
             foreach (Item item in userInventory)
             {

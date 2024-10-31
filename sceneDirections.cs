@@ -36,6 +36,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Lägret");
                 flow.campFireDesc(2);
             }, false)
         };
@@ -69,7 +70,7 @@ public class SceneDirection
                 Clear();
                 WriteLine("Du gick nordväst!");
                 //Gå till nordvästra skogsleden
-                Program.northwestTrail();
+                Program.northwestTrail("");
             }),
             //Nordöst, till Bro vässia
             new Command(new List<string>{ "4" }.Concat(northeast).ToList(), () => {
@@ -95,6 +96,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Skogsgläntan");
                 //Visa val igen
                 flow.forestClearingDesc(2);
             }, false)
@@ -121,6 +123,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Lilla södergläntan");
                 //Visa val igen
                 flow.southClearingDesc(2);
             }, false)
@@ -152,6 +155,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Västra skogsstigen");
                 //Visa val igen
                 flow.westTrailDesc(2);
             }, false)
@@ -230,6 +234,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Trolltrakten");
                 //Visa val igen
                 flow.trollTraktenDesc(true, 2);
             }, false)
@@ -262,6 +267,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Grottmynningen");
                 //Visa val igen
                 flow.caveEntranceDesc(2);
             }, false)
@@ -288,6 +294,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Trollsalen");
                 //Visa val igen
                 flow.trollCaveDesc(2);
             }, false)
@@ -320,6 +327,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Östra skogsstigen");
                 //Visa val igen
                 tools.TypeLine("Vad vill du göra nu?", true);
                      WriteLine("1. Gå västerut");
@@ -347,6 +355,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Halvöstra strand");
                 //Visa val igen
                 flow.halfEastBeachDesc(2);
             }, false)
@@ -364,7 +373,7 @@ public class SceneDirection
             //Nordväst mot drakglänta
             new Command(new List<string>{ "1" }.Concat(northwest).ToList(), () => {
                 Clear();
-                WriteLine("Du gick nordväst");
+                WriteLine("Du gick nordväst!");
                 //Gå till drakglänta
                 Program.dragonClearing();
             }),
@@ -379,6 +388,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Nordvästra leden");
                 //Visa val igen
                 tools.TypeLine("Vad vill du göra?", true);
                 WriteLine("1. Följ vägen nordväst");
@@ -391,47 +401,47 @@ public class SceneDirection
     }
 
     //Drakgläntan
-    public void dragonClearingCtrl(Inventory invy)
+    public void dragonClearingCtrl(Inventory invy, bool firstTime)
     {
         //VALMÖJLIGHETER
         var inputs = new List<Command> {
             //Kryp västerut
-            new Command(new List<string>{ "1", "kryp västerut", "kryp väst", "kryp v", "crawl west", "crawl w"}, () => {
+            new Command(new List<string>{ "1", "kryp västerut", "kryp väst", "kryp v", "crawl west", "crawl w", "cw"}, () => {
                 Clear();
                 WriteLine("Du kröp västerut!");
                 //Gå till trädrantälvkant
                 Program.treeLineRiver();
             }),
             //Spring västerut
-            new Command(new List<string>{ "2", "spring västerut", "spring väst", "spring v", "run west", "run w"}, () => {
+            new Command(new List<string>{ "2", "spring västerut", "spring väst", "spring v", "run west", "run w", "rw"}, () => {
                 Clear();
                 WriteLine("Du sprang västerut!");
                 //Gå till game over
                 flow.gameOver("drake");
             }),
             //Kryp norrut
-            new Command(new List<string>{ "3", "kryp norrut", "kryp norr", "kryp n", "crawl north", "crawl n" }, () => {
+            new Command(new List<string>{ "3", "kryp norrut", "kryp norr", "kryp n", "crawl north", "crawl n", "cn" }, () => {
                 Clear();
                 WriteLine("Du kröp norrut!");
                 //Gå till älvbanken
                 Program.riverBank("s");
             }),
             //Spring norrut
-            new Command(new List<string>{ "4", "spring norrut", "spring norr", "spring n", "run north", "run n" }, () => {
+            new Command(new List<string>{ "4", "spring norrut", "spring norr", "spring n", "run north", "run n", "rn" }, () => {
                 Clear();
                 WriteLine("Du sprang norrut!");
                 //Gå till game over
                 flow.gameOver("drake");
             }),
             //Kryp sydöst
-            new Command(new List<string>{ "5", "kryp sydöst", "kryp sö", "kryp sydost", "kryp so", "kryp sydösterut", "crawl southeast", "crawl south east", "crawl se" }, () => {
+            new Command(new List<string>{ "5", "kryp sydöst", "kryp sö", "kryp sydost", "kryp so", "kryp sydösterut", "crawl southeast", "crawl south east", "crawl se", "cse" }, () => {
                 Clear();
-                WriteLine("Du kröp sydöst!");
+                WriteLine("Du kröp sydost!");
                 //Gå till nordvästra stigen
-                Program.northwestTrail();
+                Program.northwestTrail("nw");
             }),
             //Spring Sydöst
-            new Command(new List<string>{ "6", "spring sydöst", "spring sö", "spring sydost", "spring so", "spring sydösterut", "run southeast", "run south east", "run se" }, () => {
+            new Command(new List<string>{ "6", "spring sydöst", "spring sö", "spring sydost", "spring so", "spring sydösterut", "run southeast", "run south east", "run se", "rse" }, () => {
                 Clear();
                 WriteLine("Du sprang sydöst!");
                 //Gå till game over
@@ -441,8 +451,9 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Drakgläntan");
                 //Visa val igen
-                flow.dragonClearingDesc(2);
+                flow.dragonClearingDesc(2, firstTime);
             }, false)
         };
 
@@ -456,7 +467,7 @@ public class SceneDirection
         //VALMÖJLIGHETER
         var inputs = new List<Command> {
             //Nordöst
-            new Command(new List<string>{ "1", }, () => {
+            new Command(new List<string>{ "1", }.Concat(northeast).ToList(), () => {
                 Clear();
                 WriteLine("Du gick nordöst!");
                 //Gå till älvbanken
@@ -473,6 +484,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Trädrandälvkant");
                 //Visa val igen
                 flow.treelineRiverDesc(2);
             }, false)
@@ -505,6 +517,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Älvbanken");
                 //Visa val igen
                 tools.TypeLine("Vad vill du göra?", true);
                 WriteLine("1. Kliv ner i båten");
@@ -539,6 +552,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Ombord på båt");
                 //Visa val igen
                 flow.inBoatDesc(2);
             }, false)
@@ -564,6 +578,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Norra strand");
                 //Visa val igen
                 flow.northShoreDesc(2);
             }, false)
@@ -608,6 +623,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Bro: Vässia");
                 //Visa val igen
                 tools.TypeLine("Vad vill du göra?", true);
                 WriteLine("1. Följ nordvästra stigen");
@@ -636,6 +652,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Lilla Nordergläntan");
                 //Visa val igen
                 flow.northClearingDesc(2);
             }, false)
@@ -735,6 +752,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Bro: Össia");
                 //Visa val igen
                 flow.bridgeEastDesc(2);
             }, false)
@@ -760,6 +778,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Tämliga Tältet");
                 //Visa val igen
                 flow.tentSceneDesc(2);
             }, false)
@@ -806,6 +825,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Storslätta");
                 //Visa val igen
                 flow.storSlattDesc(2);
             }, false)
@@ -919,6 +939,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Bråddjupa Brallblötan");
                 //Visa val igen
                 flow.brallblotanDesc(2);
             }, false)
@@ -950,6 +971,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Förtvivlans Fält");
                 //Visa val igen
                 flow.despairFieldDesc(2);
             }, false)
@@ -989,6 +1011,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Spurten");
                 //Visa val igen
                 flow.spurtenDesc(2);
             }, false)
@@ -1011,9 +1034,9 @@ public class SceneDirection
                 Program.timeWaste2();
             }),
             //Söderut
-            new Command(new List<string>{ "1", }.Concat(south).ToList(), () => {
+            new Command(new List<string>{ "2", }.Concat(south).ToList(), () => {
                 Clear();
-                WriteLine("Du gick västerut");
+                WriteLine("Du gick söderut!");
                 //Gå till förtvivlans fält
                 Program.despairField();
             }),
@@ -1021,6 +1044,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Ödemarkerna");
                 //Visa val igen
                 flow.wasteOfTimeDesc(1, 2);
             }, false)
@@ -1053,6 +1077,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Ödemarkerna");
                 //Visa val igen
                 flow.wasteOfTimeDesc(2, 2);
             }, false)
@@ -1092,6 +1117,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Ödemarkerna");
                 //Visa val igen
                 flow.wasteOfTimeDesc(3, 2);
             }, false)
@@ -1128,7 +1154,7 @@ public class SceneDirection
                 //Gå till tw3
                 Program.timeWaste3();
             }),
-            //Gå österut
+            //Gå sydösterut
             new Command(new List<string>{ "4" }.Concat(southeast).ToList(), () => {
                 Clear();
                 WriteLine("Du gick sydöst!");
@@ -1139,6 +1165,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Utanför Lunaris");
                 //Visa val igen
                 flow.outsideLunarisDesc(2, "");
             }, false)
@@ -1164,6 +1191,7 @@ public class SceneDirection
             new Command(new List<string>{ "i", "inventory" }, () => {
                 Clear();
                 invy.viewInventory();
+                tools.printTitle("Hemliga Hörnet");
                 //Visa val igen
                 flow.secretCornerDesc(2);
             }, false)
