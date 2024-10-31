@@ -640,11 +640,13 @@ class Program
     public static void insideLunaris()
     {
         tools.printTitle("Inuti trollkarlstornet Lunaris");
-        flow.insideLunaris();
+        /* flow.insideLunaris(); */
 
 
         //Kolla vilken kategori man plockat på sig flest av
         string mostOwned = invy.distinctItemCounter();
+        //Kolla om det är 5
+        bool fiveMatching = invy.checkForFive();
 
         //Om inga items
         if (mostOwned == "Inga items!")
@@ -678,16 +680,16 @@ class Program
             switch (mostOwned)
             {
                 case "Magic Artefact":
-                    flow.apprenticeEnd();
+                    flow.apprenticeEnd(fiveMatching);
                     break;
                 case "Wearables":
-                    flow.vagabondEnd();
+                    flow.vagabondEnd(fiveMatching);
                     break;
                 case "Instrument":
-                    flow.bardEnd();
+                    flow.bardEnd(fiveMatching);
                     break;
                 case "Academia":
-                    flow.kvaserEnd();
+                    flow.kvaserEnd(fiveMatching);
                     break;
                 default:
                     break;

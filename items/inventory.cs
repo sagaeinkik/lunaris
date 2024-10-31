@@ -4,6 +4,7 @@
 
 using System.Text.Json;
 using System.Linq;
+using System.ComponentModel;
 
 namespace lunaris;
 
@@ -133,6 +134,20 @@ public class Inventory
         catch (Exception e)
         {
             return e.Message;
+        }
+    }
+
+    //Metod för att se om man har samlat alla 5 objekt inom klass
+    public bool checkForFive()
+    {
+        try
+        {
+            //Loopa genom klassificeringarna, gruppera dem, räkna igenom grupper och returnera true om antalet är exakt 5 i gruppen
+            return userInventory.Where(i => i != null).GroupBy(i => i.classification).Any(g => g.Count() == 5);
+        }
+        catch
+        {
+            return false;
         }
     }
 }

@@ -136,4 +136,22 @@ public class Tools
         return riddle[index];
     }
 
+    //Grattis i alla färger:
+    public void congratulations(string cat)
+    {
+        WriteLine();
+        printMessage(false, false, ConsoleColor.Blue, "G ");
+        printMessage(false, false, ConsoleColor.DarkCyan, "R ");
+        printMessage(false, false, ConsoleColor.Green, "A ");
+        printMessage(false, false, ConsoleColor.Yellow, "T ");
+        printMessage(false, false, ConsoleColor.DarkYellow, "T ");
+        printMessage(false, false, ConsoleColor.Red, "I ");
+        printMessage(false, false, ConsoleColor.DarkMagenta, "S ");
+        printMessage(false, false, ConsoleColor.DarkCyan, "! ");
+        printMessage(false, false, ConsoleColor.Green, "! \n");
+
+        TypeLine($"Du samlade på dig alla föremål inom kategorin {cat}!", true);
+        TypeLine($"Din lilla samlare, där. Bra jobbat!", true);
+    }
+
 }

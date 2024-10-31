@@ -635,7 +635,7 @@ public class GameFlow
     {
         if (part == 1)
         {
-            tools.TypeLine("Du går längsmed älvkanten bland glesa träd och kommer fram till en tältplats. Det gulgröna tältet ser ut att vara välanvänt och står stadigt uppställt.", true);
+            tools.TypeLine("Du går längsmed älvkanten bland glesa träd och kommer fram till en tältplats.", true);
             tools.TypeLine("Det gulgröna tältet ser ut att vara välanvänt och står stadigt uppställt, men ändå övergivet. Du ser inte tältets ägare någonstans. \n \n Du känner en överväldigande nyfikenhet på vems tält det är, och varför det står här.", true);
             tools.TypeLine("Du tvekar litegrann. Ska du våga gå in? \n", true);
         }
@@ -737,7 +737,7 @@ public class GameFlow
         else if (pearlPossession && part == 3)
         {
             WriteLine();
-            tools.TypeLine("George Skörwen håller i sin dyrbara pärla med gigantiska händer.", true);
+            tools.TypeLine("George Skörwen håller i sin dyrbara pärla med gigantiska, fjälliga reptilhänder.", true);
             tools.TypeLine("Den ser rört på dig. ", false);
             tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Du har min eviga tacksamhet!' \n");
             tools.TypeLine("Anar du tårar i monstrets ögon? ", false);
@@ -1034,7 +1034,7 @@ public class GameFlow
     }
 
     //Lärlingsslut
-    public void apprenticeEnd()
+    public void apprenticeEnd(bool fiveMatching)
     {
         tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Du tycks ha en preferens för det magiska'");
         tools.TypeLine(", säger trollkarlen. \n", false);
@@ -1064,11 +1064,17 @@ public class GameFlow
         WriteLine("\n");
         tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*");
         WriteLine("Du fick Trollkarlens lärlings slut!");
+
+        //Kolla om man har alla fem; visa meddelande då
+        if (fiveMatching)
+        {
+            tools.congratulations("Magic Artefact");
+        }
         tools.gameCredits();
     }
 
     //Bardslut
-    public void bardEnd()
+    public void bardEnd(bool fiveMatching)
     {
         WriteLine();
         tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Du tycks ha en preferens för det musikaliska'");
@@ -1105,15 +1111,21 @@ public class GameFlow
         WriteLine("\n");
         tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*");
         WriteLine("Du fick Bardens slut!");
+
+        //Kolla om man har alla fem; visa meddelande då
+        if (fiveMatching)
+        {
+            tools.congratulations("Instrument");
+        }
         tools.gameCredits();
     }
 
     //Vagabondslut
-    public void vagabondEnd()
+    public void vagabondEnd(bool fiveMatching)
     {
         tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Du tycks ha en preferens för klädnader'");
         tools.TypeLine(", säger trollkarlen. \n", false);
-        tools.TypeLine("Du lägger huvudet lite på sned.", false);
+        tools.TypeLine("Du lägger huvudet lite på sned. ", false);
         tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag gillar att de har olika bakgrund. Att klä sig i dem är som att bära små historier från sina resor.' \n");
         tools.TypeLine("Någonting glittrar till i trollkarlens skelögda getögon.", true);
         tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Det gillar jag att höra'");
@@ -1132,7 +1144,7 @@ public class GameFlow
         tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Inte kan jag ta den!' \n");
         tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jovisst kan du det! Jag har överfört den kartan till mitt medvetande, så jag har allt här uppe'");
         tools.TypeLine(", säger han och knackar sig lätt i tinningen. Du vet inte om du litar på det, men du tar emot kartan ändå. ", false);
-        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'En sak till! Med detta sigill får du kompispris på alla de bästa pubarna i varje halvstor stad.' \n");
+        tools.printMessage(false, true, ConsoleColor.DarkCyan, "'En sak till! Med detta sigill får du billigare öl på alla de bästa pubarna i varje halvstor stad.' \n");
         tools.TypeLine("Han höjer en hand, och någonting bränner till på din handled. En symbol dyker upp där det brände.", true);
         tools.TypeLine("Du stryker med tummen över den, men symbolen smetas inte ens ut. En magisk tatuering? \n", true);
 
@@ -1150,11 +1162,17 @@ public class GameFlow
         WriteLine("\n");
         tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*~*~*");
         WriteLine("Du fick Vagabondens slut!");
+
+        //Kolla om man har alla fem; visa meddelande då
+        if (fiveMatching)
+        {
+            tools.congratulations("Wearables");
+        }
         tools.gameCredits();
     }
 
     //Kvaserslut
-    public void kvaserEnd()
+    public void kvaserEnd(bool fiveMatching)
     {
         tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Du tycks ha en preferens för det akademiska'");
         tools.TypeLine(", säger trollkarlen. ", false);
@@ -1210,6 +1228,12 @@ public class GameFlow
         WriteLine("\n \n");
         tools.printMessage(true, true, ConsoleColor.Blue, "*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~");
         WriteLine("Du fick Kvasers lärlings slut!");
+
+        //Kolla om man har alla fem; visa meddelande då
+        if (fiveMatching)
+        {
+            tools.congratulations("Academia");
+        }
         tools.gameCredits();
     }
 
