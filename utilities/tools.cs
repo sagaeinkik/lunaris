@@ -107,7 +107,7 @@ public class Tools
 
         if (gameFinished)
         {
-            printMessage(true, false, ConsoleColor.DarkGray, "\t (Tillägnas David, som har peppat, stöttat, och lyssnat på mitt gnäll.)");
+            printMessage(true, false, ConsoleColor.DarkGray, "\t (Stort tack till David, som har peppat, stöttat, och lyssnat på mitt gnäll.)");
 
         }
 
