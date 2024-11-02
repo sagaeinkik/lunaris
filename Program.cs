@@ -10,7 +10,7 @@ namespace lunaris;
 
 class Program
 {
-    //Initiera klasser för tillgång till metoder från samtliga funktioner
+    //Instansiera klasser för tillgång till metoder från samtliga funktioner
     private static Tools tools = new();
     private static GameFlow flow = new();
     private static Inventory invy = new();
@@ -488,14 +488,14 @@ class Program
                 //Spelkontroll
                 ctrl.wannaTrade(invy);
             }
-
-            //Om man inte har pärlan, dö
-            if (!pearlOwned)
+            else
             {
+                //Om man inte har pärlan, dö
                 WriteLine("Tryck på enter för att fortsätta.");
                 ReadKey();
                 Clear();
                 flow.gameOver("georgeSkörwe");
+
             }
         }
         else
