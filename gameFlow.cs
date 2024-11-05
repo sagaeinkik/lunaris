@@ -711,7 +711,7 @@ public class GameFlow
         {
             WriteLine();
 
-            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag ser att du har min pärla på din person'");
+            tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Jag ser att du bär på min pärla.'");
             tools.TypeLine(", dånar besten. \n", false);
             tools.printMessage(false, true, ConsoleColor.DarkCyan, "'Är du George Skörwe?'");
             tools.TypeLine(" piper du tillbaka. \n", false);
